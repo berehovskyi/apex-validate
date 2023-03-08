@@ -1,0 +1,16 @@
+{
+    "packageDirectories": [
+        {
+            "path": "sfdx-source/apex-validate",
+            "package": "apex-validate",
+            "versionName": "ver 1.0",
+            "versionNumber": "1.0.0.NEXT",
+            "default": true
+        }
+    ],
+    "name": "apex-validate",
+    "namespace": "",
+    "packageAliases": {
+        "apex-validate": "0Ho1t000000CajuCAC"
+    }
+}
