@@ -1,0 +1,10 @@
+# IntelliJ project files
+.idea
+*.iml
+.sfdx
+.sf
+.run
+
+scripts/
+config/
+IlluminatedCloud/
