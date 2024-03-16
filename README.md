@@ -32,14 +32,16 @@ Provides an easy way to follow a fail-fast principle and a design-by-contract pr
 or install as an Unlocked Package using the CLI:
 
 ```sh
-sf package install -p 04t1t000003HVTRAA4 -o me@example.com -r -w 10
+sf package install -p 04t1t000003f3UVAAY -o me@example.com -r -w 10
 ```
 
 ## Key Features
 
-- Provides a utility `Validate` class with a set of reusable void methods that throw relevant exceptions if validation fails.
+- Provides a utility `Validate` class with a set of reusable void methods that throw relevant exceptions if validation
+  fails.
 - API consistency with the standard `System.Assert` class. Unlike assertion failures, thrown exceptions can be caught.
-- Missing from the standard `System` namespace exception classes `IndexOutOfBoundsException` and `IllegalStateException`.
+- Adds `IndexOutOfBoundsException` and `IllegalStateException` exception classes, which are missing from the standard
+  `System` namespace.
 - Every single validation method has **3** overloaded variations:
     - Method with the **default** exception message.
     - Method with a **custom** exception message passed as an argument.
@@ -49,7 +51,7 @@ sf package install -p 04t1t000003HVTRAA4 -o me@example.com -r -w 10
 
 ### Validate vs. Assert
 
-- **Assertions** are typically used to indicate **unrecoverable** conditions in an application,
+- **Assertions** are typically used to indicate **unrecoverable** conditions in an application
   that are not supposed to be handled or recovered.
 - **Validations** check the inputs of public APIs and use `NullPointerException` or `IllegalArgumentException`
   that can be normally handled.
@@ -121,23 +123,29 @@ Validate.notNull(someUser); // throws a NullPointerException
 The `Validate.notEmpty` method is used to validate that the argument iterable is **not empty**:
 
 ```apex
+Set<Account> accounts = new Set<Account>{ acc1, acc2 }; // valid
+Validate.notEmpty(accounts);
+
 List<Account> accounts = new List<Account>();
 Validate.notEmpty(accounts); // throws an IllegalArgumentException
 
 // but
 List<Account> accounts;
-Validate.notEmpty(accounts); // throws an NullPointerException
+Validate.notEmpty(accounts); // throws a NullPointerException
 ```
 
 The `Validate.noNullElements` method is used to validate that the argument iterable does **not contain a null** element:
 
 ```apex
+Set<Account> accounts = new Set<Account>{ acc1, acc2 }; // valid
+Validate.noNullElements(accounts);
+
 List<Account> accounts = new List<Account>{ acc1, acc2, null };
 Validate.noNullElements(accounts); // throws an IllegalArgumentException
 
 // but
 List<Account> accounts;
-Validate.noNullElements(accounts); // throws an NullPointerException
+Validate.noNullElements(accounts); // throws a NullPointerException
 ```
 
 Both methods can be applied to `Sets`:
@@ -148,11 +156,24 @@ Validate.notEmpty(strings); // valid
 Validate.noNullElements(strings); // throws an IllegalArgumentException
 ```
 
-The `Validate.index` method is used to validate that the index is within the bounds of the argument list:
+The `Validate.index` method is used to validate that the index is within the bounds of the argument iterable:
 
 ```apex
+Set<Account> accounts = new Set<Account>{ acc1, acc2 };
+Validate.index(accounts, 1); // valid
+
 List<Account> accounts = new List<Account>{ acc1, acc2, acc3 };
 Validate.index(accounts, 3); // throws an IllegalArgumentException
+
+// but
+List<Account> accounts = new List<Account>{ acc1, acc2, acc3 };
+Validate.index(accounts, -1); // throws a IllegalArgumentException
+
+List<Account> accounts;
+Validate.index(accounts, 1); // throws a NullPointerException
+
+List<Account> accounts = new List<Account>{ acc1, acc2, acc3 };
+Validate.index(accounts, null); // throws a NullPointerException
 ```
 
 ### Validate String

@@ -41,28 +41,12 @@
         <value>Argument condition is true</value>
     </labels>
     <labels>
-        <fullName>AV_ErrorMessage_EmptyList</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <categories>error</categories>
-        <shortDescription>Error message.</shortDescription>
-        <value>Argument list is empty</value>
-    </labels>
-    <labels>
         <fullName>AV_ErrorMessage_EmptyIterable</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <categories>error</categories>
         <shortDescription>Error message.</shortDescription>
-        <value>Argument list is empty</value>
-    </labels>
-    <labels>
-        <fullName>AV_ErrorMessage_NullElementList</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <categories>error</categories>
-        <shortDescription>Error message.</shortDescription>
-        <value>Argument list contains null element</value>
+        <value>Argument iterable is empty</value>
     </labels>
     <labels>
         <fullName>AV_ErrorMessage_NullElementIterable</fullName>
@@ -73,12 +57,12 @@
         <value>Argument iterable contains null element</value>
     </labels>
     <labels>
-        <fullName>AV_ErrorMessage_InvalidIndexList</fullName>
+        <fullName>AV_ErrorMessage_InvalidIndexIterable</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <categories>error</categories>
         <shortDescription>Error message.</shortDescription>
-        <value>List index out of bounds: {0}</value>
+        <value>Iterable index out of bounds: {0}</value>
     </labels>
     <labels>
         <fullName>AV_ErrorMessage_BlankString</fullName>

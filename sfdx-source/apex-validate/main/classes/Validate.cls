@@ -43,7 +43,7 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `obj` is null with the custom exception `message`
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isNotNull
      *
      * @example
@@ -65,9 +65,9 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `obj` is null with the custom exception `message`
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isNotNull
-     * 
+     *
      * @example
      * Validate.notNull(
      *     obj,
@@ -96,10 +96,10 @@ public inherited sharing class Validate {
      * @throws IllegalArgumentException if `condition` evaluates to false
      * with the default exception message 'Argument condition is false'
      * @throws NullPointerException if `condition` is null with the default exception message 'Argument object is null'
-     * 
+     *
      * @see Validate.isFalse
      * @see Assert.isTrue
-     * 
+     *
      * @example
      * Validate.isTrue(i > 0);
      * Validate.isTrue(response.getStatusCode() == 200);
@@ -118,10 +118,10 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `condition` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isFalse
      * @see Assert.isTrue
-     * 
+     *
      * @example
      * Validate.isTrue(i > 0, 'The argument value must be positive');
      * Validate.isTrue(response.getStatusCode() == 200, 'The status code must be 200');
@@ -139,10 +139,10 @@ public inherited sharing class Validate {
      * @throws Exception if `condition` evaluates to false
      * @throws NullPointerException if `condition` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `exc` is null with the default exception message 'Argument object is null'
-     * 
+     *
      * @see Validate.isFalse
      * @see Assert.isTrue
-     * 
+     *
      * @example
      * Validate.isTrue(i > 0, new CustomException());
      * Validate.isTrue(response.getStatusCode() == 200, new CalloutException());
@@ -166,7 +166,7 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `condition` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isFalse
      * @see Assert.isTrue
      *
@@ -190,69 +190,6 @@ public inherited sharing class Validate {
     //<editor-fold desc="Iterables">
     // @start-group Iterables
     /**
-     * @description Checks that the argument list `objs` is not empty.
-     *
-     * @param objs the list to check for emptiness
-     *
-     * @throws IllegalArgumentException if `objs` is empty with the default exception message 'Argument list is empty'
-     * @throws NullPointerException if `objs` is null with the default exception message 'Argument object is null'
-     * 
-     * @see Validate.noNullElements
-     * 
-     * @example
-     * Validate.notEmpty(someList);
-     */
-    public static void notEmpty(final List<Object> objs) {
-        notEmpty(objs, Label.AV_ErrorMessage_EmptyList);
-    }
-
-    /**
-     * @description Checks that the argument list `objs` is not empty.
-     *
-     * @param objs the list to check for emptiness
-     * @param message the required custom exception message
-     *
-     * @throws IllegalArgumentException if `objs` is empty with the custom exception `message`
-     * @throws NullPointerException if `objs` is null with the default exception message 'Argument object is null'
-     * @throws NullPointerException if `message` is null with the default exception message
-     * 'Exception message cannot be null'
-     *
-     * @see Validate.noNullElements
-     *
-     * @example
-     * Validate.notEmpty(someList, 'The list cannot be empty');
-     */
-    public static void notEmpty(final List<Object> objs, final String message) {
-        notEmpty(objs, message, null);
-    }
-
-    /**
-     * @description Checks that the argument list `objs` is not empty.
-     *
-     * @param objs the list to check for emptiness
-     * @param message the required formatted exception message
-     * @param arguments the optional values for the formatted exception message
-     *
-     * @throws IllegalArgumentException if `objs` is empty with the custom exception `message`
-     * @throws NullPointerException if `objs` is null with the default exception message 'Argument object is null'
-     * @throws NullPointerException if `message` is null with the default exception message
-     * 'Exception message cannot be null'
-     *
-     * @see Validate.noNullElements
-     *
-     * @example
-     * Validate.notEmpty(
-     *     someList,
-     *     'The list {0} cannot be empty',
-     *     new List<String>{ 'someList' }
-     * );
-     */
-    public static void notEmpty(final List<Object> objs, final String message, final List<Object> arguments) {
-        notNull(objs);
-        isTrue(!objs.isEmpty(), message, arguments);
-    }
-
-    /**
      * @description Checks that the argument `iterable` is not empty.
      *
      * @param iterable the iterable to check for emptiness
@@ -260,12 +197,12 @@ public inherited sharing class Validate {
      * @throws IllegalArgumentException if `iterable` is empty with the default exception message
      * 'Argument iterable is empty'
      * @throws NullPointerException if `iterable` is null with the default exception message 'Argument object is null'
-     * 
+     *
      * @see Validate.noNullElements
-     * 
+     *
      * @example
-     * Validate.notEmpty(someIterable);
-     * Validate.notEmpty((Iterable<String>) someStringSet);
+     * Validate.notEmpty(new List<Integer>{ 1 }); // valid
+     * Validate.notEmpty(new Set<String>()); // throws an IllegalArgumentException
      */
     public static void notEmpty(final Iterable<Object> iterable) {
         notEmpty(iterable, Label.AV_ErrorMessage_EmptyIterable);
@@ -285,8 +222,8 @@ public inherited sharing class Validate {
      * @see Validate.noNullElements
      *
      * @example
-     * Validate.notEmpty(someIterable, 'The iterable cannot be empty');
-     * Validate.notEmpty((Iterable<String>) someStringSet, 'The set cannot be empty');
+     * Validate.notEmpty(new List<Integer>{ 1 }, 'The iterable cannot be empty');
+     * Validate.notEmpty(new Set<String>(), 'The set cannot be empty');
      */
     public static void notEmpty(final Iterable<Object> iterable, final String message) {
         notEmpty(iterable, message, null);
@@ -319,72 +256,6 @@ public inherited sharing class Validate {
     }
 
     /**
-     * @description Checks that the argument list `objs` contains no null elements.
-     *
-     * @param objs the list to check for null elements
-     *
-     * @throws IllegalArgumentException if `objs` contains a null element with the default exception message
-     * 'Argument list contains null element'
-     * @throws NullPointerException if `objs` is null with the default exception message 'Argument object is null'
-     * 
-     * @see Validate.notEmpty
-     * 
-     * @example
-     * Validate.noNullElements(someList);
-     */
-    public static void noNullElements(final List<Object> objs) {
-        noNullElements(objs, Label.AV_ErrorMessage_NullElementList);
-    }
-
-    /**
-     * @description Checks that the argument list `objs` contains no null elements.
-     *
-     * @param objs the list to check for null elements
-     * @param message the required custom exception message
-     *
-     * @throws IllegalArgumentException if `objs` contains a null element with the custom exception `message`
-     * @throws NullPointerException if `objs` is null with the default exception message 'Argument object is null'
-     * @throws NullPointerException if `message` is null with the default exception message
-     * 'Exception message cannot be null'
-     *
-     * @see Validate.notEmpty
-     *
-     * @example
-     * Validate.noNullElements(someList, 'The list cannot contain null elements');
-     */
-    public static void noNullElements(final List<Object> objs, final String message) {
-        noNullElements(objs, message, null);
-    }
-
-    /**
-     * @description Checks that the argument list `objs` contains no null elements.
-     *
-     * @param objs the list to check for null elements
-     * @param message the required formatted exception message
-     * @param arguments the optional values for the formatted exception message
-     *
-     * @throws IllegalArgumentException if `objs` contains a null element with the custom exception `message`
-     * @throws NullPointerException if `objs` is null with the default exception message 'Argument object is null'
-     * @throws NullPointerException if `message` is null with the default exception message
-     * 'Exception message cannot be null'
-     *
-     * @see Validate.notEmpty
-     *
-     * @example
-     * Validate.noNullElements(
-     *     someList,
-     *     'The list {0} cannot contain null elements',
-     *     new List<String>{ 'someList' }
-     * );
-     */
-    public static void noNullElements(final List<Object> objs, final String message, final List<Object> arguments) {
-        notNull(objs);
-        for (Integer i = 0, size = objs.size(); i < size; i++) {
-            isTrue(objs[i] != null, message, arguments);
-        }
-    }
-
-    /**
      * @description Checks that the argument `iterable` contains no null elements.
      *
      * @param iterable the iterable to check for null elements
@@ -392,12 +263,12 @@ public inherited sharing class Validate {
      * @throws IllegalArgumentException if `iterable` contains a null element with the default exception message
      * 'Argument iterable contains null element'
      * @throws NullPointerException if `iterable` is null with the default exception message 'Argument object is null'
-     * 
+     *
      * @see Validate.notEmpty
-     * 
+     *
      * @example
-     * Validate.noNullElements(someIterable);
-     * Validate.noNullElements((Iterable<String>) someStringSet);
+     * Validate.noNullElements(new List<Integer>{ 1 }); // valid
+     * Validate.noNullElements(new Set<String>{ 1, null }); // throws an IllegalArgumentException
      */
     public static void noNullElements(final Iterable<Object> iterable) {
         noNullElements(iterable, Label.AV_ErrorMessage_NullElementIterable);
@@ -461,87 +332,105 @@ public inherited sharing class Validate {
     }
 
     /**
-     * @description Checks that the `index` is within the bounds of the argument list `objs`.
+     * @description Checks that the `index` is within the bounds of the argument `iterable`.
      *
-     * @param objs the list to check
+     * @param iterable the iterable to check
      * @param index the index to check
      *
      * @throws IndexOutOfBoundsException if `index` is invalid with the default formatted exception message
-     * 'List index out of bounds: {0}'
-     * @throws NullPointerException if `objs` is null with the default exception message 'Argument object is null'
+     * 'Iterable index out of bounds: {0}'
+     * @throws NullPointerException if `iterable` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `index` is null with the default exception message 'Argument object is null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.index(
-     *     new List<String>{ 'foo', 'bar' }, 
+     *     new List<String>{ 'foo', 'bar' },
      *     3
      * ); // throws an IndexOutOfBoundsException
      */
-    public static void index(final List<Object> objs, final Integer index) {
-        index(objs, index, format(Label.AV_ErrorMessage_InvalidIndexList, index));
+    public static void index(final Iterable<Object> iterable, final Integer index) {
+        index(iterable, index, format(Label.AV_ErrorMessage_InvalidIndexIterable, index));
     }
 
     /**
-     * @description Checks that the `index` is within the bounds of the argument list `objs`.
+     * @description Checks that the `index` is within the bounds of the argument `iterable`.
      *
-     * @param objs the list to check
+     * @param objs the iterable to check
      * @param index the index to check
      * @param message the required custom exception message
      *
      * @throws IndexOutOfBoundsException if `index` is invalid with the custom exception `message`
-     * @throws NullPointerException if `objs` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `iterable` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `index` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.index(
-     *     new List<String>{ 'foo', 'bar' }, 
+     *     new List<String>{ 'foo', 'bar' },
      *     3,
      *     'Invalid index'
      * ); // throws an IndexOutOfBoundsException
      */
-    public static void index(final List<Object> objs, final Integer index, final String message) {
+    public static void index(final Iterable<Object> objs, final Integer index, final String message) {
         index(objs, index, message, null);
     }
 
     /**
-     * @description Checks that the `index` is within the bounds of the argument list `objs`.
+     * @description Checks that the `index` is within the bounds of the argument `iterable`.
      *
-     * @param objs the list to check
+     * @param iterable the iterable to check
      * @param index the index to check
      * @param message the required formatted exception message
      * @param arguments the optional values for the formatted exception message
      *
      * @throws IndexOutOfBoundsException if `index` is invalid with the custom exception `message`
-     * @throws NullPointerException if `objs` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `iterable` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `index` is null with the default exception message 'Argument object is null'
+     * @throws IndexOutOfBoundsException if `index` is less than 0 with the custom exception `message`
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.index(
-     *     new List<String>{ 'foo', 'bar' }, 
+     *     new List<String>{ 'foo', 'bar' },
      *     3,
      *     'Invalid index: {0}',
      *     new List<Integer>{ 3 }
      * ); // throws an IndexOutOfBoundsException
      */
     public static void index(
-        final List<Object> objs,
+        final Iterable<Object> iterable,
         final Integer index,
         final String message,
         final List<Object> arguments
     ) {
-        notNull(objs);
+        notNull(iterable);
         notNull(index);
-        isTrue(index >= 0 && index < objs.size(), newIndexOutOfBoundsException(format(message, arguments)));
+        isTrue(index >= 0, newIndexOutOfBoundsException(format(message, arguments)));
+        if (iterable instanceof List<Object>) {
+            isTrue(
+                index < ((List<Object>) iterable).size(),
+                newIndexOutOfBoundsException(format(message, arguments))
+            );
+            return;
+        }
+        final Iterator<Object> iterator = iterable.iterator();
+        Integer i = 0;
+        while (iterator.hasNext()) {
+            if (i == index) {
+                return;
+            }
+            iterator.next();
+            i++;
+        }
+        throw newIndexOutOfBoundsException(format(message, arguments));
     }
     // @end-group
     //</editor-fold>
@@ -556,9 +445,9 @@ public inherited sharing class Validate {
      * @throws IllegalArgumentException if `str` is whitespace or empty ('') with the default exception message
      * 'Argument string is blank'
      * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
-     * 
+     *
      * @see Validate.notEmpty
-     * 
+     *
      * @example
      * Validate.notBlank(' '); // throws an IllegalArgumentException
      */
@@ -576,12 +465,12 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.notEmpty
-     * 
+     *
      * @example
      * Validate.notBlank(
-     *     ' ', 
+     *     ' ',
      *     'The string cannot be blank'
      * ); // throws an IllegalArgumentException
      */
@@ -600,12 +489,12 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.notEmpty
-     * 
+     *
      * @example
      * Validate.notBlank(
-     *     ' ', 
+     *     ' ',
      *     'The string cannot be blank. {0}',
      *     new List<String>{ 'Status code: 400' }
      * ); // throws an IllegalArgumentException
@@ -623,9 +512,9 @@ public inherited sharing class Validate {
      * @throws IllegalArgumentException if `str` is empty ('') with the default exception message
      * 'Argument string is empty'
      * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
-     * 
+     *
      * @see Validate.notBlank
-     * 
+     *
      * @example
      * Validate.notEmpty(''); // throws an IllegalArgumentException
      */
@@ -643,12 +532,12 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.notBlank
-     * 
+     *
      * @example
      * Validate.notEmpty(
-     *     '', 
+     *     '',
      *     'The string cannot be empty'
      * ); // throws an IllegalArgumentException
      */
@@ -667,12 +556,12 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.notBlank
-     * 
+     *
      * @example
      * Validate.notEmpty(
-     *     '', 
+     *     '',
      *     'The string cannot be empty. {0}',
      *     new List<String>{ 'Status code: 400' }
      * ); // throws an IllegalArgumentException
@@ -692,9 +581,9 @@ public inherited sharing class Validate {
      * 'String index out of bounds: {0}'
      * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `index` is null with the default exception message 'Argument object is null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.index('foo', 3); // throws an IndexOutOfBoundsException
      */
@@ -714,9 +603,9 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `index` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.index(
      *     'foo',
@@ -741,12 +630,12 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `index` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.index(
-     *    'foo', 
+     *    'foo',
      *     3,
      *     'Invalid index: {0}',
      *     new List<Integer>{ 3 }
@@ -792,15 +681,15 @@ public inherited sharing class Validate {
      * @param str the string to check for matching
      * @param regex the regular expression to match against
      * @param message the required custom exception message
-     * 
+     *
      * @throws IllegalArgumentException if `str` does not match the `regex` with the custom exception `message`
      * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `regex` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.matches(
      *     'foo',
@@ -830,7 +719,7 @@ public inherited sharing class Validate {
      * Validate.matches(
      *     'foo',
      *     '\\d+',
-     *     'The string {0} does not match the pattern {1}.', 
+     *     'The string {0} does not match the pattern {1}.',
      *     new List<String>{ 'foo', '\\d+' }
      * ); // throws an IllegalArgumentException
      */
@@ -855,9 +744,9 @@ public inherited sharing class Validate {
      * @throws IllegalArgumentException if `email` is invalid with the default formatted exception message
      * 'Argument email {0} is invalid'
      * @throws NullPointerException if `email` is null with the default exception message 'Argument object is null'
-     * 
+     *
      * @see Validate.matches
-     * 
+     *
      * @example
      * Validate.email('john.doe＠example.com'); // valid
      * Validate.email('john.doe.example.com'); // throws an IllegalArgumentException
@@ -879,9 +768,9 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `email` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.matches
-     * 
+     *
      * @example
      * Validate.email(
      *     'john.doe.example.com',
@@ -905,9 +794,9 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `email` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.matches
-     * 
+     *
      * @example
      * Validate.email(
      *     'john.doe.example.com',
@@ -920,7 +809,7 @@ public inherited sharing class Validate {
     }
 
     /**
-     * @description Checks that the argument `card` is valid 
+     * @description Checks that the argument `card` is valid
      * using <a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn algorithm</a>.
      *
      * @param card the credit card to validate
@@ -928,9 +817,9 @@ public inherited sharing class Validate {
      * @throws IllegalArgumentException if `card` is invalid with the default formatted exception message
      * 'Argument credit card {0} is invalid'
      * @throws NullPointerException if `card` is null with the default exception message 'Argument object is null'
-     * 
+     *
      * @see Validate.matches
-     * 
+     *
      * @example
      * Validate.creditCard('1234-5678-9012-3452'); // valid
      * Validate.creditCard('4417123456789113'); // valid
@@ -941,7 +830,7 @@ public inherited sharing class Validate {
     }
 
     /**
-     * @description Checks that the argument `card` is valid 
+     * @description Checks that the argument `card` is valid
      * using <a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn algorithm</a>.
      *
      * @param card the credit card to validate
@@ -951,9 +840,9 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `card` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.matches
-     * 
+     *
      * @example
      * Validate.creditCard(
      *     '0000000000000001',
@@ -965,7 +854,7 @@ public inherited sharing class Validate {
     }
 
     /**
-     * @description Checks that the argument `card` is valid 
+     * @description Checks that the argument `card` is valid
      * using <a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn algorithm</a>.
      *
      * @param card the credit card to validate
@@ -976,9 +865,9 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `card` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.matches
-     * 
+     *
      * @example
      * Validate.creditCard(
      *     '0000000000000001',
@@ -997,15 +886,15 @@ public inherited sharing class Validate {
     // @start-group State
     /**
      * @description Checks that the stateful argument `condition` is true.
-     * 
+     *
      * @param condition the boolean expression to check
      *
      * @throws IllegalStateException if `condition` evaluates to false
      * with the default exception message 'Argument state is invalid'
      * @throws NullPointerException if `condition` is null with the default exception message 'Argument object is null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.state(response.getStatusCode() == 200);
      */
@@ -1015,7 +904,7 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the stateful argument `condition` is true.
-     * 
+     *
      * @param condition the boolean expression to check
      * @param message the required custom exception message
      *
@@ -1024,9 +913,9 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `condition` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.state(response.getStatusCode() == 200, 'Custom message');
      */
@@ -1065,11 +954,11 @@ public inherited sharing class Validate {
     // @start-group Numbers
     /**
      * @description Checks that the argument long `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range with the default formatted
      * exception message 'Argument {0} is not between inclusive range from {1} to {2}'
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1078,9 +967,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `value` is null with the default exception message
      * 'Argument object is null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(1L, 10L, 5L); // valid
      */
@@ -1095,12 +984,12 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument long `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
      * @param message the required custom exception message
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range
      * with the custom exception `message`
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1111,9 +1000,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(
      *     1L,
@@ -1133,13 +1022,13 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument long `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
      * @param message the required formatted exception message
      * @param arguments the optional values for the formatted exception message
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range
      * with the custom exception `message`
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1150,9 +1039,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(
      *     1L,
@@ -1181,11 +1070,11 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument int `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range with the default formatted
      * exception message 'Argument {0} is not between inclusive range from {1} to {2}'
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1194,9 +1083,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `value` is null with the default exception message
      * 'Argument object is null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(1, 10, 5); // valid
      */
@@ -1211,12 +1100,12 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument int `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
      * @param message the required custom exception message
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range
      * with the custom exception `message`
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1227,9 +1116,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(
      *     1,
@@ -1249,13 +1138,13 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument int `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
      * @param message the required formatted exception message
      * @param arguments the optional values for the formatted exception message
-     * 
+     *
      * @throws IllegalStateException if the `value` is not within the specified range
      * with the custom exception `message`
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1266,9 +1155,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(
      *     1,
@@ -1297,11 +1186,11 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument double `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range with the default formatted
      * exception message 'Argument {0} is not between inclusive range from {1} to {2}'
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1310,9 +1199,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `value` is null with the default exception message
      * 'Argument object is null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between((Double) 1.1, (Double) 10.2, (Double) 5.2); // valid
      */
@@ -1327,12 +1216,12 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument double `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
      * @param message the required custom exception message
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range
      * with the custom exception `message`
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1343,9 +1232,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(
      *     (Double) 1.1,
@@ -1365,13 +1254,13 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument double `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
      * @param message the required formatted exception message
      * @param arguments the optional values for the formatted exception message
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range
      * with the custom exception `message`
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1382,9 +1271,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(
      *     (Double) 1.1,
@@ -1413,11 +1302,11 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument date `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range with the default formatted
      * exception message 'Argument {0} is not between inclusive range from {1} to {2}'
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1426,9 +1315,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `value` is null with the default exception message
      * 'Argument object is null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(
      *    Date.today(),
@@ -1447,12 +1336,12 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument date `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
      * @param message the required custom exception message
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range
      * with the custom exception `message`
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1463,9 +1352,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(
      *     Date.today(),
@@ -1485,13 +1374,13 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument date `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
      * @param message the required formatted exception message
      * @param arguments the optional values for the formatted exception message
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range
      * with the custom exception `message`
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1502,9 +1391,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(
      *     Date.today(),
@@ -1537,11 +1426,11 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument datetime `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range with the default formatted
      * exception message 'Argument {0} is not between inclusive range from {1} to {2}'
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1550,9 +1439,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `value` is null with the default exception message
      * 'Argument object is null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(
      *    Datetime.now(),
@@ -1571,12 +1460,12 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument datetime `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
      * @param message the required custom exception message
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range
      * with the custom exception `message`
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1587,9 +1476,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(
      *     Datetime.now(),
@@ -1609,13 +1498,13 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument datetime `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
      * @param message the required formatted exception message
      * @param arguments the optional values for the formatted exception message
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range
      * with the custom exception `message`
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1626,9 +1515,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(
      *     Datetime.now(),
@@ -1661,11 +1550,11 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument time `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range with the default formatted
      * exception message 'Argument {0} is not between inclusive range from {1} to {2}'
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1674,9 +1563,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `value` is null with the default exception message
      * 'Argument object is null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(
      *    Time.newInstance(0, 0, 0, 0),
@@ -1695,12 +1584,12 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument time `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
      * @param message the required custom exception message
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range
      * with the custom exception `message`
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1711,9 +1600,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(
      *     Time.newInstance(0, 0, 0, 0),
@@ -1733,13 +1622,13 @@ public inherited sharing class Validate {
 
     /**
      * @description Checks that the argument time `value` is between the two inclusive values.
-     * 
+     *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
      * @param value tha value to validate
      * @param message the required formatted exception message
      * @param arguments the optional values for the formatted exception message
-     * 
+     *
      * @throws IllegalArgumentException if the `value` is not within the specified range
      * with the custom exception `message`
      * @throws NullPointerException if `startInclusive` is null with the default exception message
@@ -1750,9 +1639,9 @@ public inherited sharing class Validate {
      * 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.between(
      *     Time.newInstance(0, 0, 0, 0),
@@ -1797,10 +1686,10 @@ public inherited sharing class Validate {
      * exception message 'Arguments {0} and {1} are not equal'
      *
      * @see Assert.areEqual
-     * 
+     *
      * @example
      * Validate.areEqual('foo', 'foo'); // valid
-     * Validate.areEqual('foo', 'bar'); // throws an IllegalArgumentException 
+     * Validate.areEqual('foo', 'bar'); // throws an IllegalArgumentException
      */
     public static void areEqual(final Object obj1, final Object obj2) {
         areEqual(obj1, obj2, format(Label.AV_ErrorMessage_NotEqual, obj1, obj2));
@@ -1818,13 +1707,13 @@ public inherited sharing class Validate {
      * 'Exception message cannot be null'
      *
      * @see Assert.areEqual
-     * 
+     *
      * @example
      * Validate.areEqual(
      *    'foo',
      *    'bar',
      *    'Arguments are not equal'
-     * ); // throws an IllegalArgumentException 
+     * ); // throws an IllegalArgumentException
      */
     public static void areEqual(final Object obj1, final Object obj2, final String message) {
         areEqual(obj1, obj2, message, null);
@@ -1843,14 +1732,14 @@ public inherited sharing class Validate {
      * 'Exception message cannot be null'
      *
      * @see Assert.areEqual
-     * 
+     *
      * @example
      * Validate.areEqual(
      *    'foo',
      *    'bar',
      *    'Arguments {0} and {1} are not equal',
      *    new List<String>{ 'foo', 'bar' }
-     * ); // throws an IllegalArgumentException 
+     * ); // throws an IllegalArgumentException
      */
     public static void areEqual(
         final Object obj1,
@@ -1871,10 +1760,10 @@ public inherited sharing class Validate {
      * exception message 'Arguments {0} and {1} are equal'
      *
      * @see Assert.areNotEqual
-     * 
+     *
      * @example
      * Validate.areNotEqual('foo', 'bar'); // valid
-     * Validate.areNotEqual('foo', 'foo'); // throws an IllegalArgumentException 
+     * Validate.areNotEqual('foo', 'foo'); // throws an IllegalArgumentException
      */
     public static void areNotEqual(final Object obj1, final Object obj2) {
         areNotEqual(obj1, obj2, format(Label.AV_ErrorMessage_Equal, obj1, obj2));
@@ -1892,13 +1781,13 @@ public inherited sharing class Validate {
      * 'Exception message cannot be null'
      *
      * @see Assert.areNotEqual
-     * 
+     *
      * @example
      * Validate.areNotEqual(
      *    'foo',
      *    'foo',
      *    'Arguments are equal'
-     * ); // throws an IllegalArgumentException 
+     * ); // throws an IllegalArgumentException
      */
     public static void areNotEqual(final Object obj1, final Object obj2, final String message) {
         areNotEqual(obj1, obj2, message, null);
@@ -1917,7 +1806,7 @@ public inherited sharing class Validate {
      * 'Exception message cannot be null'
      *
      * @see Assert.areNotEqual
-     * 
+     *
      * @example
      * Validate.areNotEqual(
      *    'foo',
@@ -1942,10 +1831,10 @@ public inherited sharing class Validate {
      * @throws IllegalArgumentException if `condition` evaluates to true
      * with the default exception message 'Argument condition is true'
      * @throws NullPointerException if `condition` is null with the default exception message 'Argument object is null'
-     * 
+     *
      * @see Assert.isFalse
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.isFalse(i > 0);
      * Validate.isFalse(response.getStatusCode() != 200);
@@ -1964,10 +1853,10 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `condition` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Assert.isFalse
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.isFalse(
      *     i < 0,
@@ -1993,10 +1882,10 @@ public inherited sharing class Validate {
      * @throws NullPointerException if `condition` is null with the default exception message 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
-     * 
+     *
      * @see Assert.isFalse
      * @see Validate.isTrue
-     * 
+     *
      * @example
      * Validate.isFalse(
      *     response.getStatusCode() == 400,
@@ -2262,7 +2151,7 @@ public inherited sharing class Validate {
      *
      * @param obj the object to check for nullity
      *
-     * @throws IllegalArgumentException if `obj` is not null with the default formatted exception message 
+     * @throws IllegalArgumentException if `obj` is not null with the default formatted exception message
      * 'Argument object is not null. Actual value: {0}'
      *
      * @see Assert.isNull
@@ -2412,5 +2301,5 @@ public inherited sharing class Validate {
         return str.replaceAll('\\{(?![0-9])', '(').replaceAll('(?<!\\d)\\}', ')');
     }
     //</editor-fold>
-    
+
 }

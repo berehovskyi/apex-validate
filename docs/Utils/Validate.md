@@ -2,11 +2,12 @@
 
 `SUPPRESSWARNINGS`
 
-`APIVERSION: 57`
+`APIVERSION: 60`
 
 `STATUS: ACTIVE`
 
-A lightweight, stateless utility class that manages validating arguments. Provides an easy way to follow a fail-fast principle and a design-by-contract programming approach.
+A lightweight, stateless utility class that manages validating arguments.
+Provides an easy way to follow a fail-fast principle and a design-by-contract programming approach.
 
 
 **Author** Oleh Berehovskyi
@@ -16,22 +17,24 @@ A lightweight, stateless utility class that manages validating arguments. Provid
 
 ## Methods
 ### Nullability
-##### `static notNull(Object obj)`
+##### `public static void notNull(Object obj)`
 
 Checks that the argument reference `obj` is not null.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj`|the object to check for nullity|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`NullPointerException`|if `obj` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.isNotNull
+**See** [Validate.isNotNull](Validate.isNotNull)
 
 ###### Example
 ```apex
@@ -40,24 +43,27 @@ Object obj;
 Validate.notNull(obj); // throws a NullPointerException
 ```
 
-##### `static notNull(Object obj, String message)`
+
+##### `public static void notNull(Object obj, String message)`
 
 Checks that the argument reference `obj` is not null.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj`|the object to check for nullity|
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`NullPointerException`|if `obj` is null with the custom exception `message`|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isNotNull
+**See** [Validate.isNotNull](Validate.isNotNull)
 
 ###### Example
 ```apex
@@ -66,11 +72,13 @@ Object obj;
 Validate.notNull(obj, 'The argument cannot be null'); // throws a NullPointerException
 ```
 
-##### `static notNull(Object obj, String message, List<Object> arguments)`
+
+##### `public static void notNull(Object obj, String message, List<Object> arguments)`
 
 Checks that the argument reference `obj` is not null.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj`|the object to check for nullity|
@@ -78,13 +86,14 @@ Checks that the argument reference `obj` is not null.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`NullPointerException`|if `obj` is null with the custom exception `message`|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isNotNull
+**See** [Validate.isNotNull](Validate.isNotNull)
 
 ###### Example
 ```apex
@@ -95,28 +104,31 @@ Validate.notNull(
 ); // throws a NullPointerException
 ```
 
+
 ---
 ### Conditions
-##### `static isTrue(Boolean condition)`
+##### `public static void isTrue(Boolean condition)`
 
 Checks that the argument `condition` is true.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`condition`|the boolean expression to check|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `condition` evaluates to false with the default exception message 'Argument condition is false'|
 |`NullPointerException`|if `condition` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.isFalse
+**See** [Validate.isFalse](Validate.isFalse)
 
 
-**See** Assert.isTrue
+**See** [Assert.isTrue](Assert.isTrue)
 
 ###### Example
 ```apex
@@ -124,17 +136,20 @@ Validate.isTrue(i > 0);
 Validate.isTrue(response.getStatusCode() == 200);
 ```
 
-##### `static isTrue(Boolean condition, String message)`
+
+##### `public static void isTrue(Boolean condition, String message)`
 
 Checks that the argument `condition` is true.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`condition`|the boolean expression to check|
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `condition` evaluates to false with the custom exception `message`|
@@ -142,10 +157,10 @@ Checks that the argument `condition` is true.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isFalse
+**See** [Validate.isFalse](Validate.isFalse)
 
 
-**See** Assert.isTrue
+**See** [Assert.isTrue](Assert.isTrue)
 
 ###### Example
 ```apex
@@ -153,17 +168,20 @@ Validate.isTrue(i > 0, 'The argument value must be positive');
 Validate.isTrue(response.getStatusCode() == 200, 'The status code must be 200');
 ```
 
-##### `static isTrue(Boolean condition, Exception exc)`
+
+##### `public static void isTrue(Boolean condition, Exception exc)`
 
 Checks that the argument `condition` is true.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`condition`|the boolean expression to check|
 |`exc`|the exception to throw|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`Exception`|if `condition` evaluates to false|
@@ -171,10 +189,10 @@ Checks that the argument `condition` is true.
 |`NullPointerException`|if `exc` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.isFalse
+**See** [Validate.isFalse](Validate.isFalse)
 
 
-**See** Assert.isTrue
+**See** [Assert.isTrue](Assert.isTrue)
 
 ###### Example
 ```apex
@@ -182,11 +200,13 @@ Validate.isTrue(i > 0, new CustomException());
 Validate.isTrue(response.getStatusCode() == 200, new CalloutException());
 ```
 
-##### `static isTrue(Boolean condition, String message, List<Object> arguments)`
+
+##### `public static void isTrue(Boolean condition, String message, List<Object> arguments)`
 
 Checks that the argument `condition` is true.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`condition`|the boolean expression to check|
@@ -194,6 +214,7 @@ Checks that the argument `condition` is true.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `condition` evaluates to false with the custom exception `message`|
@@ -201,10 +222,10 @@ Checks that the argument `condition` is true.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isFalse
+**See** [Validate.isFalse](Validate.isFalse)
 
 
-**See** Assert.isTrue
+**See** [Assert.isTrue](Assert.isTrue)
 
 ###### Example
 ```apex
@@ -215,121 +236,49 @@ Validate.isTrue(
 );
 ```
 
+
 ---
 ### Iterables
-##### `static notEmpty(List<Object> objs)`
-
-Checks that the argument list `objs` is not empty.
-
-###### Parameters
-|Param|Description|
-|---|---|
-|`objs`|the list to check for emptiness|
-
-###### Throws
-|Exception|Description|
-|---|---|
-|`IllegalArgumentException`|if `objs` is empty with the default exception message 'Argument list is empty'|
-|`NullPointerException`|if `objs` is null with the default exception message 'Argument object is null'|
-
-
-**See** Validate.noNullElements
-
-###### Example
-```apex
-Validate.notEmpty(someList);
-```
-
-##### `static notEmpty(List<Object> objs, String message)`
-
-Checks that the argument list `objs` is not empty.
-
-###### Parameters
-|Param|Description|
-|---|---|
-|`objs`|the list to check for emptiness|
-|`message`|the required custom exception message|
-
-###### Throws
-|Exception|Description|
-|---|---|
-|`IllegalArgumentException`|if `objs` is empty with the custom exception `message`|
-|`NullPointerException`|if `objs` is null with the default exception message 'Argument object is null'|
-|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
-
-
-**See** Validate.noNullElements
-
-###### Example
-```apex
-Validate.notEmpty(someList, 'The list cannot be empty');
-```
-
-##### `static notEmpty(List<Object> objs, String message, List<Object> arguments)`
-
-Checks that the argument list `objs` is not empty.
-
-###### Parameters
-|Param|Description|
-|---|---|
-|`objs`|the list to check for emptiness|
-|`message`|the required formatted exception message|
-|`arguments`|the optional values for the formatted exception message|
-
-###### Throws
-|Exception|Description|
-|---|---|
-|`IllegalArgumentException`|if `objs` is empty with the custom exception `message`|
-|`NullPointerException`|if `objs` is null with the default exception message 'Argument object is null'|
-|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
-
-
-**See** Validate.noNullElements
-
-###### Example
-```apex
-Validate.notEmpty(
-    someList,
-    'The list {0} cannot be empty',
-    new List<String>{ 'someList' }
-);
-```
-
-##### `static notEmpty(Iterable<Object> iterable)`
+##### `public static void notEmpty(Iterable<Object> iterable)`
 
 Checks that the argument `iterable` is not empty.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`iterable`|the iterable to check for emptiness|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `iterable` is empty with the default exception message 'Argument iterable is empty'|
 |`NullPointerException`|if `iterable` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.noNullElements
+**See** [Validate.noNullElements](Validate.noNullElements)
 
 ###### Example
 ```apex
-Validate.notEmpty(someIterable);
-Validate.notEmpty((Iterable<String>) someStringSet);
+Validate.notEmpty(new List<Integer>{ 1 }); // valid
+Validate.notEmpty(new Set<String>()); // throws an IllegalArgumentException
 ```
 
-##### `static notEmpty(Iterable<Object> iterable, String message)`
+
+##### `public static void notEmpty(Iterable<Object> iterable, String message)`
 
 Checks that the argument `iterable` is not empty.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`iterable`|the iterable to check for emptiness|
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `iterable` is empty with the custom exception `message`|
@@ -337,19 +286,21 @@ Checks that the argument `iterable` is not empty.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.noNullElements
+**See** [Validate.noNullElements](Validate.noNullElements)
 
 ###### Example
 ```apex
-Validate.notEmpty(someIterable, 'The iterable cannot be empty');
-Validate.notEmpty((Iterable<String>) someStringSet, 'The set cannot be empty');
+Validate.notEmpty(new List<Integer>{ 1 }, 'The iterable cannot be empty');
+Validate.notEmpty(new Set<String>(), 'The set cannot be empty');
 ```
 
-##### `static notEmpty(Iterable<Object> iterable, String message, List<Object> arguments)`
+
+##### `public static void notEmpty(Iterable<Object> iterable, String message, List<Object> arguments)`
 
 Checks that the argument `iterable` is not empty.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`iterable`|the iterable to check for emptiness|
@@ -357,6 +308,7 @@ Checks that the argument `iterable` is not empty.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `iterable` is empty with the custom exception `message`|
@@ -364,7 +316,7 @@ Checks that the argument `iterable` is not empty.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.noNullElements
+**See** [Validate.noNullElements](Validate.noNullElements)
 
 ###### Example
 ```apex
@@ -375,119 +327,47 @@ Validate.notEmpty(
 );
 ```
 
-##### `static noNullElements(List<Object> objs)`
 
-Checks that the argument list `objs` contains no null elements.
-
-###### Parameters
-|Param|Description|
-|---|---|
-|`objs`|the list to check for null elements|
-
-###### Throws
-|Exception|Description|
-|---|---|
-|`IllegalArgumentException`|if `objs` contains a null element with the default exception message 'Argument list contains null element'|
-|`NullPointerException`|if `objs` is null with the default exception message 'Argument object is null'|
-
-
-**See** Validate.notEmpty
-
-###### Example
-```apex
-Validate.noNullElements(someList);
-```
-
-##### `static noNullElements(List<Object> objs, String message)`
-
-Checks that the argument list `objs` contains no null elements.
-
-###### Parameters
-|Param|Description|
-|---|---|
-|`objs`|the list to check for null elements|
-|`message`|the required custom exception message|
-
-###### Throws
-|Exception|Description|
-|---|---|
-|`IllegalArgumentException`|if `objs` contains a null element with the custom exception `message`|
-|`NullPointerException`|if `objs` is null with the default exception message 'Argument object is null'|
-|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
-
-
-**See** Validate.notEmpty
-
-###### Example
-```apex
-Validate.noNullElements(someList, 'The list cannot contain null elements');
-```
-
-##### `static noNullElements(List<Object> objs, String message, List<Object> arguments)`
-
-Checks that the argument list `objs` contains no null elements.
-
-###### Parameters
-|Param|Description|
-|---|---|
-|`objs`|the list to check for null elements|
-|`message`|the required formatted exception message|
-|`arguments`|the optional values for the formatted exception message|
-
-###### Throws
-|Exception|Description|
-|---|---|
-|`IllegalArgumentException`|if `objs` contains a null element with the custom exception `message`|
-|`NullPointerException`|if `objs` is null with the default exception message 'Argument object is null'|
-|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
-
-
-**See** Validate.notEmpty
-
-###### Example
-```apex
-Validate.noNullElements(
-    someList,
-    'The list {0} cannot contain null elements',
-    new List<String>{ 'someList' }
-);
-```
-
-##### `static noNullElements(Iterable<Object> iterable)`
+##### `public static void noNullElements(Iterable<Object> iterable)`
 
 Checks that the argument `iterable` contains no null elements.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`iterable`|the iterable to check for null elements|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `iterable` contains a null element with the default exception message 'Argument iterable contains null element'|
 |`NullPointerException`|if `iterable` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.notEmpty
+**See** [Validate.notEmpty](Validate.notEmpty)
 
 ###### Example
 ```apex
-Validate.noNullElements(someIterable);
-Validate.noNullElements((Iterable<String>) someStringSet);
+Validate.noNullElements(new List<Integer>{ 1 }); // valid
+Validate.noNullElements(new Set<String>{ 1, null }); // throws an IllegalArgumentException
 ```
 
-##### `static noNullElements(Iterable<Object> iterable, String message)`
+
+##### `public static void noNullElements(Iterable<Object> iterable, String message)`
 
 Checks that the argument `iterable` contains no null elements.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`iterable`|the iterable to check for null elements|
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `iterable` contains a null element with the custom exception `message`|
@@ -495,7 +375,7 @@ Checks that the argument `iterable` contains no null elements.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.notEmpty
+**See** [Validate.notEmpty](Validate.notEmpty)
 
 ###### Example
 ```apex
@@ -506,11 +386,13 @@ Validate.noNullElements(
 );
 ```
 
-##### `static noNullElements(Iterable<Object> iterable, String message, List<Object> arguments)`
+
+##### `public static void noNullElements(Iterable<Object> iterable, String message, List<Object> arguments)`
 
 Checks that the argument `iterable` contains no null elements.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`iterable`|the iterable to check for null elements|
@@ -518,6 +400,7 @@ Checks that the argument `iterable` contains no null elements.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `iterable` contains a null element with the custom exception `message`|
@@ -525,7 +408,7 @@ Checks that the argument `iterable` contains no null elements.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.notEmpty
+**See** [Validate.notEmpty](Validate.notEmpty)
 
 ###### Example
 ```apex
@@ -536,25 +419,28 @@ Validate.noNullElements(
 );
 ```
 
-##### `static index(List<Object> objs, Integer index)`
 
-Checks that the `index` is within the bounds of the argument list `objs`.
+##### `public static void index(Iterable<Object> iterable, Integer index)`
+
+Checks that the `index` is within the bounds of the argument `iterable`.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
-|`objs`|the list to check|
+|`iterable`|the iterable to check|
 |`index`|the index to check|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
-|`IndexOutOfBoundsException`|if `index` is invalid with the default formatted exception message 'List index out of bounds: {0}'|
-|`NullPointerException`|if `objs` is null with the default exception message 'Argument object is null'|
+|`IndexOutOfBoundsException`|if `index` is invalid with the default formatted exception message 'Iterable index out of bounds: {0}'|
+|`NullPointerException`|if `iterable` is null with the default exception message 'Argument object is null'|
 |`NullPointerException`|if `index` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -564,27 +450,30 @@ Validate.index(
 ); // throws an IndexOutOfBoundsException
 ```
 
-##### `static index(List<Object> objs, Integer index, String message)`
 
-Checks that the `index` is within the bounds of the argument list `objs`.
+##### `public static void index(Iterable<Object> objs, Integer index, String message)`
+
+Checks that the `index` is within the bounds of the argument `iterable`.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
-|`objs`|the list to check|
+|`objs`|the iterable to check|
 |`index`|the index to check|
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IndexOutOfBoundsException`|if `index` is invalid with the custom exception `message`|
-|`NullPointerException`|if `objs` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `iterable` is null with the default exception message 'Argument object is null'|
 |`NullPointerException`|if `index` is null with the default exception message 'Argument object is null'|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -595,28 +484,32 @@ Validate.index(
 ); // throws an IndexOutOfBoundsException
 ```
 
-##### `static index(List<Object> objs, Integer index, String message, List<Object> arguments)`
 
-Checks that the `index` is within the bounds of the argument list `objs`.
+##### `public static void index(Iterable<Object> iterable, Integer index, String message, List<Object> arguments)`
+
+Checks that the `index` is within the bounds of the argument `iterable`.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
-|`objs`|the list to check|
+|`iterable`|the iterable to check|
 |`index`|the index to check|
 |`message`|the required formatted exception message|
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IndexOutOfBoundsException`|if `index` is invalid with the custom exception `message`|
-|`NullPointerException`|if `objs` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `iterable` is null with the default exception message 'Argument object is null'|
 |`NullPointerException`|if `index` is null with the default exception message 'Argument object is null'|
+|`IndexOutOfBoundsException`|if `index` is less than 0 with the custom exception `message`|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -628,42 +521,48 @@ Validate.index(
 ); // throws an IndexOutOfBoundsException
 ```
 
+
 ---
 ### Strings
-##### `static notBlank(String str)`
+##### `public static void notBlank(String str)`
 
-Checks that the argument string `str` is not whitespace nor empty (&apos;&apos;), nor null.
+Checks that the argument string `str` is not whitespace nor empty (''), nor null.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`str`|the string to check for not being blank|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `str` is whitespace or empty ('') with the default exception message 'Argument string is blank'|
 |`NullPointerException`|if `str` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.notEmpty
+**See** [Validate.notEmpty](Validate.notEmpty)
 
 ###### Example
 ```apex
 Validate.notBlank(' '); // throws an IllegalArgumentException
 ```
 
-##### `static notBlank(String str, String message)`
 
-Checks that the argument string `str` is not whitespace nor empty (&apos;&apos;), nor null.
+##### `public static void notBlank(String str, String message)`
+
+Checks that the argument string `str` is not whitespace nor empty (''), nor null.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`str`|the string to check for not being blank|
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `str` is whitespace or empty ('') with the custom exception `message`|
@@ -671,7 +570,7 @@ Checks that the argument string `str` is not whitespace nor empty (&apos;&apos;)
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.notEmpty
+**See** [Validate.notEmpty](Validate.notEmpty)
 
 ###### Example
 ```apex
@@ -681,11 +580,13 @@ Validate.notBlank(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static notBlank(String str, String message, List<Object> arguments)`
 
-Checks that the argument string `str` is not whitespace nor empty (&apos;&apos;), nor null.
+##### `public static void notBlank(String str, String message, List<Object> arguments)`
+
+Checks that the argument string `str` is not whitespace nor empty (''), nor null.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`str`|the string to check for not being blank|
@@ -693,6 +594,7 @@ Checks that the argument string `str` is not whitespace nor empty (&apos;&apos;)
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `str` is whitespace or empty ('') with the custom exception `message`|
@@ -700,7 +602,7 @@ Checks that the argument string `str` is not whitespace nor empty (&apos;&apos;)
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.notEmpty
+**See** [Validate.notEmpty](Validate.notEmpty)
 
 ###### Example
 ```apex
@@ -711,40 +613,46 @@ Validate.notBlank(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static notEmpty(String str)`
 
-Checks that the argument string `str` is not empty (&apos;&apos;), nor null.
+##### `public static void notEmpty(String str)`
+
+Checks that the argument string `str` is not empty (''), nor null.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`str`|the string to check for not being empty|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `str` is empty ('') with the default exception message 'Argument string is empty'|
 |`NullPointerException`|if `str` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.notBlank
+**See** [Validate.notBlank](Validate.notBlank)
 
 ###### Example
 ```apex
 Validate.notEmpty(''); // throws an IllegalArgumentException
 ```
 
-##### `static notEmpty(String str, String message)`
 
-Checks that the argument string `str` is not empty (&apos;&apos;), nor null.
+##### `public static void notEmpty(String str, String message)`
+
+Checks that the argument string `str` is not empty (''), nor null.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`str`|the string to check for not being empty|
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `str` is empty ('') with the custom exception `message`|
@@ -752,7 +660,7 @@ Checks that the argument string `str` is not empty (&apos;&apos;), nor null.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.notBlank
+**See** [Validate.notBlank](Validate.notBlank)
 
 ###### Example
 ```apex
@@ -762,11 +670,13 @@ Validate.notEmpty(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static notEmpty(String str, String message, List<Object> arguments)`
 
-Checks that the argument string `str` is not empty (&apos;&apos;), nor null.
+##### `public static void notEmpty(String str, String message, List<Object> arguments)`
+
+Checks that the argument string `str` is not empty (''), nor null.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`str`|the string to check for not being empty|
@@ -774,6 +684,7 @@ Checks that the argument string `str` is not empty (&apos;&apos;), nor null.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `str` is empty ('') with the custom exception `message`|
@@ -781,7 +692,7 @@ Checks that the argument string `str` is not empty (&apos;&apos;), nor null.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.notBlank
+**See** [Validate.notBlank](Validate.notBlank)
 
 ###### Example
 ```apex
@@ -792,17 +703,20 @@ Validate.notEmpty(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static index(String str, Integer index)`
+
+##### `public static void index(String str, Integer index)`
 
 Checks that the `index` is within the bounds of the argument string `str`.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`str`|the string to check|
 |`index`|the index to check|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IndexOutOfBoundsException`|if `index` is invalid with the default formatted exception message 'String index out of bounds: {0}'|
@@ -810,18 +724,20 @@ Checks that the `index` is within the bounds of the argument string `str`.
 |`NullPointerException`|if `index` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
 Validate.index('foo', 3); // throws an IndexOutOfBoundsException
 ```
 
-##### `static index(String str, Integer index, String message)`
+
+##### `public static void index(String str, Integer index, String message)`
 
 Checks that the `index` is within the bounds of the argument string `str`.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`str`|the string to check|
@@ -829,6 +745,7 @@ Checks that the `index` is within the bounds of the argument string `str`.
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IndexOutOfBoundsException`|if `index` is invalid with the custom exception `message`|
@@ -837,7 +754,7 @@ Checks that the `index` is within the bounds of the argument string `str`.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -848,11 +765,13 @@ Validate.index(
 ); // throws an IndexOutOfBoundsException
 ```
 
-##### `static index(String str, Integer index, String message, List<Object> arguments)`
+
+##### `public static void index(String str, Integer index, String message, List<Object> arguments)`
 
 Checks that the `index` is within the bounds of the argument string `str`.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`str`|the string to check|
@@ -861,6 +780,7 @@ Checks that the `index` is within the bounds of the argument string `str`.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IndexOutOfBoundsException`|if `index` is invalid with the custom exception `message`|
@@ -869,7 +789,7 @@ Checks that the `index` is within the bounds of the argument string `str`.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -881,17 +801,20 @@ Validate.index(
 ); // throws an IndexOutOfBoundsException
 ```
 
-##### `static matches(String str, String regex)`
+
+##### `public static void matches(String str, String regex)`
 
 Checks that the argument string `str` matches the `regex`.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`str`|the string to check for matching|
 |`regex`|the regular expression to match against|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `str` does not match the `regex` with the default formatted exception message 'Argument string {0} does not match the pattern {1}'|
@@ -899,18 +822,20 @@ Checks that the argument string `str` matches the `regex`.
 |`NullPointerException`|if `regex` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
 Validate.matches('foo', '\\d+'); // throws an IllegalArgumentException
 ```
 
-##### `static matches(String str, String regex, String message)`
+
+##### `public static void matches(String str, String regex, String message)`
 
 Checks that the argument string `str` matches the `regex`.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`str`|the string to check for matching|
@@ -918,6 +843,7 @@ Checks that the argument string `str` matches the `regex`.
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `str` does not match the `regex` with the custom exception `message`|
@@ -926,7 +852,7 @@ Checks that the argument string `str` matches the `regex`.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -937,11 +863,13 @@ Validate.matches(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static matches(String str, String regex, String message, List<Object> arguments)`
+
+##### `public static void matches(String str, String regex, String message, List<Object> arguments)`
 
 Checks that the argument string `str` matches the `regex`.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`str`|the string to check for matching|
@@ -950,6 +878,7 @@ Checks that the argument string `str` matches the `regex`.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `str` does not match the `regex` with the custom exception `message`|
@@ -967,23 +896,26 @@ Validate.matches(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static email(String email)`
 
-Checks that the argument `email` is valid. Please note that this validation method isn&apos;t fully RFC 5322 and RFC 6531 complaint e.g. does not support non-ASCII characters.
+##### `public static void email(String email)`
+
+Checks that the argument `email` is valid. Please note that this validation method isn't fully RFC 5322 and RFC 6531 compliant e.g. does not support non-ASCII characters.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`email`|the email to validate|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `email` is invalid with the default formatted exception message 'Argument email {0} is invalid'|
 |`NullPointerException`|if `email` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.matches
+**See** [Validate.matches](Validate.matches)
 
 ###### Example
 ```apex
@@ -992,17 +924,20 @@ Validate.email('john.doe.example.com'); // throws an IllegalArgumentException
 Validate.email('＠example.com'); // throws an IllegalArgumentException
 ```
 
-##### `static email(String email, String message)`
 
-Checks that the argument `email` is valid. Please note that this validation method isn&apos;t fully RFC 5322 and RFC 6531 complaint e.g. does not support non-ASCII characters.
+##### `public static void email(String email, String message)`
+
+Checks that the argument `email` is valid. Please note that this validation method isn't fully RFC 5322 and RFC 6531 compliant e.g. does not support non-ASCII characters.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`email`|the email to validate|
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `email` is invalid with the custom exception `message`|
@@ -1010,7 +945,7 @@ Checks that the argument `email` is valid. Please note that this validation meth
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.matches
+**See** [Validate.matches](Validate.matches)
 
 ###### Example
 ```apex
@@ -1020,11 +955,13 @@ Validate.email(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static email(String email, String message, List<Object> arguments)`
 
-Checks that the argument `email` is valid. Please note that this validation method isn&apos;t fully RFC 5322 and RFC 6531 complaint e.g. does not support non-ASCII characters.
+##### `public static void email(String email, String message, List<Object> arguments)`
+
+Checks that the argument `email` is valid. Please note that this validation method isn't fully RFC 5322 and RFC 6531 compliant e.g. does not support non-ASCII characters.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`email`|the email to validate|
@@ -1032,6 +969,7 @@ Checks that the argument `email` is valid. Please note that this validation meth
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `email` is invalid with the custom exception `message`|
@@ -1039,7 +977,7 @@ Checks that the argument `email` is valid. Please note that this validation meth
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.matches
+**See** [Validate.matches](Validate.matches)
 
 ###### Example
 ```apex
@@ -1050,23 +988,26 @@ Validate.email(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static creditCard(String card)`
 
-Checks that the argument `card` is valid using <a href=&quot;https://en.wikipedia.org/wiki/Luhn_algorithm&quot;>Luhn algorithm</a>.
+##### `public static void creditCard(String card)`
+
+Checks that the argument `card` is valid using <a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn algorithm</a>.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`card`|the credit card to validate|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `card` is invalid with the default formatted exception message 'Argument credit card {0} is invalid'|
 |`NullPointerException`|if `card` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.matches
+**See** [Validate.matches](Validate.matches)
 
 ###### Example
 ```apex
@@ -1075,17 +1016,20 @@ Validate.creditCard('4417123456789113'); // valid
 Validate.creditCard('0000000000000001'); // throws an IllegalArgumentException
 ```
 
-##### `static creditCard(String card, String message)`
 
-Checks that the argument `card` is valid using <a href=&quot;https://en.wikipedia.org/wiki/Luhn_algorithm&quot;>Luhn algorithm</a>.
+##### `public static void creditCard(String card, String message)`
+
+Checks that the argument `card` is valid using <a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn algorithm</a>.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`card`|the credit card to validate|
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `card` is invalid with the custom exception `message`|
@@ -1093,7 +1037,7 @@ Checks that the argument `card` is valid using <a href=&quot;https://en.wikipedi
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.matches
+**See** [Validate.matches](Validate.matches)
 
 ###### Example
 ```apex
@@ -1103,11 +1047,13 @@ Validate.creditCard(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static creditCard(String card, String message, List<Object> arguments)`
 
-Checks that the argument `card` is valid using <a href=&quot;https://en.wikipedia.org/wiki/Luhn_algorithm&quot;>Luhn algorithm</a>.
+##### `public static void creditCard(String card, String message, List<Object> arguments)`
+
+Checks that the argument `card` is valid using <a href="https://en.wikipedia.org/wiki/Luhn_algorithm">Luhn algorithm</a>.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`card`|the credit card to validate|
@@ -1115,6 +1061,7 @@ Checks that the argument `card` is valid using <a href=&quot;https://en.wikipedi
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `card` is invalid with the custom exception `message`|
@@ -1122,7 +1069,7 @@ Checks that the argument `card` is valid using <a href=&quot;https://en.wikipedi
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.matches
+**See** [Validate.matches](Validate.matches)
 
 ###### Example
 ```apex
@@ -1133,42 +1080,48 @@ Validate.creditCard(
 ); // throws an IllegalArgumentException
 ```
 
+
 ---
 ### State
-##### `static state(Boolean condition)`
+##### `public static void state(Boolean condition)`
 
 Checks that the stateful argument `condition` is true.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`condition`|the boolean expression to check|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalStateException`|if `condition` evaluates to false with the default exception message 'Argument state is invalid'|
 |`NullPointerException`|if `condition` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
 Validate.state(response.getStatusCode() == 200);
 ```
 
-##### `static state(Boolean condition, String message)`
+
+##### `public static void state(Boolean condition, String message)`
 
 Checks that the stateful argument `condition` is true.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`condition`|the boolean expression to check|
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalStateException`|if `condition` evaluates to false with custom exception `message`|
@@ -1176,18 +1129,20 @@ Checks that the stateful argument `condition` is true.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
 Validate.state(response.getStatusCode() == 200, 'Custom message');
 ```
 
-##### `static state(Boolean condition, String message, List<Object> arguments)`
+
+##### `public static void state(Boolean condition, String message, List<Object> arguments)`
 
 Checks that the stateful argument `condition` is true.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`condition`|the boolean expression to check|
@@ -1195,6 +1150,7 @@ Checks that the stateful argument `condition` is true.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalStateException`|if `condition` evaluates to false with the custom exception `message`|
@@ -1210,13 +1166,15 @@ Validate.state(
 ); // throws an IllegalStateException
 ```
 
+
 ---
 ### Numbers
-##### `static between(Long startInclusive, Long endInclusive, Long value)`
+##### `public static void between(Long startInclusive, Long endInclusive, Long value)`
 
 Checks that the argument long `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1224,6 +1182,7 @@ Checks that the argument long `value` is between the two inclusive values.
 |`value`|tha value to validate|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the default formatted exception message 'Argument {0} is not between inclusive range from {1} to {2}'|
@@ -1232,18 +1191,20 @@ Checks that the argument long `value` is between the two inclusive values.
 |`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
 Validate.between(1L, 10L, 5L); // valid
 ```
 
-##### `static between(Long startInclusive, Long endInclusive, Long value, String message)`
+
+##### `public static void between(Long startInclusive, Long endInclusive, Long value, String message)`
 
 Checks that the argument long `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1252,6 +1213,7 @@ Checks that the argument long `value` is between the two inclusive values.
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
@@ -1261,7 +1223,7 @@ Checks that the argument long `value` is between the two inclusive values.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -1273,13 +1235,15 @@ Validate.between(
 ); //throws an IllegalArgumentException
 ```
 
-##### `static between(Long startInclusive, Long endInclusive, Long value, String message, List<Object> arguments)`
+
+##### `public static void between(Long startInclusive, Long endInclusive, Long value, String message, List<Object> arguments)`
 
 `SUPPRESSWARNINGS`
 
 Checks that the argument long `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1289,6 +1253,7 @@ Checks that the argument long `value` is between the two inclusive values.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
@@ -1298,7 +1263,7 @@ Checks that the argument long `value` is between the two inclusive values.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -1311,11 +1276,13 @@ Validate.between(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static between(Integer startInclusive, Integer endInclusive, Integer value)`
+
+##### `public static void between(Integer startInclusive, Integer endInclusive, Integer value)`
 
 Checks that the argument int `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1323,6 +1290,7 @@ Checks that the argument int `value` is between the two inclusive values.
 |`value`|tha value to validate|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the default formatted exception message 'Argument {0} is not between inclusive range from {1} to {2}'|
@@ -1331,18 +1299,20 @@ Checks that the argument int `value` is between the two inclusive values.
 |`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
 Validate.between(1, 10, 5); // valid
 ```
 
-##### `static between(Integer startInclusive, Integer endInclusive, Integer value, String message)`
+
+##### `public static void between(Integer startInclusive, Integer endInclusive, Integer value, String message)`
 
 Checks that the argument int `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1351,6 +1321,7 @@ Checks that the argument int `value` is between the two inclusive values.
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
@@ -1360,7 +1331,7 @@ Checks that the argument int `value` is between the two inclusive values.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -1372,13 +1343,15 @@ Validate.between(
 ); //throws an IllegalArgumentException
 ```
 
-##### `static between(Integer startInclusive, Integer endInclusive, Integer value, String message, List<Object> arguments)`
+
+##### `public static void between(Integer startInclusive, Integer endInclusive, Integer value, String message, List<Object> arguments)`
 
 `SUPPRESSWARNINGS`
 
 Checks that the argument int `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1388,6 +1361,7 @@ Checks that the argument int `value` is between the two inclusive values.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalStateException`|if the `value` is not within the specified range with the custom exception `message`|
@@ -1397,7 +1371,7 @@ Checks that the argument int `value` is between the two inclusive values.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -1410,11 +1384,13 @@ Validate.between(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static between(Double startInclusive, Double endInclusive, Double value)`
+
+##### `public static void between(Double startInclusive, Double endInclusive, Double value)`
 
 Checks that the argument double `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1422,6 +1398,7 @@ Checks that the argument double `value` is between the two inclusive values.
 |`value`|tha value to validate|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the default formatted exception message 'Argument {0} is not between inclusive range from {1} to {2}'|
@@ -1430,18 +1407,20 @@ Checks that the argument double `value` is between the two inclusive values.
 |`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
 Validate.between((Double) 1.1, (Double) 10.2, (Double) 5.2); // valid
 ```
 
-##### `static between(Double startInclusive, Double endInclusive, Double value, String message)`
+
+##### `public static void between(Double startInclusive, Double endInclusive, Double value, String message)`
 
 Checks that the argument double `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1450,6 +1429,7 @@ Checks that the argument double `value` is between the two inclusive values.
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
@@ -1459,7 +1439,7 @@ Checks that the argument double `value` is between the two inclusive values.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -1471,13 +1451,15 @@ Validate.between(
 ); //throws an IllegalArgumentException
 ```
 
-##### `static between(Double startInclusive, Double endInclusive, Double value, String message, List<Object> arguments)`
+
+##### `public static void between(Double startInclusive, Double endInclusive, Double value, String message, List<Object> arguments)`
 
 `SUPPRESSWARNINGS`
 
 Checks that the argument double `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1487,6 +1469,7 @@ Checks that the argument double `value` is between the two inclusive values.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
@@ -1496,7 +1479,7 @@ Checks that the argument double `value` is between the two inclusive values.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -1509,11 +1492,13 @@ Validate.between(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static between(Date startInclusive, Date endInclusive, Date value)`
+
+##### `public static void between(Date startInclusive, Date endInclusive, Date value)`
 
 Checks that the argument date `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1521,6 +1506,7 @@ Checks that the argument date `value` is between the two inclusive values.
 |`value`|tha value to validate|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the default formatted exception message 'Argument {0} is not between inclusive range from {1} to {2}'|
@@ -1529,7 +1515,7 @@ Checks that the argument date `value` is between the two inclusive values.
 |`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -1540,11 +1526,13 @@ Validate.between(
 ); // valid
 ```
 
-##### `static between(Date startInclusive, Date endInclusive, Date value, String message)`
+
+##### `public static void between(Date startInclusive, Date endInclusive, Date value, String message)`
 
 Checks that the argument date `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1553,6 +1541,7 @@ Checks that the argument date `value` is between the two inclusive values.
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
@@ -1562,7 +1551,7 @@ Checks that the argument date `value` is between the two inclusive values.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -1574,13 +1563,15 @@ Validate.between(
 ); //throws an IllegalArgumentException
 ```
 
-##### `static between(Date startInclusive, Date endInclusive, Date value, String message, List<Object> arguments)`
+
+##### `public static void between(Date startInclusive, Date endInclusive, Date value, String message, List<Object> arguments)`
 
 `SUPPRESSWARNINGS`
 
 Checks that the argument date `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1590,6 +1581,7 @@ Checks that the argument date `value` is between the two inclusive values.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
@@ -1599,7 +1591,7 @@ Checks that the argument date `value` is between the two inclusive values.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -1616,11 +1608,13 @@ Validate.between(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static between(Datetime startInclusive, Datetime endInclusive, Datetime value)`
+
+##### `public static void between(Datetime startInclusive, Datetime endInclusive, Datetime value)`
 
 Checks that the argument datetime `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1628,6 +1622,7 @@ Checks that the argument datetime `value` is between the two inclusive values.
 |`value`|tha value to validate|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the default formatted exception message 'Argument {0} is not between inclusive range from {1} to {2}'|
@@ -1636,7 +1631,7 @@ Checks that the argument datetime `value` is between the two inclusive values.
 |`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -1647,11 +1642,13 @@ Validate.between(
 ); // valid
 ```
 
-##### `static between(Datetime startInclusive, Datetime endInclusive, Datetime value, String message)`
+
+##### `public static void between(Datetime startInclusive, Datetime endInclusive, Datetime value, String message)`
 
 Checks that the argument datetime `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1660,6 +1657,7 @@ Checks that the argument datetime `value` is between the two inclusive values.
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
@@ -1669,7 +1667,7 @@ Checks that the argument datetime `value` is between the two inclusive values.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -1681,13 +1679,15 @@ Validate.between(
 ); //throws an IllegalArgumentException
 ```
 
-##### `static between(Datetime startInclusive, Datetime endInclusive, Datetime value, String message, List<Object> arguments)`
+
+##### `public static void between(Datetime startInclusive, Datetime endInclusive, Datetime value, String message, List<Object> arguments)`
 
 `SUPPRESSWARNINGS`
 
 Checks that the argument datetime `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1697,6 +1697,7 @@ Checks that the argument datetime `value` is between the two inclusive values.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
@@ -1706,7 +1707,7 @@ Checks that the argument datetime `value` is between the two inclusive values.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -1723,11 +1724,13 @@ Validate.between(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static between(Time startInclusive, Time endInclusive, Time value)`
+
+##### `public static void between(Time startInclusive, Time endInclusive, Time value)`
 
 Checks that the argument time `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1735,6 +1738,7 @@ Checks that the argument time `value` is between the two inclusive values.
 |`value`|tha value to validate|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the default formatted exception message 'Argument {0} is not between inclusive range from {1} to {2}'|
@@ -1743,7 +1747,7 @@ Checks that the argument time `value` is between the two inclusive values.
 |`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -1754,11 +1758,13 @@ Validate.between(
 ); // valid
 ```
 
-##### `static between(Time startInclusive, Time endInclusive, Time value, String message)`
+
+##### `public static void between(Time startInclusive, Time endInclusive, Time value, String message)`
 
 Checks that the argument time `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1767,6 +1773,7 @@ Checks that the argument time `value` is between the two inclusive values.
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
@@ -1776,7 +1783,7 @@ Checks that the argument time `value` is between the two inclusive values.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -1788,13 +1795,15 @@ Validate.between(
 ); //throws an IllegalArgumentException
 ```
 
-##### `static between(Time startInclusive, Time endInclusive, Time value, String message, List<Object> arguments)`
+
+##### `public static void between(Time startInclusive, Time endInclusive, Time value, String message, List<Object> arguments)`
 
 `SUPPRESSWARNINGS`
 
 Checks that the argument time `value` is between the two inclusive values.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`startInclusive`|the inclusive start value|
@@ -1804,6 +1813,7 @@ Checks that the argument time `value` is between the two inclusive values.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
@@ -1813,7 +1823,7 @@ Checks that the argument time `value` is between the two inclusive values.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -1830,25 +1840,28 @@ Validate.between(
 ); // throws an IllegalArgumentException
 ```
 
+
 ---
 ### Methods consistent with System.Assert class
-##### `static areEqual(Object obj1, Object obj2)`
+##### `public static void areEqual(Object obj1, Object obj2)`
 
 Checks that the arguments `obj1` and `obj2` are equal.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj1`|the first object to compare|
 |`obj2`|the second object to compare|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `obj1` and `obj2` are not equal with the default formatted exception message 'Arguments {0} and {1} are not equal'|
 
 
-**See** Assert.areEqual
+**See** [Assert.areEqual](Assert.areEqual)
 
 ###### Example
 ```apex
@@ -1856,11 +1869,13 @@ Validate.areEqual('foo', 'foo'); // valid
 Validate.areEqual('foo', 'bar'); // throws an IllegalArgumentException
 ```
 
-##### `static areEqual(Object obj1, Object obj2, String message)`
+
+##### `public static void areEqual(Object obj1, Object obj2, String message)`
 
 Checks that the arguments `obj1` and `obj2` are equal.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj1`|the first object to compare|
@@ -1868,13 +1883,14 @@ Checks that the arguments `obj1` and `obj2` are equal.
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `obj1` and `obj2` are not equal with the custom `message`|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Assert.areEqual
+**See** [Assert.areEqual](Assert.areEqual)
 
 ###### Example
 ```apex
@@ -1885,11 +1901,13 @@ Validate.areEqual(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static areEqual(Object obj1, Object obj2, String message, List<Object> arguments)`
+
+##### `public static void areEqual(Object obj1, Object obj2, String message, List<Object> arguments)`
 
 Checks that the arguments `obj1` and `obj2` are equal.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj1`|the first object to compare|
@@ -1898,13 +1916,14 @@ Checks that the arguments `obj1` and `obj2` are equal.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `obj1` and `obj2` are not equal with the custom `message`|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Assert.areEqual
+**See** [Assert.areEqual](Assert.areEqual)
 
 ###### Example
 ```apex
@@ -1916,23 +1935,26 @@ Validate.areEqual(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static areNotEqual(Object obj1, Object obj2)`
+
+##### `public static void areNotEqual(Object obj1, Object obj2)`
 
 Checks that the arguments `obj1` and `obj2` are not equal.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj1`|the first object to compare|
 |`obj2`|the second object to compare|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `obj1` and `obj2` are equal with the default formatted exception message 'Arguments {0} and {1} are equal'|
 
 
-**See** Assert.areNotEqual
+**See** [Assert.areNotEqual](Assert.areNotEqual)
 
 ###### Example
 ```apex
@@ -1940,11 +1962,13 @@ Validate.areNotEqual('foo', 'bar'); // valid
 Validate.areNotEqual('foo', 'foo'); // throws an IllegalArgumentException
 ```
 
-##### `static areNotEqual(Object obj1, Object obj2, String message)`
+
+##### `public static void areNotEqual(Object obj1, Object obj2, String message)`
 
 Checks that the arguments `obj1` and `obj2` are not equal.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj1`|the first object to compare|
@@ -1952,13 +1976,14 @@ Checks that the arguments `obj1` and `obj2` are not equal.
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `obj1` and `obj2` are equal with the custom `message`|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Assert.areNotEqual
+**See** [Assert.areNotEqual](Assert.areNotEqual)
 
 ###### Example
 ```apex
@@ -1969,11 +1994,13 @@ Validate.areNotEqual(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static areNotEqual(Object obj1, Object obj2, String message, List<Object> arguments)`
+
+##### `public static void areNotEqual(Object obj1, Object obj2, String message, List<Object> arguments)`
 
 Checks that the arguments `obj1` and `obj2` are not equal.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj1`|the first object to compare|
@@ -1982,13 +2009,14 @@ Checks that the arguments `obj1` and `obj2` are not equal.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `obj1` and `obj2` are equal with the custom `message`|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Assert.areNotEqual
+**See** [Assert.areNotEqual](Assert.areNotEqual)
 
 ###### Example
 ```apex
@@ -2000,26 +2028,29 @@ Validate.areNotEqual(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static isFalse(Boolean condition)`
+
+##### `public static void isFalse(Boolean condition)`
 
 Checks that the argument `condition` is false.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`condition`|the boolean expression to check|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `condition` evaluates to true with the default exception message 'Argument condition is true'|
 |`NullPointerException`|if `condition` is null with the default exception message 'Argument object is null'|
 
 
-**See** Assert.isFalse
+**See** [Assert.isFalse](Assert.isFalse)
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -2027,17 +2058,20 @@ Validate.isFalse(i > 0);
 Validate.isFalse(response.getStatusCode() != 200);
 ```
 
-##### `static isFalse(Boolean condition, String message)`
+
+##### `public static void isFalse(Boolean condition, String message)`
 
 Checks that the argument `condition` is false.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`condition`|the boolean expression to check|
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `condition` evaluates to true with the custom exception `message`|
@@ -2045,10 +2079,10 @@ Checks that the argument `condition` is false.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Assert.isFalse
+**See** [Assert.isFalse](Assert.isFalse)
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -2062,11 +2096,13 @@ Validate.isFalse(
 );
 ```
 
-##### `static isFalse(Boolean condition, String message, List<Object> arguments)`
+
+##### `public static void isFalse(Boolean condition, String message, List<Object> arguments)`
 
 Checks that the argument `condition` is false.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`condition`|the boolean expression to check|
@@ -2074,6 +2110,7 @@ Checks that the argument `condition` is false.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `condition` evaluates to true with the custom exception `message`|
@@ -2081,10 +2118,10 @@ Checks that the argument `condition` is false.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Assert.isFalse
+**See** [Assert.isFalse](Assert.isFalse)
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -2095,24 +2132,27 @@ Validate.isFalse(
 );
 ```
 
-##### `static isInstanceOfType(Object obj, Type expectedType)`
+
+##### `public static void isInstanceOfType(Object obj, Type expectedType)`
 
 Checks that the argument `obj` is the instance of type.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj`|the object to validate|
 |`expectedType`|the expected type for the object|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `obj` is not an instance of `expectedType` with the default formatted exception message 'Argument object is not an instance of {0}. Actual type: {1}'|
 |`NullPointerException`|if `expectedType` is null with the default exception message 'Argument object is null'|
 
 
-**See** Assert.isInstanceOfType
+**See** [Assert.isInstanceOfType](Assert.isInstanceOfType)
 
 ###### Example
 ```apex
@@ -2120,11 +2160,13 @@ Validate.isInstanceOfType('hello', String.class); // valid
 Validate.isInstanceOfType('hello', Integer.class); // throws an IllegalArgumentException
 ```
 
-##### `static isInstanceOfType(Object obj, Type expectedType, String message)`
+
+##### `public static void isInstanceOfType(Object obj, Type expectedType, String message)`
 
 Checks that the argument `obj` is the instance of type.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj`|the object to validate|
@@ -2132,6 +2174,7 @@ Checks that the argument `obj` is the instance of type.
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `obj` is not an instance of `expectedType` with the custom exception `message`|
@@ -2139,7 +2182,7 @@ Checks that the argument `obj` is the instance of type.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Assert.isInstanceOfType
+**See** [Assert.isInstanceOfType](Assert.isInstanceOfType)
 
 ###### Example
 ```apex
@@ -2150,11 +2193,13 @@ Validate.isInstanceOfType(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static isInstanceOfType(Object obj, Type expectedType, String message, List<Object> arguments)`
+
+##### `public static void isInstanceOfType(Object obj, Type expectedType, String message, List<Object> arguments)`
 
 Checks that the argument `obj` is the instance of type.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj`|the object to validate|
@@ -2163,6 +2208,7 @@ Checks that the argument `obj` is the instance of type.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `obj` is not an instance of `expectedType` with the custom exception `message`|
@@ -2170,7 +2216,7 @@ Checks that the argument `obj` is the instance of type.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Assert.isInstanceOfType
+**See** [Assert.isInstanceOfType](Assert.isInstanceOfType)
 
 ###### Example
 ```apex
@@ -2182,24 +2228,27 @@ Validate.isInstanceOfType(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static isNotInstanceOfType(Object obj, Type notExpectedType)`
+
+##### `public static void isNotInstanceOfType(Object obj, Type notExpectedType)`
 
 Checks that the argument `obj` is not the instance of type.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj`|the object to validate|
 |`notExpectedType`|the not expected type for the object|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `obj` is an instance of `notExpectedType` with the default formatted exception message 'Argument object is an instance of {0}'|
 |`NullPointerException`|if `notExpectedType` is null with the default exception message 'Argument object is null'|
 
 
-**See** Assert.isNotInstanceOfType
+**See** [Assert.isNotInstanceOfType](Assert.isNotInstanceOfType)
 
 ###### Example
 ```apex
@@ -2207,11 +2256,13 @@ Validate.isNotInstanceOfType('hello', Integer.class); // valid
 Validate.isNotInstanceOfType('hello', String.class); // throws an IllegalArgumentException
 ```
 
-##### `static isNotInstanceOfType(Object obj, Type notExpectedType, String message)`
+
+##### `public static void isNotInstanceOfType(Object obj, Type notExpectedType, String message)`
 
 Checks that the argument `obj` is not the instance of type.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj`|the object to validate|
@@ -2219,6 +2270,7 @@ Checks that the argument `obj` is not the instance of type.
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `obj` is an instance of `notExpectedType` with the custom exception `message`|
@@ -2226,7 +2278,7 @@ Checks that the argument `obj` is not the instance of type.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Assert.isNotInstanceOfType
+**See** [Assert.isNotInstanceOfType](Assert.isNotInstanceOfType)
 
 ###### Example
 ```apex
@@ -2237,11 +2289,13 @@ Validate.isNotInstanceOfType(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static isNotInstanceOfType(Object obj, Type notExpectedType, String message, List<Object> arguments)`
+
+##### `public static void isNotInstanceOfType(Object obj, Type notExpectedType, String message, List<Object> arguments)`
 
 Checks that the argument `obj` is not the instance of type.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj`|the object to validate|
@@ -2250,6 +2304,7 @@ Checks that the argument `obj` is not the instance of type.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if the `obj` is not an instance of `notExpectedType` with the custom exception `message`|
@@ -2257,7 +2312,7 @@ Checks that the argument `obj` is not the instance of type.
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Assert.isNotInstanceOfType
+**See** [Assert.isNotInstanceOfType](Assert.isNotInstanceOfType)
 
 ###### Example
 ```apex
@@ -2269,28 +2324,31 @@ Validate.isNotInstanceOfType(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static isNotNull(Object obj)`
 
-Checks that the argument reference `obj` is not null. Unlike Validate.notNull throws `IllegalArgumentException` when the `obj` is null.
+##### `public static void isNotNull(Object obj)`
+
+Checks that the argument reference `obj` is not null. Unlike [Validate.notNull](Validate.notNull) throws `IllegalArgumentException` when the `obj` is null.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj`|the object to check for nullity|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `obj` is null with the default exception message 'Argument object is null'|
 
 
-**See** Assert.isNotNull
+**See** [Assert.isNotNull](Assert.isNotNull)
 
 
-**See** Validate.notNull
+**See** [Validate.notNull](Validate.notNull)
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -2299,30 +2357,33 @@ Object obj;
 Validate.isNotNull(obj); // throws an IllegalArgumentException
 ```
 
-##### `static isNotNull(Object obj, String message)`
 
-Checks that the argument reference `obj` is not null. Unlike Validate.notNull throws `IllegalArgumentException` when the `obj` is null.
+##### `public static void isNotNull(Object obj, String message)`
+
+Checks that the argument reference `obj` is not null. Unlike [Validate.notNull](Validate.notNull) throws `IllegalArgumentException` when the `obj` is null.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj`|the object to check for nullity|
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `obj` is null with the custom exception `message`|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Assert.isNotNull
+**See** [Assert.isNotNull](Assert.isNotNull)
 
 
-**See** Validate.notNull
+**See** [Validate.notNull](Validate.notNull)
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -2333,11 +2394,13 @@ Validate.isNotNull(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static isNotNull(Object obj, String message, List<Object> arguments)`
 
-Checks that the argument reference `obj` is not null. Unlike Validate.notNull throws `IllegalArgumentException` when the `obj` is null.
+##### `public static void isNotNull(Object obj, String message, List<Object> arguments)`
+
+Checks that the argument reference `obj` is not null. Unlike [Validate.notNull](Validate.notNull) throws `IllegalArgumentException` when the `obj` is null.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj`|the object to check for nullity|
@@ -2345,19 +2408,20 @@ Checks that the argument reference `obj` is not null. Unlike Validate.notNull th
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `obj` is null with the custom exception `message`|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Assert.isNotNull
+**See** [Assert.isNotNull](Assert.isNotNull)
 
 
-**See** Validate.notNull
+**See** [Validate.notNull](Validate.notNull)
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -2369,25 +2433,28 @@ Validate.isNotNull(
 ); // throws an IllegalArgumentException
 ```
 
-##### `static isNull(Object obj)`
+
+##### `public static void isNull(Object obj)`
 
 Checks that the argument reference `obj` is null.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj`|the object to check for nullity|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `obj` is not null with the default formatted exception message 'Argument object is not null. Actual value: {0}'|
 
 
-**See** Assert.isNull
+**See** [Assert.isNull](Assert.isNull)
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -2396,38 +2463,43 @@ Validate.isNull(obj); // valid
 Validate.isNull('foo'); // throws an IllegalArgumentException
 ```
 
-##### `static isNull(Object obj, String message)`
+
+##### `public static void isNull(Object obj, String message)`
 
 Checks that the argument reference `obj` is null.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj`|the object to check for nullity|
 |`message`|the required custom exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `obj` is not null with the custom exception `message`|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Assert.isNull
+**See** [Assert.isNull](Assert.isNull)
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
 Validate.isNull('foo', 'Custom message'); // throws an IllegalArgumentException
 ```
 
-##### `static isNull(Object obj, String message, List<Object> arguments)`
+
+##### `public static void isNull(Object obj, String message, List<Object> arguments)`
 
 Checks that the argument reference `obj` is null.
 
 ###### Parameters
+
 |Param|Description|
 |---|---|
 |`obj`|the object to check for nullity|
@@ -2435,16 +2507,17 @@ Checks that the argument reference `obj` is null.
 |`arguments`|the optional values for the formatted exception message|
 
 ###### Throws
+
 |Exception|Description|
 |---|---|
 |`IllegalArgumentException`|if `obj` is not null with the custom exception `message`|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** Assert.isNull
+**See** [Assert.isNull](Assert.isNull)
 
 
-**See** Validate.isTrue
+**See** [Validate.isTrue](Validate.isTrue)
 
 ###### Example
 ```apex
@@ -2454,5 +2527,6 @@ Validate.isNull(
     new List<String>{ 'foo' }
 ); // throws an IllegalArgumentException
 ```
+
 
 ---

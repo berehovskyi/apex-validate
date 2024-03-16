@@ -1,6 +1,6 @@
 /**
  * @see Validate
- * 
+ *
  * @author Oleh Berehovskyi
  */
 @IsTest(IsParallel = true)
@@ -19,11 +19,13 @@ private class ValidateTest {
         null,
         new Account()
     };
+    private static final List<Integer> INT_LIST = new List<Integer>{ 1, 2, 3 };
     private static final Set<String> NULL_SET = null;
     private static final Set<String> EMPTY_SET = new Set<String>();
     private static final Set<String> SET_WITH_NULL = new Set<String>{ null };
     private static final Set<String> SET_WITH_VALUES = new Set<String>{ 'a', 'b', '' };
-    private static final Set<Object> SET_WITH_VALUES_AND_NULL = new Set<Object>{ 'a', 'b', '', 0 };
+    private static final Set<Object> SET_WITH_VALUES_AND_NULL = new Set<Object>{ 'a', 'b', '', 0, null };
+    private static final Set<Integer> INT_SET = new Set<Integer>{ 1, 2, 3 };
     private static final String NULL_STRING = null;
     private static final String EMPTY = '';
     private static final String WHITESPACE = ' ';
@@ -218,39 +220,51 @@ private class ValidateTest {
         }
         Exception actual5;
         try {
-            Validate.notEmpty((Iterable<String>) NULL_SET);
+            Validate.notEmpty(NULL_SET);
         } catch (Exception exc) {
             actual5 = exc;
         }
         Exception actual6;
         try {
-            Validate.notEmpty((Iterable<String>) EMPTY_SET);
+            Validate.notEmpty(EMPTY_SET);
         } catch (Exception exc) {
             actual6 = exc;
         }
         Exception actual7;
         try {
-            Validate.notEmpty((Iterable<String>) SET_WITH_NULL);
+            Validate.notEmpty(SET_WITH_NULL);
         } catch (Exception exc) {
             actual7 = exc;
         }
         Exception actual8;
         try {
-            Validate.notEmpty((Iterable<String>) SET_WITH_VALUES);
+            Validate.notEmpty(SET_WITH_VALUES);
         } catch (Exception exc) {
             actual8 = exc;
         }
         Exception actual9;
         try {
-            Validate.notEmpty((Iterable<Object>) SET_WITH_VALUES_AND_NULL);
+            Validate.notEmpty(SET_WITH_VALUES_AND_NULL);
         } catch (Exception exc) {
             actual9 = exc;
+        }
+        Exception actual10;
+        try {
+            Validate.notEmpty(INT_LIST);
+        } catch (Exception exc) {
+            actual10 = exc;
+        }
+        Exception actual11;
+        try {
+            Validate.notEmpty(INT_SET);
+        } catch (Exception exc) {
+            actual11 = exc;
         }
         // Then
         Assert.areEqual(NullPointerException.class.getName(), actual.getTypeName());
         Assert.areEqual(Label.AV_ErrorMessage_Null, actual.getMessage());
         Assert.areEqual(IllegalArgumentException.class.getName(), actual1.getTypeName());
-        Assert.areEqual(Label.AV_ErrorMessage_EmptyList, actual1.getMessage());
+        Assert.areEqual(Label.AV_ErrorMessage_EmptyIterable, actual1.getMessage());
         Assert.areEqual(null, actual2);
         Assert.areEqual(null, actual3);
         Assert.areEqual(null, actual4);
@@ -261,6 +275,8 @@ private class ValidateTest {
         Assert.areEqual(null, actual7);
         Assert.areEqual(null, actual8);
         Assert.areEqual(null, actual9);
+        Assert.areEqual(null, actual10);
+        Assert.areEqual(null, actual10);
     }
 
     /**
@@ -301,53 +317,77 @@ private class ValidateTest {
         }
         Exception actual5;
         try {
-            Validate.noNullElements((Iterable<String>) NULL_SET);
+            Validate.noNullElements(NULL_SET);
         } catch (Exception exc) {
             actual5 = exc;
         }
         Exception actual6;
         try {
-            Validate.noNullElements((Iterable<String>) EMPTY_SET);
+            Validate.noNullElements(EMPTY_SET);
         } catch (Exception exc) {
             actual6 = exc;
         }
         Exception actual7;
         try {
-            Validate.noNullElements((Iterable<String>) SET_WITH_NULL);
+            Validate.noNullElements(SET_WITH_NULL);
         } catch (Exception exc) {
             actual7 = exc;
         }
         Exception actual8;
         try {
-            Validate.noNullElements((Iterable<String>) SET_WITH_VALUES);
+            Validate.noNullElements(SET_WITH_VALUES);
         } catch (Exception exc) {
             actual8 = exc;
         }
         Exception actual9;
         try {
-            Validate.noNullElements((Iterable<Object>) SET_WITH_VALUES_AND_NULL);
+            Validate.noNullElements(SET_WITH_VALUES_AND_NULL);
         } catch (Exception exc) {
             actual9 = exc;
+        }
+        Exception actual10;
+        try {
+            Validate.noNullElements(INT_LIST);
+        } catch (Exception exc) {
+            actual10 = exc;
+        }
+        Exception actual11;
+        try {
+            Validate.noNullElements(INT_SET);
+        } catch (Exception exc) {
+            actual11 = exc;
         }
         // Then
         Assert.areEqual(NullPointerException.class.getName(), actual.getTypeName());
         Assert.areEqual(Label.AV_ErrorMessage_Null, actual.getMessage());
         Assert.areEqual(null, actual1);
         Assert.areEqual(IllegalArgumentException.class.getName(), actual2.getTypeName());
-        Assert.areEqual(Label.AV_ErrorMessage_NullElementList, actual2.getMessage());
+        Assert.areEqual(Label.AV_ErrorMessage_NullElementIterable, actual2.getMessage());
         Assert.areEqual(null, actual3);
         Assert.areEqual(IllegalArgumentException.class.getName(), actual4.getTypeName());
-        Assert.areEqual(Label.AV_ErrorMessage_NullElementList, actual4.getMessage());
+        Assert.areEqual(Label.AV_ErrorMessage_NullElementIterable, actual4.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual5.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual5.getMessage());
+        Assert.areEqual(null, actual6);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual7.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullElementIterable, actual7.getMessage());
+        Assert.areEqual(null, actual8);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual9.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullElementIterable, actual9.getMessage());
+        Assert.areEqual(null, actual10);
+        Assert.areEqual(null, actual11);
     }
 
     /**
      * @see Validate.index
      */
     @IsTest
-    static void indexList() {
+    static void indexIterable() {
         // Given
         Integer index = 0;
         Integer index1 = 10;
+        Integer index2 = 3;
+        Integer index3 = -1;
         // When
         Exception actual;
         try {
@@ -385,22 +425,91 @@ private class ValidateTest {
         } catch (Exception exc) {
             actual5 = exc;
         }
+        Exception actual6;
+        try {
+            Validate.index(INT_LIST, index);
+        } catch (Exception exc) {
+            actual6 = exc;
+        }
+        Exception actual7;
+        try {
+            Validate.index(INT_SET, index);
+        } catch (Exception exc) {
+            actual7 = exc;
+        }
+        Exception actual8;
+        try {
+            Validate.index(INT_LIST, index1);
+        } catch (Exception exc) {
+            actual8 = exc;
+        }
+        Exception actual9;
+        try {
+            Validate.index(INT_SET, index1);
+        } catch (Exception exc) {
+            actual9 = exc;
+        }
+        Exception actual10;
+        try {
+            Validate.index(INT_LIST, index2);
+        } catch (Exception exc) {
+            actual10 = exc;
+        }
+        Exception actual11;
+        try {
+            Validate.index(INT_SET, index2);
+        } catch (Exception exc) {
+            actual11 = exc;
+        }
+        Exception actual12;
+        try {
+            Validate.index(INT_SET, index3);
+        } catch (Exception exc) {
+            actual12 = exc;
+        }
         // Then
         Assert.areEqual(NullPointerException.class.getName(), actual.getTypeName());
-        Assert.areEqual(Label.AV_ErrorMessage_Null, actual.getMessage()); 
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual.getMessage());
         Assert.areEqual(NullPointerException.class.getName(), actual1.getTypeName());
         Assert.areEqual(Label.AV_ErrorMessage_Null, actual1.getMessage());
         Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual2.getTypeName());
         Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidIndexList, index),
+            Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index),
             actual2.getMessage()
         );
         Assert.areEqual(null, actual3);
         Assert.areEqual(null, actual4);
         Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual5.getTypeName());
         Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidIndexList, index1),
+            Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index1),
             actual5.getMessage()
+        );
+        Assert.areEqual(null, actual6);
+        Assert.areEqual(null, actual7);
+        Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual8.getTypeName());
+        Assert.areEqual(
+            Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index1),
+            actual8.getMessage()
+        );
+        Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual9.getTypeName());
+        Assert.areEqual(
+            Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index1),
+            actual9.getMessage()
+        );
+        Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual10.getTypeName());
+        Assert.areEqual(
+            Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index2),
+            actual10.getMessage()
+        );
+        Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual11.getTypeName());
+        Assert.areEqual(
+            Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index2),
+            actual11.getMessage()
+        );
+        Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual12.getTypeName());
+        Assert.areEqual(
+            Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index3),
+            actual12.getMessage()
         );
     }
 
@@ -646,7 +755,7 @@ private class ValidateTest {
         // Given
         String input = '@';
         String input1 = 'testemail';
-        String input2 = 'firstname.lastname@gmail..com';        
+        String input2 = 'firstname.lastname@gmail..com';
         String input3 = 'firstname.lastname.gmail.com';
         String input4 = '\"Abc\\@def\"@example.com';
         String input5 = '\"Fred Bloggs\"@example.com';
@@ -658,7 +767,7 @@ private class ValidateTest {
         String input11 = 'firstname.lastname@';
         String input12 = 'firstname.lastname@gm@il.com';
         String input13 = '\u00A0@example.com';
-        
+
         String input14 = 'firstname.lastname@gmail.com';
         String input15 = 'FirstnameLastname@gmail.com';
         String input16 = 'firstname+lastname@gmail.com';
@@ -899,7 +1008,7 @@ private class ValidateTest {
         String input = '12345678901234567890';
         String input1 = '0000000000000001';
         String input2 = '1234-5678-9O12-3452';
-        
+
         String input3 = '0000000000000000';
         String input4 = '1234567890123452';
         String input5 = '1234-5678-9012-3452';
@@ -995,7 +1104,7 @@ private class ValidateTest {
         Assert.areEqual(Label.AV_ErrorMessage_BlankString, actual2.getMessage());
         Assert.areEqual(IllegalArgumentException.class.getName(), actual3.getTypeName());
         Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidCreditCard, input), 
+            Validate.format(Label.AV_ErrorMessage_InvalidCreditCard, input),
             actual3.getMessage()
         );
         Assert.areEqual(
@@ -1054,7 +1163,7 @@ private class ValidateTest {
         Assert.areEqual(Label.AV_ErrorMessage_InvalidState, actual2.getMessage());
         Assert.areEqual(null, actual3);
     }
-    
+
     @IsTest
     static void between() {
         // Given
@@ -1716,7 +1825,7 @@ private class ValidateTest {
         Assert.areEqual(null, actual5);
         Assert.areEqual(IllegalArgumentException.class.getName(), actual6.getTypeName());
         Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InstanceOf, Double.class), 
+            Validate.format(Label.AV_ErrorMessage_InstanceOf, Double.class),
             actual6.getMessage()
         );
         Assert.areEqual(IllegalArgumentException.class.getName(), actual7.getTypeName());
