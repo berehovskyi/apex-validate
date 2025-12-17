@@ -6,12 +6,9 @@
  *
  * @group Utils
  */
-@SuppressWarnings(
-    'PMD.CognitiveComplexity, PMD.CyclomaticComplexity, PMD.ExcessivePublicCount, PMD.ExcessiveClassLength'
-)
 public inherited sharing class Validate {
-
     @TestVisible
+    @SuppressWarnings('PMD.EmptyStatementBlock')
     private Validate() {}
 
     //<editor-fold desc="Nullability">
@@ -2301,5 +2298,4 @@ public inherited sharing class Validate {
         return str.replaceAll('\\{(?![0-9])', '(').replaceAll('(?<!\\d)\\}', ')');
     }
     //</editor-fold>
-
 }

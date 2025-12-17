@@ -6,7 +6,6 @@
 @IsTest(IsParallel = true)
 @SuppressWarnings('PMD')
 private class ValidateTest {
-
     private static final List<Object> NULL_LIST = null;
     private static final List<Object> EMPTY_LIST = new List<Object>();
     private static final List<Object> LIST_WITH_NULL = new List<Object>{ null };
@@ -2004,5 +2003,4 @@ private class ValidateTest {
             actual7.getMessage()
         );
     }
-
 }
