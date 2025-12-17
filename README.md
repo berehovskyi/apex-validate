@@ -31,8 +31,8 @@ Provides an easy way to follow a fail-fast principle and a design-by-contract pr
 
 or install as an Unlocked Package using the CLI:
 
-```sh
-sf package install -p 04t1t000003f3UVAAY -o me@example.com -r -w 10
+```sh pkg::apex-validate
+sf package install -p 04tJ5000000D7cgIAC -o me@example.com -r -w 10
 ```
 
 ## Key Features

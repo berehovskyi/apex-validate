@@ -1,6 +1,6 @@
 # virtual IllegalStateException
 
-`APIVERSION: 57`
+`APIVERSION: 65`
 
 `STATUS: ACTIVE`
 
