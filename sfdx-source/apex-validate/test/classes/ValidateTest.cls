@@ -3,7 +3,7 @@
  *
  * @author Oleh Berehovskyi
  */
-@IsTest(IsParallel = true)
+@IsTest(IsParallel=true)
 @SuppressWarnings('PMD')
 private class ValidateTest {
     private static final List<Object> NULL_LIST = null;
@@ -30,7 +30,7 @@ private class ValidateTest {
     private static final String WHITESPACE = ' ';
     private static final String DOUBLE_WHITESPACE = '  ';
     private static final String MESSAGE = 'Test Message {0}';
-    private static final List<String> ARGUMENTS = new List<String> { 'Test Argument' };
+    private static final List<String> ARGUMENTS = new List<String>{ 'Test Argument' };
 
     static {
         new Validate();
@@ -472,44 +472,23 @@ private class ValidateTest {
         Assert.areEqual(NullPointerException.class.getName(), actual1.getTypeName());
         Assert.areEqual(Label.AV_ErrorMessage_Null, actual1.getMessage());
         Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual2.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index),
-            actual2.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index), actual2.getMessage());
         Assert.areEqual(null, actual3);
         Assert.areEqual(null, actual4);
         Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual5.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index1),
-            actual5.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index1), actual5.getMessage());
         Assert.areEqual(null, actual6);
         Assert.areEqual(null, actual7);
         Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual8.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index1),
-            actual8.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index1), actual8.getMessage());
         Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual9.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index1),
-            actual9.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index1), actual9.getMessage());
         Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual10.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index2),
-            actual10.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index2), actual10.getMessage());
         Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual11.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index2),
-            actual11.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index2), actual11.getMessage());
         Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual12.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index3),
-            actual12.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InvalidIndexIterable, index3), actual12.getMessage());
     }
 
     /**
@@ -657,17 +636,11 @@ private class ValidateTest {
         Assert.areEqual(NullPointerException.class.getName(), actual1.getTypeName());
         Assert.areEqual(Label.AV_ErrorMessage_Null, actual1.getMessage());
         Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual2.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidIndexString, index),
-            actual2.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InvalidIndexString, index), actual2.getMessage());
         Assert.areEqual(null, actual3);
         Assert.areEqual(null, actual4);
         Assert.areEqual(IndexOutOfBoundsException.class.getName(), actual5.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidIndexString, index1),
-            actual5.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InvalidIndexString, index1), actual5.getMessage());
     }
 
     /**
@@ -953,10 +926,7 @@ private class ValidateTest {
         Assert.areEqual(IllegalArgumentException.class.getName(), actual1.getTypeName());
         Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InvalidEmail, EMPTY), actual1.getMessage());
         Assert.areEqual(IllegalArgumentException.class.getName(), actual2.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidEmail, WHITESPACE),
-            actual2.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InvalidEmail, WHITESPACE), actual2.getMessage());
         Assert.areEqual(IllegalArgumentException.class.getName(), actual3.getTypeName());
         Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InvalidEmail, input), actual3.getMessage());
         Assert.areEqual(IllegalArgumentException.class.getName(), actual4.getTypeName());
@@ -1102,18 +1072,9 @@ private class ValidateTest {
         Assert.areEqual(IllegalArgumentException.class.getName(), actual2.getTypeName());
         Assert.areEqual(Label.AV_ErrorMessage_BlankString, actual2.getMessage());
         Assert.areEqual(IllegalArgumentException.class.getName(), actual3.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidCreditCard, input),
-            actual3.getMessage()
-        );
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidCreditCard, input1),
-            actual4.getMessage()
-        );
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InvalidCreditCard, input2),
-            actual5.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InvalidCreditCard, input), actual3.getMessage());
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InvalidCreditCard, input1), actual4.getMessage());
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InvalidCreditCard, input2), actual5.getMessage());
         Assert.areEqual(null, actual6);
         Assert.areEqual(null, actual7);
         Assert.areEqual(null, actual8);
@@ -1137,19 +1098,19 @@ private class ValidateTest {
         }
         Exception actual1;
         try {
-            Validate.state(!new Map<String, String> { null => 'val' }.containsKey(null), MESSAGE, ARGUMENTS);
+            Validate.state(!new Map<String, String>{ null => 'val' }.containsKey(null), MESSAGE, ARGUMENTS);
         } catch (Exception exc) {
             actual1 = exc;
         }
         Exception actual2;
         try {
-            Validate.state(!new Map<String, String> { null => 'val' }.containsKey(null));
+            Validate.state(!new Map<String, String>{ null => 'val' }.containsKey(null));
         } catch (Exception exc) {
             actual2 = exc;
         }
         Exception actual3;
         try {
-            Validate.state(!new Map<String, String> { 'key' => 'val' }.containsKey(null), MESSAGE, ARGUMENTS);
+            Validate.state(!new Map<String, String>{ 'key' => 'val' }.containsKey(null), MESSAGE, ARGUMENTS);
         } catch (Exception exc) {
             actual3 = exc;
         }
@@ -1538,10 +1499,7 @@ private class ValidateTest {
         Assert.areEqual(Validate.format(Label.AV_ErrorMessage_Equal, o1, o2), actual.getMessage());
         Assert.areEqual(null, actual1);
         Assert.areEqual(IllegalArgumentException.class.getName(), actual2.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_Equal, NULL_STRING, NULL_STRING),
-            actual2.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_Equal, NULL_STRING, NULL_STRING), actual2.getMessage());
     }
 
     /**
@@ -1805,45 +1763,24 @@ private class ValidateTest {
         Assert.areEqual(NullPointerException.class.getName(), actual.getTypeName());
         Assert.areEqual(Label.AV_ErrorMessage_Null, actual.getMessage());
         Assert.areEqual(IllegalArgumentException.class.getName(), actual1.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InstanceOf, Object.class),
-            actual1.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InstanceOf, Object.class), actual1.getMessage());
         Assert.areEqual(IllegalArgumentException.class.getName(), actual2.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InstanceOf, String.class),
-            actual2.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InstanceOf, String.class), actual2.getMessage());
         Assert.areEqual(IllegalArgumentException.class.getName(), actual3.getTypeName());
         Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InstanceOf, Long.class), actual3.getMessage());
         Assert.areEqual(IllegalArgumentException.class.getName(), actual4.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InstanceOf, Double.class),
-            actual4.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InstanceOf, Double.class), actual4.getMessage());
         Assert.areEqual(null, actual5);
         Assert.areEqual(IllegalArgumentException.class.getName(), actual6.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InstanceOf, Double.class),
-            actual6.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InstanceOf, Double.class), actual6.getMessage());
         Assert.areEqual(IllegalArgumentException.class.getName(), actual7.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InstanceOf, Integer.class),
-            actual7.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InstanceOf, Integer.class), actual7.getMessage());
         Assert.areEqual(IllegalArgumentException.class.getName(), actual8.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InstanceOf, Double.class),
-            actual8.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InstanceOf, Double.class), actual8.getMessage());
         Assert.areEqual(null, actual9);
         Assert.areEqual(null, actual10);
         Assert.areEqual(IllegalArgumentException.class.getName(), actual11.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_InstanceOf, Set<Integer>.class),
-            actual11.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_InstanceOf, Set<Integer>.class), actual11.getMessage());
     }
 
     /**
@@ -1971,15 +1908,9 @@ private class ValidateTest {
         Assert.areEqual(null, actual);
         Assert.areEqual(null, actual1);
         Assert.areEqual(IllegalArgumentException.class.getName(), actual2.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_NotNull, (Object) EMPTY_LIST),
-            actual2.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_NotNull, (Object) EMPTY_LIST), actual2.getMessage());
         Assert.areEqual(IllegalArgumentException.class.getName(), actual3.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_NotNull, (Object) LIST_WITH_NULL),
-            actual3.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_NotNull, (Object) LIST_WITH_NULL), actual3.getMessage());
         Assert.areEqual(IllegalArgumentException.class.getName(), actual4.getTypeName());
         Assert.areEqual(
             Validate.escapeBraces(Validate.format(Label.AV_ErrorMessage_NotNull, (Object) LIST_WITH_VALUES)),
@@ -1987,20 +1918,12 @@ private class ValidateTest {
         );
         Assert.areEqual(IllegalArgumentException.class.getName(), actual5.getTypeName());
         Assert.areEqual(
-            Validate.escapeBraces(
-                Validate.format(Label.AV_ErrorMessage_NotNull, (Object) LIST_WITH_VALUES_AND_NULL)
-            ),
+            Validate.escapeBraces(Validate.format(Label.AV_ErrorMessage_NotNull, (Object) LIST_WITH_VALUES_AND_NULL)),
             actual5.getMessage()
         );
         Assert.areEqual(IllegalArgumentException.class.getName(), actual6.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_NotNull, EMPTY),
-            actual6.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_NotNull, EMPTY), actual6.getMessage());
         Assert.areEqual(IllegalArgumentException.class.getName(), actual7.getTypeName());
-        Assert.areEqual(
-            Validate.format(Label.AV_ErrorMessage_NotNull, WHITESPACE),
-            actual7.getMessage()
-        );
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_NotNull, WHITESPACE), actual7.getMessage());
     }
 }

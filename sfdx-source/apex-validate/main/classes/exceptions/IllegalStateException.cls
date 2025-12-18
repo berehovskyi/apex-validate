@@ -5,4 +5,5 @@
  *
  * @group Exceptions
  */
-public virtual class IllegalStateException extends Exception {}
+public virtual class IllegalStateException extends Exception {
+}

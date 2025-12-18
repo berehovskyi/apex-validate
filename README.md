@@ -1,27 +1,28 @@
 # Apex Validate
 
-![](https://img.shields.io/github/v/release/berehovskyi/apex-validate?include_prereleases) 
-![](https://img.shields.io/badge/build-passing-brightgreen.svg) 
+![](https://img.shields.io/github/v/release/berehovskyi/apex-validate?include_prereleases)
+![](https://img.shields.io/badge/build-passing-brightgreen.svg)
 ![](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)
 
 Apex Validate is a lightweight library that helps with validating arguments.
 Provides an easy way to follow a fail-fast principle and a design-by-contract programming approach.
 
 ## Table of Contents
+
 - [Apex Validate](#apex-validate)
-  * [Installation](#installation)
-  * [Key Features](#key-features)
-  * [Get Started](#get-started)
-    + [Validate vs. Assert](#validate-vs-assert)
-    + [Validate Condition](#validate-condition)
-    + [Validate the Condition and Throw a Specific Exception](#validate-the-condition-and-throw-a-specific-exception)
-    + [Validate Nullity](#validate-nullity)
-    + [Validate Iterable](#validate-iterable)
-    + [Validate String](#validate-string)
-    + [Validate Email](#validate-email)
-    + [Validate Range](#validate-range)
-    + [Custom and Formatted Messages](#custom-and-formatted-messages)
-  * [Documentation](#documentation)
+    - [Installation](#installation)
+    - [Key Features](#key-features)
+    - [Get Started](#get-started)
+        - [Validate vs. Assert](#validate-vs-assert)
+        - [Validate Condition](#validate-condition)
+        - [Validate the Condition and Throw a Specific Exception](#validate-the-condition-and-throw-a-specific-exception)
+        - [Validate Nullity](#validate-nullity)
+        - [Validate Iterable](#validate-iterable)
+        - [Validate String](#validate-string)
+        - [Validate Email](#validate-email)
+        - [Validate Range](#validate-range)
+        - [Custom and Formatted Messages](#custom-and-formatted-messages)
+    - [Documentation](#documentation)
 
 ## Installation
 
@@ -32,7 +33,7 @@ Provides an easy way to follow a fail-fast principle and a design-by-contract pr
 or install as an Unlocked Package using the CLI:
 
 ```sh pkg::apex-validate
-sf package install -p 04tJ5000000D7cgIAC -o me@example.com -r -w 10
+sf package install -p 04tJ5000000D7clIAC -o me@example.com -r -w 10
 ```
 
 ## Key Features
@@ -69,7 +70,6 @@ try {
 ```
 
 The `Validate` class supports all the methods that the `System.Assert` class has.
-
 
 ### Validate Condition
 
