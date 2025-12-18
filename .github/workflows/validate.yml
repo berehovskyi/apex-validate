@@ -1,9 +1,10 @@
-name: "Validate Push and Pull Request"
+name: 'Validate Push and Pull Request'
 
 on:
   push:
     branches:
       - main
+  #      - 'ci/**'
   pull_request:
     branches:
       - main
@@ -27,6 +28,73 @@ jobs:
 
       - name: Install Code Analyzer plugin
         run: sf plugins install code-analyzer
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Get Diff
+        id: diff
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          OUT=".diff_files.txt"
+          TMP=".diff_files_raw.txt"
+          : > "$OUT"
+
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            BASE_SHA="${{ github.event.pull_request.base.sha }}"
+            HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+            git fetch --no-tags --prune --depth=1 origin "$BASE_SHA" "$HEAD_SHA"
+            git diff --name-only --diff-filter=ACMR "$BASE_SHA" "$HEAD_SHA" > "$TMP"
+          else
+            AFTER_REF="${{ github.sha }}"
+            git fetch --no-tags --prune --depth=1 origin "$AFTER_REF" || true
+            BEFORE_RAW="${{ github.event.before }}"
+            BEFORE_REF="$(git rev-parse --verify "$BEFORE_RAW^{commit}" 2>/dev/null || git hash-object -t tree /dev/null)"
+            git diff --name-only --diff-filter=ACMR "$BEFORE_REF" "$AFTER_REF" > "$TMP"
+          fi
+
+          # Keep only files that exist in workspace (skip deletes/odd renames)
+          while IFS= read -r f; do
+            [[ -f "$f" ]] && echo "$f" >> "$OUT"
+          done < "$TMP"
+          rm -f "$TMP"
+
+          COUNT="$(wc -l < "$OUT" | tr -d ' ')"
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "path=$OUT" >> "$GITHUB_OUTPUT"
+
+          echo "Changed files ($COUNT):"
+          sed 's/^/ - /' "$OUT" || true
+
+      - name: Prettier Check
+        if: steps.diff.outputs.count != '0'
+        shell: bash
+        run: |
+          mapfile -t files < "${{ steps.diff.outputs.path }}"
+
+          echo "Prettier checking ${#files[@]} file(s):"
+          printf ' - %s\n' "${files[@]}"
+
+          npx prettier --check  --ignore-unknown -- "${files[@]}"
+
+      - name: Analyze Code
+        if: steps.diff.outputs.count != '0'
+        shell: bash
+        run: |
+          mapfile -t files < "${{ steps.diff.outputs.path }}"
+
+          args=()
+          for f in "${files[@]}"; do
+            args+=(--target "$f")
+          done
+
+          sf code-analyzer run \
+            --config-file ./code-analyzer.yml \
+            --severity-threshold 5 \
+            --workspace . \
+            "${args[@]}"
 
       - name: Create Auth File
         run: echo ${{ secrets.SF_DEV_HUB_AUTH_URL }} > authFile

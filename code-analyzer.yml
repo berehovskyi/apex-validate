@@ -38,7 +38,6 @@ log_level: 4
 #       tags: ["Recommended", "Suggestion"]
 # -------------------------------------------
 rules:
-
   # ======================================================================
   # RETIRE-JS ENGINE RULE OVERRIDES
   # ======================================================================
@@ -59,17 +58,17 @@ rules:
   # ======================================================================
   pmd:
     AvoidBooleanMethodParameters:
-      tags: [ "Design", "Apex" ]
+      tags: ['Design', 'Apex']
     ExcessiveClassLength:
-      tags: [ "Design", "Apex" ]
+      tags: ['Design', 'Apex']
     ExcessiveParameterList:
-      tags: [ "Design", "Apex" ]
+      tags: ['Design', 'Apex']
     ExcessivePublicCount:
-      tags: [ "Design", "Apex" ]
+      tags: ['Design', 'Apex']
     CognitiveComplexity:
-      tags: [ "Design", "Apex" ]
+      tags: ['Design', 'Apex']
     CyclomaticComplexity:
-      tags: [ "Design", "Apex" ]
+      tags: ['Design', 'Apex']
 
   # ======================================================================
   # CPD ENGINE RULE OVERRIDES
@@ -91,14 +90,12 @@ rules:
 #   {property_name} is the name of a property that you would like to override.
 # Each engine may have its own set of properties available to help customize that particular engine's behavior.
 engines:
-
   # ======================================================================
   # RETIRE-JS ENGINE CONFIGURATION
   # To learn more about this configuration, visit:
   #   https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-retire-js.html#retirejs-configuration-reference
   # ======================================================================
   retire-js:
-
     # Whether to turn off the 'retire-js' engine so that it is not included when running Code Analyzer commands.
     disable_engine: true
 
@@ -108,7 +105,6 @@ engines:
   #   https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-regex.html#regex-configuration-reference
   # ======================================================================
   regex:
-
     # Whether to turn off the 'regex' engine so that it is not included when running Code Analyzer commands.
     disable_engine: true
 
@@ -146,7 +142,6 @@ engines:
   #   https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-eslint.html#eslint-configuration-reference
   # ======================================================================
   eslint:
-
     # Whether to turn off the 'eslint' engine so that it is not included when running Code Analyzer commands.
     disable_engine: true
 
@@ -219,7 +214,6 @@ engines:
   #   https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-pmd.html#pmd-configuration-reference
   # ======================================================================
   pmd:
-
     # Whether to turn off the 'pmd' engine so that it is not included when running Code Analyzer commands.
     disable_engine: false
 
@@ -276,7 +270,6 @@ engines:
   #   https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-cpd.html#cpd-configuration-reference
   # ======================================================================
   cpd:
-
     # Whether to turn off the 'cpd' engine so that it is not included when running Code Analyzer commands.
     disable_engine: true
 
@@ -336,7 +329,6 @@ engines:
   #   [PLACEHOLDER LINK]
   # ======================================================================
   sfge:
-
     # Whether to turn off the 'sfge' engine so that it is not included when running Code Analyzer commands.
     disable_engine: false
 
@@ -373,7 +365,6 @@ engines:
   #   https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engine-flow.html#flow-scanner-configuration-reference
   # ======================================================================
   flow:
-
     # Whether to turn off the 'flow' engine so that it is not included when running Code Analyzer commands.
     disable_engine: false
 
@@ -381,6 +372,7 @@ engines:
     # May be provided as the name of a command that exists on the path, or an absolute file path location.
     # If unspecified, or specified as null, then an attempt will be made to automatically discover a Python command from your environment.
     python_command: null # Last calculated by the config command as: "python"
+
 
 # ======================================================================
 # END OF CODE ANALYZER CONFIGURATION

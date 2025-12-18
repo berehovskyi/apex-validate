@@ -5,4 +5,5 @@
  *
  * @group Exceptions
  */
-public virtual class IndexOutOfBoundsException extends Exception {}
+public virtual class IndexOutOfBoundsException extends Exception {
+}

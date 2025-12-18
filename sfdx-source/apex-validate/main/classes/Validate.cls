@@ -9,7 +9,8 @@
 public inherited sharing class Validate {
     @TestVisible
     @SuppressWarnings('PMD.EmptyStatementBlock')
-    private Validate() {}
+    private Validate() {
+    }
 
     //<editor-fold desc="Nullability">
     // @start-group Nullability
@@ -412,10 +413,7 @@ public inherited sharing class Validate {
         notNull(index);
         isTrue(index >= 0, newIndexOutOfBoundsException(format(message, arguments)));
         if (iterable instanceof List<Object>) {
-            isTrue(
-                index < ((List<Object>) iterable).size(),
-                newIndexOutOfBoundsException(format(message, arguments))
-            );
+            isTrue(index < ((List<Object>) iterable).size(), newIndexOutOfBoundsException(format(message, arguments)));
             return;
         }
         final Iterator<Object> iterator = iterable.iterator();
@@ -1816,7 +1814,8 @@ public inherited sharing class Validate {
         final Object obj1,
         final Object obj2,
         final String message,
-        final List<Object> arguments) {
+        final List<Object> arguments
+    ) {
         isTrue(obj1 != obj2, message, arguments);
     }
 
@@ -1999,11 +1998,7 @@ public inherited sharing class Validate {
      * Validate.isNotInstanceOfType('hello', String.class); // throws an IllegalArgumentException
      */
     public static void isNotInstanceOfType(final Object obj, final Type notExpectedType) {
-        isNotInstanceOfType(
-            obj,
-            notExpectedType,
-            format(Label.AV_ErrorMessage_InstanceOf, notExpectedType)
-        );
+        isNotInstanceOfType(obj, notExpectedType, format(Label.AV_ErrorMessage_InstanceOf, notExpectedType));
     }
 
     /**
