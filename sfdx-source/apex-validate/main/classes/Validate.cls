@@ -636,7 +636,12 @@ public inherited sharing class Validate {
      *     new List<Object>{ 3 }
      * ); // throws an IllegalArgumentException
      */
-    public static void minLength(final String str, final Integer min, final String message, final List<Object> arguments) {
+    public static void minLength(
+        final String str,
+        final Integer min,
+        final String message,
+        final List<Object> arguments
+    ) {
         notNull(str);
         notNull(min);
         isTrue(str.length() >= min, message, arguments);
@@ -712,7 +717,12 @@ public inherited sharing class Validate {
      *     new List<Object>{ 3 }
      * ); // throws an IllegalArgumentException
      */
-    public static void maxLength(final String str, final Integer max, final String message, final List<Object> arguments) {
+    public static void maxLength(
+        final String str,
+        final Integer max,
+        final String message,
+        final List<Object> arguments
+    ) {
         notNull(str);
         notNull(max);
         isTrue(str.length() <= max, message, arguments);
@@ -1281,123 +1291,226 @@ public inherited sharing class Validate {
     //<editor-fold desc="Numbers">
     // @start-group Numbers
     /**
-     * @description Checks that the argument long `value` is between the two inclusive values.
+     * @description Checks that the argument decimal `value` is positive.
      *
-     * @param startInclusive the inclusive start value
-     * @param endInclusive the inclusive end value
      * @param value tha value to validate
      *
-     * @throws IllegalArgumentException if the `value` is not within the specified range with the default formatted
-     * exception message 'Argument {0} is not between inclusive range from {1} to {2}'
-     * @throws NullPointerException if `startInclusive` is null with the default exception message
-     * 'Argument object is null'
-     * @throws NullPointerException if `endInclusive` is null with the default exception message
-     * 'Argument object is null'
+     * @throws IllegalArgumentException if `value` is not positive with the default formatted exception message
+     * 'Argument decimal {0} is not positive'
      * @throws NullPointerException if `value` is null with the default exception message
      * 'Argument object is null'
      *
-     * @see Validate.isTrue
+     * @see Validate.notNegative
+     * @see Validate.negative
      *
      * @example
-     * Validate.between(1L, 10L, 5L); // valid
+     * Validate.positive(-1); // throws an IllegalArgumentException
      */
-    public static void between(final Long startInclusive, final Long endInclusive, final Long value) {
-        between(
-            startInclusive,
-            endInclusive,
-            value,
-            format(Label.AV_ErrorMessage_NotBetween, value, startInclusive, endInclusive)
-        );
+    public static void positive(final Decimal value) {
+        positive(value, format(Label.AV_ErrorMessage_NotPositiveDecimal, value));
     }
 
     /**
-     * @description Checks that the argument long `value` is between the two inclusive values.
+     * @description Checks that the argument decimal `value` is positive.
      *
-     * @param startInclusive the inclusive start value
-     * @param endInclusive the inclusive end value
      * @param value tha value to validate
      * @param message the required custom exception message
      *
-     * @throws IllegalArgumentException if the `value` is not within the specified range
-     * with the custom exception `message`
-     * @throws NullPointerException if `startInclusive` is null with the default exception message
-     * 'Argument object is null'
-     * @throws NullPointerException if `endInclusive` is null with the default exception message
-     * 'Argument object is null'
+     * @throws IllegalArgumentException if `value` is not positive with the custom exception `message`
      * @throws NullPointerException if `value` is null with the default exception message
      * 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
      *
-     * @see Validate.isTrue
+     * @see Validate.notNegative
+     * @see Validate.negative
      *
      * @example
-     * Validate.between(
-     *     1L,
-     *     10L,
-     *     11L,
-     *     'The value is out of range'
-     * ); //throws an IllegalArgumentException
+     * Validate.positive(
+     *     -1,
+     *     'The value should be positive'
+     * ); // throws an IllegalArgumentException
      */
-    public static void between(
-        final Long startInclusive,
-        final Long endInclusive,
-        final Long value,
-        final String message
-    ) {
-        between(startInclusive, endInclusive, value, message, null);
+    public static void positive(final Decimal value, final String message) {
+        positive(value, message, null);
     }
 
     /**
-     * @description Checks that the argument long `value` is between the two inclusive values.
+     * @description Checks that the argument decimal `value` is positive.
      *
-     * @param startInclusive the inclusive start value
-     * @param endInclusive the inclusive end value
      * @param value tha value to validate
      * @param message the required formatted exception message
      * @param arguments the optional values for the formatted exception message
      *
-     * @throws IllegalArgumentException if the `value` is not within the specified range
-     * with the custom exception `message`
-     * @throws NullPointerException if `startInclusive` is null with the default exception message
-     * 'Argument object is null'
-     * @throws NullPointerException if `endInclusive` is null with the default exception message
-     * 'Argument object is null'
+     * @throws IllegalArgumentException if `value` is not positive with the custom exception `message`
      * @throws NullPointerException if `value` is null with the default exception message
      * 'Argument object is null'
      * @throws NullPointerException if `message` is null with the default exception message
      * 'Exception message cannot be null'
      *
-     * @see Validate.isTrue
+     * @see Validate.notNegative
+     * @see Validate.negative
      *
      * @example
-     * Validate.between(
-     *     1L,
-     *     10L,
-     *     11L,
-     *     'The value {0} is out of range {1} - {2}',
-     *     new List<Long>{ 11L, 1L, 10L }
+     * Validate.positive(
+     *     -1,
+     *     'The value {0} should be positive',
+     *     new List<Object>{ -1 }
      * ); // throws an IllegalArgumentException
      */
-    @SuppressWarnings('PMD.ExcessiveParameterList')
-    public static void between(
-        final Long startInclusive,
-        final Long endInclusive,
-        final Long value,
-        final String message,
-        final List<Object> arguments
-    ) {
-        notNull(startInclusive);
-        notNull(endInclusive);
+    public static void positive(final Decimal value, final String message, final List<Object> arguments) {
         notNull(value);
-        isTrue(
-            value >= startInclusive && value <= endInclusive,
-            newIllegalArgumentException(format(message, arguments))
-        );
+        isTrue(value > 0, message, arguments);
     }
 
     /**
-     * @description Checks that the argument int `value` is between the two inclusive values.
+     * @description Checks that the argument decimal `value` is non-negative.
+     *
+     * @param value tha value to validate
+     *
+     * @throws IllegalArgumentException if `value` is negative with the default formatted exception message
+     * 'Argument decimal {0} is negative'
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     *
+     * @see Validate.positive
+     * @see Validate.negative
+     *
+     * @example
+     * Validate.notNegative(-1); // throws an IllegalArgumentException
+     */
+    public static void notNegative(final Decimal value) {
+        notNegative(value, format(Label.AV_ErrorMessage_NegativeDecimal, value));
+    }
+
+    /**
+     * @description Checks that the argument decimal `value` is non-negative.
+     *
+     * @param value tha value to validate
+     * @param message the required custom exception message
+     *
+     * @throws IllegalArgumentException if `value` is negative with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.positive
+     * @see Validate.negative
+     *
+     * @example
+     * Validate.notNegative(
+     *     -1,
+     *     'The value should be non-negative'
+     * ); // throws an IllegalArgumentException
+     */
+    public static void notNegative(final Decimal value, final String message) {
+        notNegative(value, message, null);
+    }
+
+    /**
+     * @description Checks that the argument decimal `value` is non-negative.
+     *
+     * @param value tha value to validate
+     * @param message the required formatted exception message
+     * @param arguments the optional values for the formatted exception message
+     *
+     * @throws IllegalArgumentException if `value` is negative with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.positive
+     * @see Validate.negative
+     *
+     * @example
+     * Validate.notNegative(
+     *     -1,
+     *     'The value {0} should be non-negative',
+     *     new List<Object>{ -1 }
+     * ); // throws an IllegalArgumentException
+     */
+    public static void notNegative(final Decimal value, final String message, final List<Object> arguments) {
+        notNull(value);
+        isTrue(value >= 0, message, arguments);
+    }
+
+    /**
+     * @description Checks that the argument decimal `value` is negative.
+     *
+     * @param value tha value to validate
+     *
+     * @throws IllegalArgumentException if `value` is not negative with the default formatted exception message
+     * 'Argument decimal {0} is not negative'
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     *
+     * @see Validate.positive
+     * @see Validate.notNegative
+     *
+     * @example
+     * Validate.negative(1); // throws an IllegalArgumentException
+     */
+    public static void negative(final Decimal value) {
+        negative(value, format(Label.AV_ErrorMessage_NotNegativeDecimal, value));
+    }
+
+    /**
+     * @description Checks that the argument decimal `value` is negative.
+     *
+     * @param value tha value to validate
+     * @param message the required custom exception message
+     *
+     * @throws IllegalArgumentException if `value` is not negative with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.positive
+     * @see Validate.notNegative
+     *
+     * @example
+     * Validate.negative(
+     *     1,
+     *     'The value should be negative'
+     * ); // throws an IllegalArgumentException
+     */
+    public static void negative(final Decimal value, final String message) {
+        negative(value, message, null);
+    }
+
+    /**
+     * @description Checks that the argument decimal `value` is negative.
+     *
+     * @param value tha value to validate
+     * @param message the required formatted exception message
+     * @param arguments the optional values for the formatted exception message
+     *
+     * @throws IllegalArgumentException if `value` is not negative with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.positive
+     * @see Validate.notNegative
+     *
+     * @example
+     * Validate.negative(
+     *     1,
+     *     'The value {0} should be negative',
+     *     new List<Object>{ 1 }
+     * ); // throws an IllegalArgumentException
+     */
+    public static void negative(final Decimal value, final String message, final List<Object> arguments) {
+        notNull(value);
+        isTrue(value < 0, message, arguments);
+    }
+
+    /**
+     * @description Checks that the argument decimal `value` is between the two inclusive values.
      *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
@@ -1417,7 +1530,7 @@ public inherited sharing class Validate {
      * @example
      * Validate.between(1, 10, 5); // valid
      */
-    public static void between(final Integer startInclusive, final Integer endInclusive, final Integer value) {
+    public static void between(final Decimal startInclusive, final Decimal endInclusive, final Decimal value) {
         between(
             startInclusive,
             endInclusive,
@@ -1427,7 +1540,7 @@ public inherited sharing class Validate {
     }
 
     /**
-     * @description Checks that the argument int `value` is between the two inclusive values.
+     * @description Checks that the argument decimal `value` is between the two inclusive values.
      *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
@@ -1456,16 +1569,16 @@ public inherited sharing class Validate {
      * ); //throws an IllegalArgumentException
      */
     public static void between(
-        final Integer startInclusive,
-        final Integer endInclusive,
-        final Integer value,
+        final Decimal startInclusive,
+        final Decimal endInclusive,
+        final Decimal value,
         final String message
     ) {
         between(startInclusive, endInclusive, value, message, null);
     }
 
     /**
-     * @description Checks that the argument int `value` is between the two inclusive values.
+     * @description Checks that the argument decimal `value` is between the two inclusive values.
      *
      * @param startInclusive the inclusive start value
      * @param endInclusive the inclusive end value
@@ -1473,7 +1586,7 @@ public inherited sharing class Validate {
      * @param message the required formatted exception message
      * @param arguments the optional values for the formatted exception message
      *
-     * @throws IllegalStateException if the `value` is not within the specified range
+     * @throws IllegalArgumentException if the `value` is not within the specified range
      * with the custom exception `message`
      * @throws NullPointerException if `startInclusive` is null with the default exception message
      * 'Argument object is null'
@@ -1492,130 +1605,14 @@ public inherited sharing class Validate {
      *     10,
      *     11,
      *     'The value {0} is out of range {1} - {2}',
-     *     new List<Integer>{ 11, 1, 10 }
+     *     new List<Decimal>{ 11, 1, 10 }
      * ); // throws an IllegalArgumentException
      */
     @SuppressWarnings('PMD.ExcessiveParameterList')
     public static void between(
-        final Integer startInclusive,
-        final Integer endInclusive,
-        final Integer value,
-        final String message,
-        final List<Object> arguments
-    ) {
-        notNull(startInclusive);
-        notNull(endInclusive);
-        notNull(value);
-        isTrue(
-            value >= startInclusive && value <= endInclusive,
-            newIllegalArgumentException(format(message, arguments))
-        );
-    }
-
-    /**
-     * @description Checks that the argument double `value` is between the two inclusive values.
-     *
-     * @param startInclusive the inclusive start value
-     * @param endInclusive the inclusive end value
-     * @param value tha value to validate
-     *
-     * @throws IllegalArgumentException if the `value` is not within the specified range with the default formatted
-     * exception message 'Argument {0} is not between inclusive range from {1} to {2}'
-     * @throws NullPointerException if `startInclusive` is null with the default exception message
-     * 'Argument object is null'
-     * @throws NullPointerException if `endInclusive` is null with the default exception message
-     * 'Argument object is null'
-     * @throws NullPointerException if `value` is null with the default exception message
-     * 'Argument object is null'
-     *
-     * @see Validate.isTrue
-     *
-     * @example
-     * Validate.between((Double) 1.1, (Double) 10.2, (Double) 5.2); // valid
-     */
-    public static void between(final Double startInclusive, final Double endInclusive, final Double value) {
-        between(
-            startInclusive,
-            endInclusive,
-            value,
-            format(Label.AV_ErrorMessage_NotBetween, value, startInclusive, endInclusive)
-        );
-    }
-
-    /**
-     * @description Checks that the argument double `value` is between the two inclusive values.
-     *
-     * @param startInclusive the inclusive start value
-     * @param endInclusive the inclusive end value
-     * @param value tha value to validate
-     * @param message the required custom exception message
-     *
-     * @throws IllegalArgumentException if the `value` is not within the specified range
-     * with the custom exception `message`
-     * @throws NullPointerException if `startInclusive` is null with the default exception message
-     * 'Argument object is null'
-     * @throws NullPointerException if `endInclusive` is null with the default exception message
-     * 'Argument object is null'
-     * @throws NullPointerException if `value` is null with the default exception message
-     * 'Argument object is null'
-     * @throws NullPointerException if `message` is null with the default exception message
-     * 'Exception message cannot be null'
-     *
-     * @see Validate.isTrue
-     *
-     * @example
-     * Validate.between(
-     *     (Double) 1.1,
-     *     (Double) 10.2,
-     *     (Double) 11.2,
-     *     'The value is out of range'
-     * ); //throws an IllegalArgumentException
-     */
-    public static void between(
-        final Double startInclusive,
-        final Double endInclusive,
-        final Double value,
-        final String message
-    ) {
-        between(startInclusive, endInclusive, value, message, null);
-    }
-
-    /**
-     * @description Checks that the argument double `value` is between the two inclusive values.
-     *
-     * @param startInclusive the inclusive start value
-     * @param endInclusive the inclusive end value
-     * @param value tha value to validate
-     * @param message the required formatted exception message
-     * @param arguments the optional values for the formatted exception message
-     *
-     * @throws IllegalArgumentException if the `value` is not within the specified range
-     * with the custom exception `message`
-     * @throws NullPointerException if `startInclusive` is null with the default exception message
-     * 'Argument object is null'
-     * @throws NullPointerException if `endInclusive` is null with the default exception message
-     * 'Argument object is null'
-     * @throws NullPointerException if `value` is null with the default exception message
-     * 'Argument object is null'
-     * @throws NullPointerException if `message` is null with the default exception message
-     * 'Exception message cannot be null'
-     *
-     * @see Validate.isTrue
-     *
-     * @example
-     * Validate.between(
-     *     (Double) 1.1,
-     *     (Double) 10.2,
-     *     (Double) 11.2,
-     *     'The value {0} is out of range {1} - {2}',
-     *     new List<Double>{ 11.2, 1.1, 10.2 }
-     * ); // throws an IllegalArgumentException
-     */
-    @SuppressWarnings('PMD.ExcessiveParameterList')
-    public static void between(
-        final Double startInclusive,
-        final Double endInclusive,
-        final Double value,
+        final Decimal startInclusive,
+        final Decimal endInclusive,
+        final Decimal value,
         final String message,
         final List<Object> arguments
     ) {

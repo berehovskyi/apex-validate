@@ -1405,6 +1405,209 @@ private class ValidateTest {
         Assert.areEqual(null, actual3);
     }
 
+    /**
+     * @see Validate.positive
+     */
+    @IsTest
+    static void positive() {
+        // Given
+        Decimal input = -1;
+        Decimal input1 = 0;
+        Decimal input2 = 1;
+        // When
+        Exception actual;
+        try {
+            Validate.positive((Decimal) null);
+        } catch (Exception exc) {
+            actual = exc;
+        }
+        Exception actual1;
+        try {
+            Validate.positive(input);
+        } catch (Exception exc) {
+            actual1 = exc;
+        }
+        Exception actual2;
+        try {
+            Validate.positive(input1);
+        } catch (Exception exc) {
+            actual2 = exc;
+        }
+        Exception actual3;
+        try {
+            Validate.positive(input2);
+        } catch (Exception exc) {
+            actual3 = exc;
+        }
+        Exception actual4;
+        try {
+            Validate.positive(input, MESSAGE);
+        } catch (Exception exc) {
+            actual4 = exc;
+        }
+        Exception actual5;
+        try {
+            Validate.positive(input, MESSAGE, ARGUMENTS);
+        } catch (Exception exc) {
+            actual5 = exc;
+        }
+        Exception actual6;
+        try {
+            Validate.positive(input, null);
+        } catch (Exception exc) {
+            actual6 = exc;
+        }
+        // Then
+        Assert.areEqual(NullPointerException.class.getName(), actual.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual1.getTypeName());
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_NotPositiveDecimal, input), actual1.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual2.getTypeName());
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_NotPositiveDecimal, input1), actual2.getMessage());
+        Assert.areEqual(null, actual3);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual4.getTypeName());
+        Assert.areEqual(MESSAGE, actual4.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual5.getTypeName());
+        Assert.areEqual(String.format(MESSAGE, ARGUMENTS), actual5.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual6.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual6.getMessage());
+    }
+
+    /**
+     * @see Validate.notNegative
+     */
+    @IsTest
+    static void notNegative() {
+        // Given
+        Decimal input = -1;
+        Decimal input1 = 0;
+        Decimal input2 = 1;
+        // When
+        Exception actual;
+        try {
+            Validate.notNegative((Decimal) null);
+        } catch (Exception exc) {
+            actual = exc;
+        }
+        Exception actual1;
+        try {
+            Validate.notNegative(input);
+        } catch (Exception exc) {
+            actual1 = exc;
+        }
+        Exception actual2;
+        try {
+            Validate.notNegative(input1);
+        } catch (Exception exc) {
+            actual2 = exc;
+        }
+        Exception actual3;
+        try {
+            Validate.notNegative(input2);
+        } catch (Exception exc) {
+            actual3 = exc;
+        }
+        Exception actual4;
+        try {
+            Validate.notNegative(input, MESSAGE);
+        } catch (Exception exc) {
+            actual4 = exc;
+        }
+        Exception actual5;
+        try {
+            Validate.notNegative(input, MESSAGE, ARGUMENTS);
+        } catch (Exception exc) {
+            actual5 = exc;
+        }
+        Exception actual6;
+        try {
+            Validate.notNegative(input, null);
+        } catch (Exception exc) {
+            actual6 = exc;
+        }
+        // Then
+        Assert.areEqual(NullPointerException.class.getName(), actual.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual1.getTypeName());
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_NegativeDecimal, input), actual1.getMessage());
+        Assert.areEqual(null, actual2);
+        Assert.areEqual(null, actual3);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual4.getTypeName());
+        Assert.areEqual(MESSAGE, actual4.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual5.getTypeName());
+        Assert.areEqual(String.format(MESSAGE, ARGUMENTS), actual5.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual6.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual6.getMessage());
+    }
+
+    /**
+     * @see Validate.negative
+     */
+    @IsTest
+    static void negative() {
+        // Given
+        Decimal input = -1;
+        Decimal input1 = 0;
+        Decimal input2 = 1;
+        // When
+        Exception actual;
+        try {
+            Validate.negative((Decimal) null);
+        } catch (Exception exc) {
+            actual = exc;
+        }
+        Exception actual1;
+        try {
+            Validate.negative(input);
+        } catch (Exception exc) {
+            actual1 = exc;
+        }
+        Exception actual2;
+        try {
+            Validate.negative(input1);
+        } catch (Exception exc) {
+            actual2 = exc;
+        }
+        Exception actual3;
+        try {
+            Validate.negative(input2);
+        } catch (Exception exc) {
+            actual3 = exc;
+        }
+        Exception actual4;
+        try {
+            Validate.negative(input2, MESSAGE);
+        } catch (Exception exc) {
+            actual4 = exc;
+        }
+        Exception actual5;
+        try {
+            Validate.negative(input2, MESSAGE, ARGUMENTS);
+        } catch (Exception exc) {
+            actual5 = exc;
+        }
+        Exception actual6;
+        try {
+            Validate.negative(input2, null);
+        } catch (Exception exc) {
+            actual6 = exc;
+        }
+        // Then
+        Assert.areEqual(NullPointerException.class.getName(), actual.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual.getMessage());
+        Assert.areEqual(null, actual1);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual2.getTypeName());
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_NotNegativeDecimal, input1), actual2.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual3.getTypeName());
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_NotNegativeDecimal, input2), actual3.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual4.getTypeName());
+        Assert.areEqual(MESSAGE, actual4.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual5.getTypeName());
+        Assert.areEqual(String.format(MESSAGE, ARGUMENTS), actual5.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual6.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual6.getMessage());
+    }
+
     @IsTest
     static void between() {
         // Given

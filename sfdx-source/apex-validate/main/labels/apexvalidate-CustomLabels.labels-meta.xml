@@ -153,6 +153,30 @@
         <value>Argument {0} is not between inclusive range from {1} to {2}</value>
     </labels>
     <labels>
+        <fullName>AV_ErrorMessage_NotPositiveDecimal</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <categories>error</categories>
+        <shortDescription>Error message.</shortDescription>
+        <value>Argument decimal {0} is not positive</value>
+    </labels>
+    <labels>
+        <fullName>AV_ErrorMessage_NegativeDecimal</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <categories>error</categories>
+        <shortDescription>Error message.</shortDescription>
+        <value>Argument decimal {0} is negative</value>
+    </labels>
+    <labels>
+        <fullName>AV_ErrorMessage_NotNegativeDecimal</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <categories>error</categories>
+        <shortDescription>Error message.</shortDescription>
+        <value>Argument decimal {0} is not negative</value>
+    </labels>
+    <labels>
         <fullName>AV_ErrorMessage_NotEqual</fullName>
         <language>en_US</language>
         <protected>true</protected>
