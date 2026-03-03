@@ -1,8 +1,6 @@
 # Validate
 
-`SUPPRESSWARNINGS`
-
-`APIVERSION: 65`
+`APIVERSION: 66`
 
 `STATUS: ACTIVE`
 
@@ -704,6 +702,317 @@ Validate.notEmpty(
 ```
 
 
+##### `public static void minLength(String str, Integer min)`
+
+Checks that the argument string `str` length is at least `min`.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`str`|the string to check|
+|`min`|the inclusive minimum string length|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `str.length()` is less than `min` with the default formatted exception message 'Argument string length is less than {0}'|
+|`NullPointerException`|if `str` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `min` is null with the default exception message 'Argument object is null'|
+
+
+**See** [Validate.lengthBetween](Validate.lengthBetween)
+
+###### Example
+```apex
+Validate.minLength('ab', 3); // throws an IllegalArgumentException
+```
+
+
+##### `public static void minLength(String str, Integer min, String message)`
+
+Checks that the argument string `str` length is at least `min`.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`str`|the string to check|
+|`min`|the inclusive minimum string length|
+|`message`|the required custom exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `str.length()` is less than `min` with the custom exception `message`|
+|`NullPointerException`|if `str` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `min` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.lengthBetween](Validate.lengthBetween)
+
+###### Example
+```apex
+Validate.minLength(
+    'ab',
+    3,
+    'The string length should be at least 3'
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void minLength(String str, Integer min, String message, List<Object> arguments)`
+
+Checks that the argument string `str` length is at least `min`.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`str`|the string to check|
+|`min`|the inclusive minimum string length|
+|`message`|the required formatted exception message|
+|`arguments`|the optional values for the formatted exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `str.length()` is less than `min` with the custom exception `message`|
+|`NullPointerException`|if `str` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `min` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.lengthBetween](Validate.lengthBetween)
+
+###### Example
+```apex
+Validate.minLength(
+    'ab',
+    3,
+    'The string length should be at least {0}',
+    new List<Object>{ 3 }
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void maxLength(String str, Integer max)`
+
+Checks that the argument string `str` length is at most `max`.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`str`|the string to check|
+|`max`|the inclusive maximum string length|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `str.length()` is greater than `max` with the default formatted exception message 'Argument string length is greater than {0}'|
+|`NullPointerException`|if `str` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `max` is null with the default exception message 'Argument object is null'|
+
+
+**See** [Validate.lengthBetween](Validate.lengthBetween)
+
+###### Example
+```apex
+Validate.maxLength('abcd', 3); // throws an IllegalArgumentException
+```
+
+
+##### `public static void maxLength(String str, Integer max, String message)`
+
+Checks that the argument string `str` length is at most `max`.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`str`|the string to check|
+|`max`|the inclusive maximum string length|
+|`message`|the required custom exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `str.length()` is greater than `max` with the custom exception `message`|
+|`NullPointerException`|if `str` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `max` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.lengthBetween](Validate.lengthBetween)
+
+###### Example
+```apex
+Validate.maxLength(
+    'abcd',
+    3,
+    'The string length should be at most 3'
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void maxLength(String str, Integer max, String message, List<Object> arguments)`
+
+Checks that the argument string `str` length is at most `max`.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`str`|the string to check|
+|`max`|the inclusive maximum string length|
+|`message`|the required formatted exception message|
+|`arguments`|the optional values for the formatted exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `str.length()` is greater than `max` with the custom exception `message`|
+|`NullPointerException`|if `str` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `max` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.lengthBetween](Validate.lengthBetween)
+
+###### Example
+```apex
+Validate.maxLength(
+    'abcd',
+    3,
+    'The string length should be at most {0}',
+    new List<Object>{ 3 }
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void lengthBetween(String str, Integer minInclusive, Integer maxInclusive)`
+
+Checks that the argument string `str` length is between `minInclusive` and `maxInclusive`.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`str`|the string to check|
+|`minInclusive`|the inclusive minimum string length|
+|`maxInclusive`|the inclusive maximum string length|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `str.length()` is not within the specified range with the default formatted exception message 'Argument string length {0} is not between inclusive range from {1} to {2}'|
+|`NullPointerException`|if `str` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `minInclusive` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `maxInclusive` is null with the default exception message 'Argument object is null'|
+
+
+**See** [Validate.minLength](Validate.minLength)
+
+
+**See** [Validate.maxLength](Validate.maxLength)
+
+###### Example
+```apex
+Validate.lengthBetween('abcd', 5, 10); // throws an IllegalArgumentException
+```
+
+
+##### `public static void lengthBetween(String str, Integer minInclusive, Integer maxInclusive, String message)`
+
+Checks that the argument string `str` length is between `minInclusive` and `maxInclusive`.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`str`|the string to check|
+|`minInclusive`|the inclusive minimum string length|
+|`maxInclusive`|the inclusive maximum string length|
+|`message`|the required custom exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `str.length()` is not within the specified range with the custom exception `message`|
+|`NullPointerException`|if `str` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `minInclusive` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `maxInclusive` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.minLength](Validate.minLength)
+
+
+**See** [Validate.maxLength](Validate.maxLength)
+
+###### Example
+```apex
+Validate.lengthBetween(
+    'abcd',
+    5,
+    10,
+    'The string length is out of range'
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void lengthBetween(String str, Integer minInclusive, Integer maxInclusive, String message, List<Object> arguments)`
+
+Checks that the argument string `str` length is between `minInclusive` and `maxInclusive`.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`str`|the string to check|
+|`minInclusive`|the inclusive minimum string length|
+|`maxInclusive`|the inclusive maximum string length|
+|`message`|the required formatted exception message|
+|`arguments`|the optional values for the formatted exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `str.length()` is not within the specified range with the custom exception `message`|
+|`NullPointerException`|if `str` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `minInclusive` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `maxInclusive` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.minLength](Validate.minLength)
+
+
+**See** [Validate.maxLength](Validate.maxLength)
+
+###### Example
+```apex
+Validate.lengthBetween(
+    'abcd',
+    5,
+    10,
+    'The string length should be between {0} and {1}',
+    new List<Object>{ 5, 10 }
+); // throws an IllegalArgumentException
+```
+
+
 ##### `public static void index(String str, Integer index)`
 
 Checks that the `index` is within the bounds of the argument string `str`.
@@ -1083,6 +1392,107 @@ Validate.creditCard(
 
 ---
 ### State
+##### `public static void fail()`
+
+Unconditionally throws an `IllegalStateException`.
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalStateException`|with the default exception message 'Argument state is invalid'|
+
+
+**See** [Validate.state](Validate.state)
+
+###### Example
+```apex
+Validate.fail(); // throws an IllegalStateException
+```
+
+
+##### `public static void fail(String message)`
+
+Unconditionally throws an `IllegalStateException`.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`message`|the required custom exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalStateException`|with the custom exception `message`|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.state](Validate.state)
+
+###### Example
+```apex
+Validate.fail('Custom message'); // throws an IllegalStateException
+```
+
+
+##### `public static void fail(Exception exc)`
+
+Unconditionally throws the provided exception.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`exc`|the exception to throw|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`Exception`|the provided `exc`|
+|`NullPointerException`|if `exc` is null with the default exception message 'Argument object is null'|
+
+
+**See** [Validate.state](Validate.state)
+
+###### Example
+```apex
+Validate.fail(new CustomException('Error message')); // throws a CustomException
+```
+
+
+##### `public static void fail(String message, List<Object> arguments)`
+
+Unconditionally throws an `IllegalStateException`.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`message`|the required formatted exception message|
+|`arguments`|the optional values for the formatted exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalStateException`|with the custom exception `message`|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.state](Validate.state)
+
+###### Example
+```apex
+Validate.fail(
+    'Duplicate key {0} (attempted merging values {1} and {2}).',
+    new List<Object>{ key, oldValue, newValue }
+); // throws an IllegalStateException
+```
+
+
 ##### `public static void state(Boolean condition)`
 
 Checks that the stateful argument `condition` is true.
@@ -1169,46 +1579,43 @@ Validate.state(
 
 ---
 ### Numbers
-##### `public static void between(Long startInclusive, Long endInclusive, Long value)`
+##### `public static void positive(Decimal value)`
 
-Checks that the argument long `value` is between the two inclusive values.
+Checks that the argument decimal `value` is positive.
 
 ###### Parameters
 
 |Param|Description|
 |---|---|
-|`startInclusive`|the inclusive start value|
-|`endInclusive`|the inclusive end value|
 |`value`|tha value to validate|
 
 ###### Throws
 
 |Exception|Description|
 |---|---|
-|`IllegalArgumentException`|if the `value` is not within the specified range with the default formatted exception message 'Argument {0} is not between inclusive range from {1} to {2}'|
-|`NullPointerException`|if `startInclusive` is null with the default exception message 'Argument object is null'|
-|`NullPointerException`|if `endInclusive` is null with the default exception message 'Argument object is null'|
+|`IllegalArgumentException`|if `value` is not positive with the default formatted exception message 'Argument decimal {0} is not positive'|
 |`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
 
 
-**See** [Validate.isTrue](Validate.isTrue)
+**See** [Validate.notNegative](Validate.notNegative)
+
+
+**See** [Validate.negative](Validate.negative)
 
 ###### Example
 ```apex
-Validate.between(1L, 10L, 5L); // valid
+Validate.positive(-1); // throws an IllegalArgumentException
 ```
 
 
-##### `public static void between(Long startInclusive, Long endInclusive, Long value, String message)`
+##### `public static void positive(Decimal value, String message)`
 
-Checks that the argument long `value` is between the two inclusive values.
+Checks that the argument decimal `value` is positive.
 
 ###### Parameters
 
 |Param|Description|
 |---|---|
-|`startInclusive`|the inclusive start value|
-|`endInclusive`|the inclusive end value|
 |`value`|tha value to validate|
 |`message`|the required custom exception message|
 
@@ -1216,38 +1623,33 @@ Checks that the argument long `value` is between the two inclusive values.
 
 |Exception|Description|
 |---|---|
-|`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
-|`NullPointerException`|if `startInclusive` is null with the default exception message 'Argument object is null'|
-|`NullPointerException`|if `endInclusive` is null with the default exception message 'Argument object is null'|
+|`IllegalArgumentException`|if `value` is not positive with the custom exception `message`|
 |`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** [Validate.isTrue](Validate.isTrue)
+**See** [Validate.notNegative](Validate.notNegative)
+
+
+**See** [Validate.negative](Validate.negative)
 
 ###### Example
 ```apex
-Validate.between(
-    1L,
-    10L,
-    11L,
-    'The value is out of range'
-); //throws an IllegalArgumentException
+Validate.positive(
+    -1,
+    'The value should be positive'
+); // throws an IllegalArgumentException
 ```
 
 
-##### `public static void between(Long startInclusive, Long endInclusive, Long value, String message, List<Object> arguments)`
+##### `public static void positive(Decimal value, String message, List<Object> arguments)`
 
-`SUPPRESSWARNINGS`
-
-Checks that the argument long `value` is between the two inclusive values.
+Checks that the argument decimal `value` is positive.
 
 ###### Parameters
 
 |Param|Description|
 |---|---|
-|`startInclusive`|the inclusive start value|
-|`endInclusive`|the inclusive end value|
 |`value`|tha value to validate|
 |`message`|the required formatted exception message|
 |`arguments`|the optional values for the formatted exception message|
@@ -1256,30 +1658,227 @@ Checks that the argument long `value` is between the two inclusive values.
 
 |Exception|Description|
 |---|---|
-|`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
-|`NullPointerException`|if `startInclusive` is null with the default exception message 'Argument object is null'|
-|`NullPointerException`|if `endInclusive` is null with the default exception message 'Argument object is null'|
+|`IllegalArgumentException`|if `value` is not positive with the custom exception `message`|
 |`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** [Validate.isTrue](Validate.isTrue)
+**See** [Validate.notNegative](Validate.notNegative)
+
+
+**See** [Validate.negative](Validate.negative)
 
 ###### Example
 ```apex
-Validate.between(
-    1L,
-    10L,
-    11L,
-    'The value {0} is out of range {1} - {2}',
-    new List<Long>{ 11L, 1L, 10L }
+Validate.positive(
+    -1,
+    'The value {0} should be positive',
+    new List<Object>{ -1 }
 ); // throws an IllegalArgumentException
 ```
 
 
-##### `public static void between(Integer startInclusive, Integer endInclusive, Integer value)`
+##### `public static void notNegative(Decimal value)`
 
-Checks that the argument int `value` is between the two inclusive values.
+Checks that the argument decimal `value` is non-negative.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is negative with the default formatted exception message 'Argument decimal {0} is negative'|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+
+
+**See** [Validate.positive](Validate.positive)
+
+
+**See** [Validate.negative](Validate.negative)
+
+###### Example
+```apex
+Validate.notNegative(-1); // throws an IllegalArgumentException
+```
+
+
+##### `public static void notNegative(Decimal value, String message)`
+
+Checks that the argument decimal `value` is non-negative.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required custom exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is negative with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.positive](Validate.positive)
+
+
+**See** [Validate.negative](Validate.negative)
+
+###### Example
+```apex
+Validate.notNegative(
+    -1,
+    'The value should be non-negative'
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void notNegative(Decimal value, String message, List<Object> arguments)`
+
+Checks that the argument decimal `value` is non-negative.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required formatted exception message|
+|`arguments`|the optional values for the formatted exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is negative with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.positive](Validate.positive)
+
+
+**See** [Validate.negative](Validate.negative)
+
+###### Example
+```apex
+Validate.notNegative(
+    -1,
+    'The value {0} should be non-negative',
+    new List<Object>{ -1 }
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void negative(Decimal value)`
+
+Checks that the argument decimal `value` is negative.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not negative with the default formatted exception message 'Argument decimal {0} is not negative'|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+
+
+**See** [Validate.positive](Validate.positive)
+
+
+**See** [Validate.notNegative](Validate.notNegative)
+
+###### Example
+```apex
+Validate.negative(1); // throws an IllegalArgumentException
+```
+
+
+##### `public static void negative(Decimal value, String message)`
+
+Checks that the argument decimal `value` is negative.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required custom exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not negative with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.positive](Validate.positive)
+
+
+**See** [Validate.notNegative](Validate.notNegative)
+
+###### Example
+```apex
+Validate.negative(
+    1,
+    'The value should be negative'
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void negative(Decimal value, String message, List<Object> arguments)`
+
+Checks that the argument decimal `value` is negative.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required formatted exception message|
+|`arguments`|the optional values for the formatted exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not negative with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.positive](Validate.positive)
+
+
+**See** [Validate.notNegative](Validate.notNegative)
+
+###### Example
+```apex
+Validate.negative(
+    1,
+    'The value {0} should be negative',
+    new List<Object>{ 1 }
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void between(Decimal startInclusive, Decimal endInclusive, Decimal value)`
+
+Checks that the argument decimal `value` is between the two inclusive values.
 
 ###### Parameters
 
@@ -1307,9 +1906,9 @@ Validate.between(1, 10, 5); // valid
 ```
 
 
-##### `public static void between(Integer startInclusive, Integer endInclusive, Integer value, String message)`
+##### `public static void between(Decimal startInclusive, Decimal endInclusive, Decimal value, String message)`
 
-Checks that the argument int `value` is between the two inclusive values.
+Checks that the argument decimal `value` is between the two inclusive values.
 
 ###### Parameters
 
@@ -1344,11 +1943,11 @@ Validate.between(
 ```
 
 
-##### `public static void between(Integer startInclusive, Integer endInclusive, Integer value, String message, List<Object> arguments)`
+##### `public static void between(Decimal startInclusive, Decimal endInclusive, Decimal value, String message, List<Object> arguments)`
 
 `SUPPRESSWARNINGS`
 
-Checks that the argument int `value` is between the two inclusive values.
+Checks that the argument decimal `value` is between the two inclusive values.
 
 ###### Parameters
 
@@ -1364,7 +1963,7 @@ Checks that the argument int `value` is between the two inclusive values.
 
 |Exception|Description|
 |---|---|
-|`IllegalStateException`|if the `value` is not within the specified range with the custom exception `message`|
+|`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
 |`NullPointerException`|if `startInclusive` is null with the default exception message 'Argument object is null'|
 |`NullPointerException`|if `endInclusive` is null with the default exception message 'Argument object is null'|
 |`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
@@ -1380,51 +1979,51 @@ Validate.between(
     10,
     11,
     'The value {0} is out of range {1} - {2}',
-    new List<Integer>{ 11, 1, 10 }
+    new List<Decimal>{ 11, 1, 10 }
 ); // throws an IllegalArgumentException
 ```
 
 
-##### `public static void between(Double startInclusive, Double endInclusive, Double value)`
+##### `public static void pastOrPresent(Date value)`
 
-Checks that the argument double `value` is between the two inclusive values.
+Checks that the argument date `value` is in the past or present.
 
 ###### Parameters
 
 |Param|Description|
 |---|---|
-|`startInclusive`|the inclusive start value|
-|`endInclusive`|the inclusive end value|
 |`value`|tha value to validate|
 
 ###### Throws
 
 |Exception|Description|
 |---|---|
-|`IllegalArgumentException`|if the `value` is not within the specified range with the default formatted exception message 'Argument {0} is not between inclusive range from {1} to {2}'|
-|`NullPointerException`|if `startInclusive` is null with the default exception message 'Argument object is null'|
-|`NullPointerException`|if `endInclusive` is null with the default exception message 'Argument object is null'|
+|`IllegalArgumentException`|if `value` is not in the past or present with the default formatted exception message 'Argument date {0} is not in the past or present'|
 |`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
 
 
-**See** [Validate.isTrue](Validate.isTrue)
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+
+**See** [Validate.future](Validate.future)
 
 ###### Example
 ```apex
-Validate.between((Double) 1.1, (Double) 10.2, (Double) 5.2); // valid
+Validate.pastOrPresent(Date.today().addDays(1)); // throws an IllegalArgumentException
 ```
 
 
-##### `public static void between(Double startInclusive, Double endInclusive, Double value, String message)`
+##### `public static void pastOrPresent(Date value, String message)`
 
-Checks that the argument double `value` is between the two inclusive values.
+Checks that the argument date `value` is in the past or present.
 
 ###### Parameters
 
 |Param|Description|
 |---|---|
-|`startInclusive`|the inclusive start value|
-|`endInclusive`|the inclusive end value|
 |`value`|tha value to validate|
 |`message`|the required custom exception message|
 
@@ -1432,38 +2031,36 @@ Checks that the argument double `value` is between the two inclusive values.
 
 |Exception|Description|
 |---|---|
-|`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
-|`NullPointerException`|if `startInclusive` is null with the default exception message 'Argument object is null'|
-|`NullPointerException`|if `endInclusive` is null with the default exception message 'Argument object is null'|
+|`IllegalArgumentException`|if `value` is not in the past or present with the custom exception `message`|
 |`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** [Validate.isTrue](Validate.isTrue)
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+
+**See** [Validate.future](Validate.future)
 
 ###### Example
 ```apex
-Validate.between(
-    (Double) 1.1,
-    (Double) 10.2,
-    (Double) 11.2,
-    'The value is out of range'
-); //throws an IllegalArgumentException
+Validate.pastOrPresent(
+    Date.today().addDays(1),
+    'The date should be in the past or present'
+); // throws an IllegalArgumentException
 ```
 
 
-##### `public static void between(Double startInclusive, Double endInclusive, Double value, String message, List<Object> arguments)`
+##### `public static void pastOrPresent(Date value, String message, List<Object> arguments)`
 
-`SUPPRESSWARNINGS`
-
-Checks that the argument double `value` is between the two inclusive values.
+Checks that the argument date `value` is in the past or present.
 
 ###### Parameters
 
 |Param|Description|
 |---|---|
-|`startInclusive`|the inclusive start value|
-|`endInclusive`|the inclusive end value|
 |`value`|tha value to validate|
 |`message`|the required formatted exception message|
 |`arguments`|the optional values for the formatted exception message|
@@ -1472,23 +2069,781 @@ Checks that the argument double `value` is between the two inclusive values.
 
 |Exception|Description|
 |---|---|
-|`IllegalArgumentException`|if the `value` is not within the specified range with the custom exception `message`|
-|`NullPointerException`|if `startInclusive` is null with the default exception message 'Argument object is null'|
-|`NullPointerException`|if `endInclusive` is null with the default exception message 'Argument object is null'|
+|`IllegalArgumentException`|if `value` is not in the past or present with the custom exception `message`|
 |`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
 |`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
 
 
-**See** [Validate.isTrue](Validate.isTrue)
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+
+**See** [Validate.future](Validate.future)
 
 ###### Example
 ```apex
-Validate.between(
-    (Double) 1.1,
-    (Double) 10.2,
-    (Double) 11.2,
-    'The value {0} is out of range {1} - {2}',
-    new List<Double>{ 11.2, 1.1, 10.2 }
+Validate.pastOrPresent(
+    Date.today().addDays(1),
+    'The date {0} should be in the past or present',
+    new List<Object>{ Date.today().addDays(1) }
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void futureOrPresent(Date value)`
+
+Checks that the argument date `value` is in the future or present.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the future or present with the default formatted exception message 'Argument date {0} is not in the future or present'|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+
+**See** [Validate.future](Validate.future)
+
+###### Example
+```apex
+Validate.futureOrPresent(Date.today().addDays(-1)); // throws an IllegalArgumentException
+```
+
+
+##### `public static void futureOrPresent(Date value, String message)`
+
+Checks that the argument date `value` is in the future or present.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required custom exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the future or present with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+
+**See** [Validate.future](Validate.future)
+
+###### Example
+```apex
+Validate.futureOrPresent(
+    Date.today().addDays(-1),
+    'The date should be in the future or present'
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void futureOrPresent(Date value, String message, List<Object> arguments)`
+
+Checks that the argument date `value` is in the future or present.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required formatted exception message|
+|`arguments`|the optional values for the formatted exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the future or present with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+
+**See** [Validate.future](Validate.future)
+
+###### Example
+```apex
+Validate.futureOrPresent(
+    Date.today().addDays(-1),
+    'The date {0} should be in the future or present',
+    new List<Object>{ Date.today().addDays(-1) }
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void past(Date value)`
+
+Checks that the argument date `value` is in the past.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the past with the default formatted exception message 'Argument date {0} is not in the past'|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.future](Validate.future)
+
+###### Example
+```apex
+Validate.past(Date.today()); // throws an IllegalArgumentException
+```
+
+
+##### `public static void past(Date value, String message)`
+
+Checks that the argument date `value` is in the past.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required custom exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the past with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.future](Validate.future)
+
+###### Example
+```apex
+Validate.past(
+    Date.today(),
+    'The date should be in the past'
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void past(Date value, String message, List<Object> arguments)`
+
+Checks that the argument date `value` is in the past.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required formatted exception message|
+|`arguments`|the optional values for the formatted exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the past with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.future](Validate.future)
+
+###### Example
+```apex
+Validate.past(
+    Date.today(),
+    'The date {0} should be in the past',
+    new List<Object>{ Date.today() }
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void future(Date value)`
+
+Checks that the argument date `value` is in the future.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the future with the default formatted exception message 'Argument date {0} is not in the future'|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+###### Example
+```apex
+Validate.future(Date.today()); // throws an IllegalArgumentException
+```
+
+
+##### `public static void future(Date value, String message)`
+
+Checks that the argument date `value` is in the future.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required custom exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the future with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+###### Example
+```apex
+Validate.future(
+    Date.today(),
+    'The date should be in the future'
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void future(Date value, String message, List<Object> arguments)`
+
+Checks that the argument date `value` is in the future.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required formatted exception message|
+|`arguments`|the optional values for the formatted exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the future with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+###### Example
+```apex
+Validate.future(
+    Date.today(),
+    'The date {0} should be in the future',
+    new List<Object>{ Date.today() }
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void pastOrPresent(Datetime value)`
+
+Checks that the argument datetime `value` is in the past or present.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the past or present with the default formatted exception message 'Argument datetime {0} is not in the past or present'|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+
+
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+
+**See** [Validate.future](Validate.future)
+
+###### Example
+```apex
+Validate.pastOrPresent(Datetime.now().addMinutes(1)); // throws an IllegalArgumentException
+```
+
+
+##### `public static void pastOrPresent(Datetime value, String message)`
+
+Checks that the argument datetime `value` is in the past or present.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required custom exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the past or present with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+
+**See** [Validate.future](Validate.future)
+
+###### Example
+```apex
+Validate.pastOrPresent(
+    Datetime.now().addMinutes(1),
+    'The datetime should be in the past or present'
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void pastOrPresent(Datetime value, String message, List<Object> arguments)`
+
+Checks that the argument datetime `value` is in the past or present.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required formatted exception message|
+|`arguments`|the optional values for the formatted exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the past or present with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+
+**See** [Validate.future](Validate.future)
+
+###### Example
+```apex
+Validate.pastOrPresent(
+    Datetime.now().addMinutes(1),
+    'The datetime {0} should be in the past or present',
+    new List<Object>{ Datetime.now().addMinutes(1) }
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void futureOrPresent(Datetime value)`
+
+Checks that the argument datetime `value` is in the future or present.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the future or present with the default formatted exception message 'Argument datetime {0} is not in the future or present'|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+
+**See** [Validate.future](Validate.future)
+
+###### Example
+```apex
+Validate.futureOrPresent(Datetime.now().addMinutes(-1)); // throws an IllegalArgumentException
+```
+
+
+##### `public static void futureOrPresent(Datetime value, String message)`
+
+Checks that the argument datetime `value` is in the future or present.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required custom exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the future or present with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+
+**See** [Validate.future](Validate.future)
+
+###### Example
+```apex
+Validate.futureOrPresent(
+    Datetime.now().addMinutes(-1),
+    'The datetime should be in the future or present'
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void futureOrPresent(Datetime value, String message, List<Object> arguments)`
+
+Checks that the argument datetime `value` is in the future or present.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required formatted exception message|
+|`arguments`|the optional values for the formatted exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the future or present with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+
+**See** [Validate.future](Validate.future)
+
+###### Example
+```apex
+Validate.futureOrPresent(
+    Datetime.now().addMinutes(-1),
+    'The datetime {0} should be in the future or present',
+    new List<Object>{ Datetime.now().addMinutes(-1) }
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void past(Datetime value)`
+
+Checks that the argument datetime `value` is in the past.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the past with the default formatted exception message 'Argument datetime {0} is not in the past'|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.future](Validate.future)
+
+###### Example
+```apex
+Validate.past(Datetime.now()); // throws an IllegalArgumentException
+```
+
+
+##### `public static void past(Datetime value, String message)`
+
+Checks that the argument datetime `value` is in the past.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required custom exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the past with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.future](Validate.future)
+
+###### Example
+```apex
+Validate.past(
+    Datetime.now(),
+    'The datetime should be in the past'
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void past(Datetime value, String message, List<Object> arguments)`
+
+Checks that the argument datetime `value` is in the past.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required formatted exception message|
+|`arguments`|the optional values for the formatted exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the past with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.future](Validate.future)
+
+###### Example
+```apex
+Validate.past(
+    Datetime.now(),
+    'The datetime {0} should be in the past',
+    new List<Object>{ Datetime.now() }
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void future(Datetime value)`
+
+Checks that the argument datetime `value` is in the future.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the future with the default formatted exception message 'Argument datetime {0} is not in the future'|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+###### Example
+```apex
+Validate.future(Datetime.now()); // throws an IllegalArgumentException
+```
+
+
+##### `public static void future(Datetime value, String message)`
+
+Checks that the argument datetime `value` is in the future.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required custom exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the future with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+###### Example
+```apex
+Validate.future(
+    Datetime.now(),
+    'The datetime should be in the future'
+); // throws an IllegalArgumentException
+```
+
+
+##### `public static void future(Datetime value, String message, List<Object> arguments)`
+
+Checks that the argument datetime `value` is in the future.
+
+###### Parameters
+
+|Param|Description|
+|---|---|
+|`value`|tha value to validate|
+|`message`|the required formatted exception message|
+|`arguments`|the optional values for the formatted exception message|
+
+###### Throws
+
+|Exception|Description|
+|---|---|
+|`IllegalArgumentException`|if `value` is not in the future with the custom exception `message`|
+|`NullPointerException`|if `value` is null with the default exception message 'Argument object is null'|
+|`NullPointerException`|if `message` is null with the default exception message 'Exception message cannot be null'|
+
+
+**See** [Validate.pastOrPresent](Validate.pastOrPresent)
+
+
+**See** [Validate.futureOrPresent](Validate.futureOrPresent)
+
+
+**See** [Validate.past](Validate.past)
+
+###### Example
+```apex
+Validate.future(
+    Datetime.now(),
+    'The datetime {0} should be in the future',
+    new List<Object>{ Datetime.now() }
 ); // throws an IllegalArgumentException
 ```
 
