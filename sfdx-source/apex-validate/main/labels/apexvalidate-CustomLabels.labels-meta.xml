@@ -81,6 +81,30 @@
         <value>Argument string is empty</value>
     </labels>
     <labels>
+        <fullName>AV_ErrorMessage_ShortStringLength</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <categories>error</categories>
+        <shortDescription>Error message.</shortDescription>
+        <value>Argument string length is less than {0}</value>
+    </labels>
+    <labels>
+        <fullName>AV_ErrorMessage_LongStringLength</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <categories>error</categories>
+        <shortDescription>Error message.</shortDescription>
+        <value>Argument string length is greater than {0}</value>
+    </labels>
+    <labels>
+        <fullName>AV_ErrorMessage_StringLengthNotBetween</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <categories>error</categories>
+        <shortDescription>Error message.</shortDescription>
+        <value>Argument string length {0} is not between inclusive range from {1} to {2}</value>
+    </labels>
+    <labels>
         <fullName>AV_ErrorMessage_InvalidEmail</fullName>
         <language>en_US</language>
         <protected>true</protected>

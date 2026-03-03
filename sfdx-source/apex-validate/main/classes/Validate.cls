@@ -567,6 +567,265 @@ public inherited sharing class Validate {
     }
 
     /**
+     * @description Checks that the argument string `str` length is at least `min`.
+     *
+     * @param str the string to check
+     * @param min the inclusive minimum string length
+     *
+     * @throws IllegalArgumentException if `str.length()` is less than `min` with the default formatted
+     * exception message 'Argument string length is less than {0}'
+     * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `min` is null with the default exception message 'Argument object is null'
+     *
+     * @see Validate.lengthBetween
+     *
+     * @example
+     * Validate.minLength('ab', 3); // throws an IllegalArgumentException
+     */
+    public static void minLength(final String str, final Integer min) {
+        minLength(str, min, format(Label.AV_ErrorMessage_ShortStringLength, min));
+    }
+
+    /**
+     * @description Checks that the argument string `str` length is at least `min`.
+     *
+     * @param str the string to check
+     * @param min the inclusive minimum string length
+     * @param message the required custom exception message
+     *
+     * @throws IllegalArgumentException if `str.length()` is less than `min` with the custom exception `message`
+     * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `min` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.lengthBetween
+     *
+     * @example
+     * Validate.minLength(
+     *     'ab',
+     *     3,
+     *     'The string length should be at least 3'
+     * ); // throws an IllegalArgumentException
+     */
+    public static void minLength(final String str, final Integer min, final String message) {
+        minLength(str, min, message, null);
+    }
+
+    /**
+     * @description Checks that the argument string `str` length is at least `min`.
+     *
+     * @param str the string to check
+     * @param min the inclusive minimum string length
+     * @param message the required formatted exception message
+     * @param arguments the optional values for the formatted exception message
+     *
+     * @throws IllegalArgumentException if `str.length()` is less than `min` with the custom exception `message`
+     * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `min` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.lengthBetween
+     *
+     * @example
+     * Validate.minLength(
+     *     'ab',
+     *     3,
+     *     'The string length should be at least {0}',
+     *     new List<Object>{ 3 }
+     * ); // throws an IllegalArgumentException
+     */
+    public static void minLength(final String str, final Integer min, final String message, final List<Object> arguments) {
+        notNull(str);
+        notNull(min);
+        isTrue(str.length() >= min, message, arguments);
+    }
+
+    /**
+     * @description Checks that the argument string `str` length is at most `max`.
+     *
+     * @param str the string to check
+     * @param max the inclusive maximum string length
+     *
+     * @throws IllegalArgumentException if `str.length()` is greater than `max` with the default formatted
+     * exception message 'Argument string length is greater than {0}'
+     * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `max` is null with the default exception message 'Argument object is null'
+     *
+     * @see Validate.lengthBetween
+     *
+     * @example
+     * Validate.maxLength('abcd', 3); // throws an IllegalArgumentException
+     */
+    public static void maxLength(final String str, final Integer max) {
+        maxLength(str, max, format(Label.AV_ErrorMessage_LongStringLength, max));
+    }
+
+    /**
+     * @description Checks that the argument string `str` length is at most `max`.
+     *
+     * @param str the string to check
+     * @param max the inclusive maximum string length
+     * @param message the required custom exception message
+     *
+     * @throws IllegalArgumentException if `str.length()` is greater than `max` with the custom exception `message`
+     * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `max` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.lengthBetween
+     *
+     * @example
+     * Validate.maxLength(
+     *     'abcd',
+     *     3,
+     *     'The string length should be at most 3'
+     * ); // throws an IllegalArgumentException
+     */
+    public static void maxLength(final String str, final Integer max, final String message) {
+        maxLength(str, max, message, null);
+    }
+
+    /**
+     * @description Checks that the argument string `str` length is at most `max`.
+     *
+     * @param str the string to check
+     * @param max the inclusive maximum string length
+     * @param message the required formatted exception message
+     * @param arguments the optional values for the formatted exception message
+     *
+     * @throws IllegalArgumentException if `str.length()` is greater than `max` with the custom exception `message`
+     * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `max` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.lengthBetween
+     *
+     * @example
+     * Validate.maxLength(
+     *     'abcd',
+     *     3,
+     *     'The string length should be at most {0}',
+     *     new List<Object>{ 3 }
+     * ); // throws an IllegalArgumentException
+     */
+    public static void maxLength(final String str, final Integer max, final String message, final List<Object> arguments) {
+        notNull(str);
+        notNull(max);
+        isTrue(str.length() <= max, message, arguments);
+    }
+
+    /**
+     * @description Checks that the argument string `str` length is between `minInclusive` and `maxInclusive`.
+     *
+     * @param str the string to check
+     * @param minInclusive the inclusive minimum string length
+     * @param maxInclusive the inclusive maximum string length
+     *
+     * @throws IllegalArgumentException if `str.length()` is not within the specified range with the default formatted
+     * exception message 'Argument string length {0} is not between inclusive range from {1} to {2}'
+     * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `minInclusive` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `maxInclusive` is null with the default exception message 'Argument object is null'
+     *
+     * @see Validate.minLength
+     * @see Validate.maxLength
+     *
+     * @example
+     * Validate.lengthBetween('abcd', 5, 10); // throws an IllegalArgumentException
+     */
+    public static void lengthBetween(final String str, final Integer minInclusive, final Integer maxInclusive) {
+        notNull(str);
+        lengthBetween(
+            str,
+            minInclusive,
+            maxInclusive,
+            format(Label.AV_ErrorMessage_StringLengthNotBetween, str.length(), minInclusive, maxInclusive)
+        );
+    }
+
+    /**
+     * @description Checks that the argument string `str` length is between `minInclusive` and `maxInclusive`.
+     *
+     * @param str the string to check
+     * @param minInclusive the inclusive minimum string length
+     * @param maxInclusive the inclusive maximum string length
+     * @param message the required custom exception message
+     *
+     * @throws IllegalArgumentException if `str.length()` is not within the specified range with
+     * the custom exception `message`
+     * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `minInclusive` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `maxInclusive` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.minLength
+     * @see Validate.maxLength
+     *
+     * @example
+     * Validate.lengthBetween(
+     *     'abcd',
+     *     5,
+     *     10,
+     *     'The string length is out of range'
+     * ); // throws an IllegalArgumentException
+     */
+    public static void lengthBetween(
+        final String str,
+        final Integer minInclusive,
+        final Integer maxInclusive,
+        final String message
+    ) {
+        lengthBetween(str, minInclusive, maxInclusive, message, null);
+    }
+
+    /**
+     * @description Checks that the argument string `str` length is between `minInclusive` and `maxInclusive`.
+     *
+     * @param str the string to check
+     * @param minInclusive the inclusive minimum string length
+     * @param maxInclusive the inclusive maximum string length
+     * @param message the required formatted exception message
+     * @param arguments the optional values for the formatted exception message
+     *
+     * @throws IllegalArgumentException if `str.length()` is not within the specified range with
+     * the custom exception `message`
+     * @throws NullPointerException if `str` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `minInclusive` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `maxInclusive` is null with the default exception message 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.minLength
+     * @see Validate.maxLength
+     *
+     * @example
+     * Validate.lengthBetween(
+     *     'abcd',
+     *     5,
+     *     10,
+     *     'The string length should be between {0} and {1}',
+     *     new List<Object>{ 5, 10 }
+     * ); // throws an IllegalArgumentException
+     */
+    public static void lengthBetween(
+        final String str,
+        final Integer minInclusive,
+        final Integer maxInclusive,
+        final String message,
+        final List<Object> arguments
+    ) {
+        notNull(str);
+        notNull(minInclusive);
+        notNull(maxInclusive);
+        isTrue(str.length() >= minInclusive && str.length() <= maxInclusive, message, arguments);
+    }
+
+    /**
      * @description Checks that the `index` is within the bounds of the argument string `str`.
      *
      * @param str the string to check
@@ -879,6 +1138,80 @@ public inherited sharing class Validate {
 
     //<editor-fold desc="State">
     // @start-group State
+    /**
+     * @description Unconditionally throws an `IllegalStateException`.
+     *
+     * @throws IllegalStateException with the default exception message 'Argument state is invalid'
+     *
+     * @see Validate.state
+     *
+     * @example
+     * Validate.fail(); // throws an IllegalStateException
+     */
+    public static void fail() {
+        fail(Label.AV_ErrorMessage_InvalidState);
+    }
+
+    /**
+     * @description Unconditionally throws an `IllegalStateException`.
+     *
+     * @param message the required custom exception message
+     *
+     * @throws IllegalStateException with the custom exception `message`
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.state
+     *
+     * @example
+     * Validate.fail('Custom message'); // throws an IllegalStateException
+     */
+    public static void fail(final String message) {
+        fail(message, null);
+    }
+
+    /**
+     * @description Unconditionally throws the provided exception.
+     *
+     * @param exc the exception to throw
+     *
+     * @throws Exception the provided `exc`
+     * @throws NullPointerException if `exc` is null with the default exception message
+     * 'Argument object is null'
+     *
+     * @see Validate.state
+     *
+     * @example
+     * Validate.fail(new CustomException('Error message')); // throws a CustomException
+     */
+    public static void fail(final Exception exc) {
+        notNull(exc);
+        throw exc;
+    }
+
+    /**
+     * @description Unconditionally throws an `IllegalStateException`.
+     *
+     * @param message the required formatted exception message
+     * @param arguments the optional values for the formatted exception message
+     *
+     * @throws IllegalStateException with the custom exception `message`
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.state
+     *
+     * @example
+     * Validate.fail(
+     *     'Duplicate key {0} (attempted merging values {1} and {2}).',
+     *     new List<Object>{ key, oldValue, newValue }
+     * ); // throws an IllegalStateException
+     */
+    public static void fail(final String message, final List<Object> arguments) {
+        notNull(message, Label.AV_ErrorMessage_NullMessage);
+        throw newIllegalStateException(format(message, arguments));
+    }
+
     /**
      * @description Checks that the stateful argument `condition` is true.
      *

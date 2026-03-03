@@ -200,6 +200,39 @@ String str;
 Validate.notBlank(str); // throws a NullPointerException
 ```
 
+The `Validate.minLength` method is used to validate the minimum string length:
+
+```apex
+String str = 'ab';
+Validate.minLength(str, 3); // throws an IllegalArgumentException
+
+// but
+String str;
+Validate.minLength(str, 3); // throws a NullPointerException
+```
+
+The `Validate.maxLength` method is used to validate the maximum string length:
+
+```apex
+String str = 'abcd';
+Validate.maxLength(str, 3); // throws an IllegalArgumentException
+
+// but
+String str;
+Validate.maxLength(str, 3); // throws a NullPointerException
+```
+
+The `Validate.lengthBetween` method is used to validate that string length is within an inclusive range:
+
+```apex
+String str = 'abcd';
+Validate.lengthBetween(str, 5, 10); // throws an IllegalArgumentException
+
+// but
+String str;
+Validate.lengthBetween(str, 5, 10); // throws a NullPointerException
+```
+
 The `Validate.index` method is used to validate that the index is within the bounds of the argument string:
 
 ```apex
