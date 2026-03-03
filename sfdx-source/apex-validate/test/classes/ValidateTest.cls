@@ -1,7 +1,5 @@
 /**
  * @see Validate
- *
- * @author Oleh Berehovskyi
  */
 @IsTest(IsParallel=true)
 @SuppressWarnings('PMD')
@@ -586,6 +584,225 @@ private class ValidateTest {
     }
 
     /**
+     * @see Validate.minLength
+     */
+    @IsTest
+    static void minLength() {
+        // Given
+        Integer min = 3;
+        Integer min1 = 2;
+        String input = 'ab';
+        String input1 = 'abc';
+        // When
+        Exception actual;
+        try {
+            Validate.minLength(NULL_STRING, min);
+        } catch (Exception exc) {
+            actual = exc;
+        }
+        Exception actual1;
+        try {
+            Validate.minLength(input, null);
+        } catch (Exception exc) {
+            actual1 = exc;
+        }
+        Exception actual2;
+        try {
+            Validate.minLength(input, min);
+        } catch (Exception exc) {
+            actual2 = exc;
+        }
+        Exception actual3;
+        try {
+            Validate.minLength(input1, min1);
+        } catch (Exception exc) {
+            actual3 = exc;
+        }
+        Exception actual4;
+        try {
+            Validate.minLength(input, min, MESSAGE);
+        } catch (Exception exc) {
+            actual4 = exc;
+        }
+        Exception actual5;
+        try {
+            Validate.minLength(input, min, MESSAGE, ARGUMENTS);
+        } catch (Exception exc) {
+            actual5 = exc;
+        }
+        Exception actual6;
+        try {
+            Validate.minLength(input, min, null);
+        } catch (Exception exc) {
+            actual6 = exc;
+        }
+        // Then
+        Assert.areEqual(NullPointerException.class.getName(), actual.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual1.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual1.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual2.getTypeName());
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_ShortStringLength, min), actual2.getMessage());
+        Assert.areEqual(null, actual3);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual4.getTypeName());
+        Assert.areEqual(MESSAGE, actual4.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual5.getTypeName());
+        Assert.areEqual(String.format(MESSAGE, ARGUMENTS), actual5.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual6.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual6.getMessage());
+    }
+
+    /**
+     * @see Validate.maxLength
+     */
+    @IsTest
+    static void maxLength() {
+        // Given
+        Integer max = 2;
+        Integer max1 = 3;
+        String input = 'abc';
+        String input1 = 'ab';
+        // When
+        Exception actual;
+        try {
+            Validate.maxLength(NULL_STRING, max);
+        } catch (Exception exc) {
+            actual = exc;
+        }
+        Exception actual1;
+        try {
+            Validate.maxLength(input, null);
+        } catch (Exception exc) {
+            actual1 = exc;
+        }
+        Exception actual2;
+        try {
+            Validate.maxLength(input, max);
+        } catch (Exception exc) {
+            actual2 = exc;
+        }
+        Exception actual3;
+        try {
+            Validate.maxLength(input1, max1);
+        } catch (Exception exc) {
+            actual3 = exc;
+        }
+        Exception actual4;
+        try {
+            Validate.maxLength(input, max, MESSAGE);
+        } catch (Exception exc) {
+            actual4 = exc;
+        }
+        Exception actual5;
+        try {
+            Validate.maxLength(input, max, MESSAGE, ARGUMENTS);
+        } catch (Exception exc) {
+            actual5 = exc;
+        }
+        Exception actual6;
+        try {
+            Validate.maxLength(input, max, null);
+        } catch (Exception exc) {
+            actual6 = exc;
+        }
+        // Then
+        Assert.areEqual(NullPointerException.class.getName(), actual.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual1.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual1.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual2.getTypeName());
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_LongStringLength, max), actual2.getMessage());
+        Assert.areEqual(null, actual3);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual4.getTypeName());
+        Assert.areEqual(MESSAGE, actual4.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual5.getTypeName());
+        Assert.areEqual(String.format(MESSAGE, ARGUMENTS), actual5.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual6.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual6.getMessage());
+    }
+
+    /**
+     * @see Validate.lengthBetween
+     */
+    @IsTest
+    static void lengthBetween() {
+        // Given
+        Integer min = 4;
+        Integer max = 5;
+        Integer min1 = 2;
+        Integer max1 = 3;
+        String input = 'abc';
+        // When
+        Exception actual;
+        try {
+            Validate.lengthBetween(NULL_STRING, min, max);
+        } catch (Exception exc) {
+            actual = exc;
+        }
+        Exception actual1;
+        try {
+            Validate.lengthBetween(input, null, max);
+        } catch (Exception exc) {
+            actual1 = exc;
+        }
+        Exception actual2;
+        try {
+            Validate.lengthBetween(input, min, null);
+        } catch (Exception exc) {
+            actual2 = exc;
+        }
+        Exception actual3;
+        try {
+            Validate.lengthBetween(input, min, max);
+        } catch (Exception exc) {
+            actual3 = exc;
+        }
+        Exception actual4;
+        try {
+            Validate.lengthBetween(input, min1, max1);
+        } catch (Exception exc) {
+            actual4 = exc;
+        }
+        Exception actual5;
+        try {
+            Validate.lengthBetween(input, min, max, MESSAGE);
+        } catch (Exception exc) {
+            actual5 = exc;
+        }
+        Exception actual6;
+        try {
+            Validate.lengthBetween(input, min, max, MESSAGE, ARGUMENTS);
+        } catch (Exception exc) {
+            actual6 = exc;
+        }
+        Exception actual7;
+        try {
+            Validate.lengthBetween(input, min, max, null);
+        } catch (Exception exc) {
+            actual7 = exc;
+        }
+        // Then
+        Assert.areEqual(NullPointerException.class.getName(), actual.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual1.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual1.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual2.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual2.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual3.getTypeName());
+        Assert.areEqual(
+            Validate.format(Label.AV_ErrorMessage_StringLengthNotBetween, input.length(), min, max),
+            actual3.getMessage()
+        );
+        Assert.areEqual(null, actual4);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual5.getTypeName());
+        Assert.areEqual(MESSAGE, actual5.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual6.getTypeName());
+        Assert.areEqual(String.format(MESSAGE, ARGUMENTS), actual6.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual7.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual7.getMessage());
+    }
+
+    /**
      * @see Validate.index
      */
     @IsTest
@@ -1082,6 +1299,70 @@ private class ValidateTest {
         Assert.areEqual(null, actual10);
         Assert.areEqual(null, actual11);
         Assert.areEqual(null, actual12);
+    }
+
+    /**
+     * @see Validate.fail
+     */
+    @IsTest
+    static void fail() {
+        // When
+        Exception actual;
+        try {
+            Validate.fail();
+        } catch (Exception exc) {
+            actual = exc;
+        }
+        Exception actual1;
+        try {
+            Validate.fail(MESSAGE);
+        } catch (Exception exc) {
+            actual1 = exc;
+        }
+        Exception actual2;
+        try {
+            Validate.fail(MESSAGE, ARGUMENTS);
+        } catch (Exception exc) {
+            actual2 = exc;
+        }
+        Exception actual3;
+        try {
+            Validate.fail((String) null);
+        } catch (Exception exc) {
+            actual3 = exc;
+        }
+        Exception actual4;
+        try {
+            Validate.fail(null, ARGUMENTS);
+        } catch (Exception exc) {
+            actual4 = exc;
+        }
+        Exception actual5;
+        try {
+            Validate.fail(new NullPointerException());
+        } catch (Exception exc) {
+            actual5 = exc;
+        }
+        Exception actual6;
+        try {
+            Validate.fail((Exception) null);
+        } catch (Exception exc) {
+            actual6 = exc;
+        }
+        // Then
+        Assert.areEqual(IllegalStateException.class.getName(), actual.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_InvalidState, actual.getMessage());
+        Assert.areEqual(IllegalStateException.class.getName(), actual1.getTypeName());
+        Assert.areEqual(MESSAGE, actual1.getMessage());
+        Assert.areEqual(IllegalStateException.class.getName(), actual2.getTypeName());
+        Assert.areEqual(String.format(MESSAGE, ARGUMENTS), actual2.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual3.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual3.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual4.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual4.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual5.getTypeName());
+        Assert.areEqual(NullPointerException.class.getName(), actual6.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual6.getMessage());
     }
 
     /**
