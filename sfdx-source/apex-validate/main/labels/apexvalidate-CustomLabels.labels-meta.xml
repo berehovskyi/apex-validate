@@ -177,6 +177,70 @@
         <value>Argument decimal {0} is not negative</value>
     </labels>
     <labels>
+        <fullName>AV_ErrorMessage_NotPastOrPresentDate</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <categories>error</categories>
+        <shortDescription>Error message.</shortDescription>
+        <value>Argument date {0} is not in the past or present</value>
+    </labels>
+    <labels>
+        <fullName>AV_ErrorMessage_NotFutureOrPresentDate</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <categories>error</categories>
+        <shortDescription>Error message.</shortDescription>
+        <value>Argument date {0} is not in the future or present</value>
+    </labels>
+    <labels>
+        <fullName>AV_ErrorMessage_NotPastDate</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <categories>error</categories>
+        <shortDescription>Error message.</shortDescription>
+        <value>Argument date {0} is not in the past</value>
+    </labels>
+    <labels>
+        <fullName>AV_ErrorMessage_NotFutureDate</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <categories>error</categories>
+        <shortDescription>Error message.</shortDescription>
+        <value>Argument date {0} is not in the future</value>
+    </labels>
+    <labels>
+        <fullName>AV_ErrorMessage_NotPastOrPresentDatetime</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <categories>error</categories>
+        <shortDescription>Error message.</shortDescription>
+        <value>Argument datetime {0} is not in the past or present</value>
+    </labels>
+    <labels>
+        <fullName>AV_ErrorMessage_NotFutureOrPresentDatetime</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <categories>error</categories>
+        <shortDescription>Error message.</shortDescription>
+        <value>Argument datetime {0} is not in the future or present</value>
+    </labels>
+    <labels>
+        <fullName>AV_ErrorMessage_NotPastDatetime</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <categories>error</categories>
+        <shortDescription>Error message.</shortDescription>
+        <value>Argument datetime {0} is not in the past</value>
+    </labels>
+    <labels>
+        <fullName>AV_ErrorMessage_NotFutureDatetime</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <categories>error</categories>
+        <shortDescription>Error message.</shortDescription>
+        <value>Argument datetime {0} is not in the future</value>
+    </labels>
+    <labels>
         <fullName>AV_ErrorMessage_NotEqual</fullName>
         <language>en_US</language>
         <protected>true</protected>

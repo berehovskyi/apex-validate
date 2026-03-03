@@ -1626,6 +1626,614 @@ public inherited sharing class Validate {
     }
 
     /**
+     * @description Checks that the argument date `value` is in the past or present.
+     *
+     * @param value tha value to validate
+     *
+     * @throws IllegalArgumentException if `value` is not in the past or present
+     * with the default formatted exception message 'Argument date {0} is not in the past or present'
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     *
+     * @see Validate.futureOrPresent
+     * @see Validate.past
+     * @see Validate.future
+     *
+     * @example
+     * Validate.pastOrPresent(Date.today().addDays(1)); // throws an IllegalArgumentException
+     */
+    public static void pastOrPresent(final Date value) {
+        pastOrPresent(value, format(Label.AV_ErrorMessage_NotPastOrPresentDate, value));
+    }
+
+    /**
+     * @description Checks that the argument date `value` is in the past or present.
+     *
+     * @param value tha value to validate
+     * @param message the required custom exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the past or present with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.futureOrPresent
+     * @see Validate.past
+     * @see Validate.future
+     *
+     * @example
+     * Validate.pastOrPresent(
+     *     Date.today().addDays(1),
+     *     'The date should be in the past or present'
+     * ); // throws an IllegalArgumentException
+     */
+    public static void pastOrPresent(final Date value, final String message) {
+        pastOrPresent(value, message, null);
+    }
+
+    /**
+     * @description Checks that the argument date `value` is in the past or present.
+     *
+     * @param value tha value to validate
+     * @param message the required formatted exception message
+     * @param arguments the optional values for the formatted exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the past or present with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.futureOrPresent
+     * @see Validate.past
+     * @see Validate.future
+     *
+     * @example
+     * Validate.pastOrPresent(
+     *     Date.today().addDays(1),
+     *     'The date {0} should be in the past or present',
+     *     new List<Object>{ Date.today().addDays(1) }
+     * ); // throws an IllegalArgumentException
+     */
+    public static void pastOrPresent(final Date value, final String message, final List<Object> arguments) {
+        notNull(value);
+        isTrue(value <= Date.today(), message, arguments);
+    }
+
+    /**
+     * @description Checks that the argument date `value` is in the future or present.
+     *
+     * @param value tha value to validate
+     *
+     * @throws IllegalArgumentException if `value` is not in the future or present
+     * with the default formatted exception message 'Argument date {0} is not in the future or present'
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.past
+     * @see Validate.future
+     *
+     * @example
+     * Validate.futureOrPresent(Date.today().addDays(-1)); // throws an IllegalArgumentException
+     */
+    public static void futureOrPresent(final Date value) {
+        futureOrPresent(value, format(Label.AV_ErrorMessage_NotFutureOrPresentDate, value));
+    }
+
+    /**
+     * @description Checks that the argument date `value` is in the future or present.
+     *
+     * @param value tha value to validate
+     * @param message the required custom exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the future or present with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.past
+     * @see Validate.future
+     *
+     * @example
+     * Validate.futureOrPresent(
+     *     Date.today().addDays(-1),
+     *     'The date should be in the future or present'
+     * ); // throws an IllegalArgumentException
+     */
+    public static void futureOrPresent(final Date value, final String message) {
+        futureOrPresent(value, message, null);
+    }
+
+    /**
+     * @description Checks that the argument date `value` is in the future or present.
+     *
+     * @param value tha value to validate
+     * @param message the required formatted exception message
+     * @param arguments the optional values for the formatted exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the future or present with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.past
+     * @see Validate.future
+     *
+     * @example
+     * Validate.futureOrPresent(
+     *     Date.today().addDays(-1),
+     *     'The date {0} should be in the future or present',
+     *     new List<Object>{ Date.today().addDays(-1) }
+     * ); // throws an IllegalArgumentException
+     */
+    public static void futureOrPresent(final Date value, final String message, final List<Object> arguments) {
+        notNull(value);
+        isTrue(value >= Date.today(), message, arguments);
+    }
+
+    /**
+     * @description Checks that the argument date `value` is in the past.
+     *
+     * @param value tha value to validate
+     *
+     * @throws IllegalArgumentException if `value` is not in the past
+     * with the default formatted exception message 'Argument date {0} is not in the past'
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.futureOrPresent
+     * @see Validate.future
+     *
+     * @example
+     * Validate.past(Date.today()); // throws an IllegalArgumentException
+     */
+    public static void past(final Date value) {
+        past(value, format(Label.AV_ErrorMessage_NotPastDate, value));
+    }
+
+    /**
+     * @description Checks that the argument date `value` is in the past.
+     *
+     * @param value tha value to validate
+     * @param message the required custom exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the past with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.futureOrPresent
+     * @see Validate.future
+     *
+     * @example
+     * Validate.past(
+     *     Date.today(),
+     *     'The date should be in the past'
+     * ); // throws an IllegalArgumentException
+     */
+    public static void past(final Date value, final String message) {
+        past(value, message, null);
+    }
+
+    /**
+     * @description Checks that the argument date `value` is in the past.
+     *
+     * @param value tha value to validate
+     * @param message the required formatted exception message
+     * @param arguments the optional values for the formatted exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the past with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.futureOrPresent
+     * @see Validate.future
+     *
+     * @example
+     * Validate.past(
+     *     Date.today(),
+     *     'The date {0} should be in the past',
+     *     new List<Object>{ Date.today() }
+     * ); // throws an IllegalArgumentException
+     */
+    public static void past(final Date value, final String message, final List<Object> arguments) {
+        notNull(value);
+        isTrue(value < Date.today(), message, arguments);
+    }
+
+    /**
+     * @description Checks that the argument date `value` is in the future.
+     *
+     * @param value tha value to validate
+     *
+     * @throws IllegalArgumentException if `value` is not in the future
+     * with the default formatted exception message 'Argument date {0} is not in the future'
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.futureOrPresent
+     * @see Validate.past
+     *
+     * @example
+     * Validate.future(Date.today()); // throws an IllegalArgumentException
+     */
+    public static void future(final Date value) {
+        future(value, format(Label.AV_ErrorMessage_NotFutureDate, value));
+    }
+
+    /**
+     * @description Checks that the argument date `value` is in the future.
+     *
+     * @param value tha value to validate
+     * @param message the required custom exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the future with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.futureOrPresent
+     * @see Validate.past
+     *
+     * @example
+     * Validate.future(
+     *     Date.today(),
+     *     'The date should be in the future'
+     * ); // throws an IllegalArgumentException
+     */
+    public static void future(final Date value, final String message) {
+        future(value, message, null);
+    }
+
+    /**
+     * @description Checks that the argument date `value` is in the future.
+     *
+     * @param value tha value to validate
+     * @param message the required formatted exception message
+     * @param arguments the optional values for the formatted exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the future with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.futureOrPresent
+     * @see Validate.past
+     *
+     * @example
+     * Validate.future(
+     *     Date.today(),
+     *     'The date {0} should be in the future',
+     *     new List<Object>{ Date.today() }
+     * ); // throws an IllegalArgumentException
+     */
+    public static void future(final Date value, final String message, final List<Object> arguments) {
+        notNull(value);
+        isTrue(value > Date.today(), message, arguments);
+    }
+
+    /**
+     * @description Checks that the argument datetime `value` is in the past or present.
+     *
+     * @param value tha value to validate
+     *
+     * @throws IllegalArgumentException if `value` is not in the past or present
+     * with the default formatted exception message 'Argument datetime {0} is not in the past or present'
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     *
+     * @see Validate.futureOrPresent
+     * @see Validate.past
+     * @see Validate.future
+     *
+     * @example
+     * Validate.pastOrPresent(Datetime.now().addMinutes(1)); // throws an IllegalArgumentException
+     */
+    public static void pastOrPresent(final Datetime value) {
+        pastOrPresent(value, format(Label.AV_ErrorMessage_NotPastOrPresentDatetime, value));
+    }
+
+    /**
+     * @description Checks that the argument datetime `value` is in the past or present.
+     *
+     * @param value tha value to validate
+     * @param message the required custom exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the past or present with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.futureOrPresent
+     * @see Validate.past
+     * @see Validate.future
+     *
+     * @example
+     * Validate.pastOrPresent(
+     *     Datetime.now().addMinutes(1),
+     *     'The datetime should be in the past or present'
+     * ); // throws an IllegalArgumentException
+     */
+    public static void pastOrPresent(final Datetime value, final String message) {
+        pastOrPresent(value, message, null);
+    }
+
+    /**
+     * @description Checks that the argument datetime `value` is in the past or present.
+     *
+     * @param value tha value to validate
+     * @param message the required formatted exception message
+     * @param arguments the optional values for the formatted exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the past or present with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.futureOrPresent
+     * @see Validate.past
+     * @see Validate.future
+     *
+     * @example
+     * Validate.pastOrPresent(
+     *     Datetime.now().addMinutes(1),
+     *     'The datetime {0} should be in the past or present',
+     *     new List<Object>{ Datetime.now().addMinutes(1) }
+     * ); // throws an IllegalArgumentException
+     */
+    public static void pastOrPresent(final Datetime value, final String message, final List<Object> arguments) {
+        notNull(value);
+        isTrue(value <= Datetime.now(), message, arguments);
+    }
+
+    /**
+     * @description Checks that the argument datetime `value` is in the future or present.
+     *
+     * @param value tha value to validate
+     *
+     * @throws IllegalArgumentException if `value` is not in the future or present
+     * with the default formatted exception message 'Argument datetime {0} is not in the future or present'
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.past
+     * @see Validate.future
+     *
+     * @example
+     * Validate.futureOrPresent(Datetime.now().addMinutes(-1)); // throws an IllegalArgumentException
+     */
+    public static void futureOrPresent(final Datetime value) {
+        futureOrPresent(value, format(Label.AV_ErrorMessage_NotFutureOrPresentDatetime, value));
+    }
+
+    /**
+     * @description Checks that the argument datetime `value` is in the future or present.
+     *
+     * @param value tha value to validate
+     * @param message the required custom exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the future or present with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.past
+     * @see Validate.future
+     *
+     * @example
+     * Validate.futureOrPresent(
+     *     Datetime.now().addMinutes(-1),
+     *     'The datetime should be in the future or present'
+     * ); // throws an IllegalArgumentException
+     */
+    public static void futureOrPresent(final Datetime value, final String message) {
+        futureOrPresent(value, message, null);
+    }
+
+    /**
+     * @description Checks that the argument datetime `value` is in the future or present.
+     *
+     * @param value tha value to validate
+     * @param message the required formatted exception message
+     * @param arguments the optional values for the formatted exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the future or present with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.past
+     * @see Validate.future
+     *
+     * @example
+     * Validate.futureOrPresent(
+     *     Datetime.now().addMinutes(-1),
+     *     'The datetime {0} should be in the future or present',
+     *     new List<Object>{ Datetime.now().addMinutes(-1) }
+     * ); // throws an IllegalArgumentException
+     */
+    public static void futureOrPresent(final Datetime value, final String message, final List<Object> arguments) {
+        notNull(value);
+        isTrue(value >= Datetime.now(), message, arguments);
+    }
+
+    /**
+     * @description Checks that the argument datetime `value` is in the past.
+     *
+     * @param value tha value to validate
+     *
+     * @throws IllegalArgumentException if `value` is not in the past
+     * with the default formatted exception message 'Argument datetime {0} is not in the past'
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.futureOrPresent
+     * @see Validate.future
+     *
+     * @example
+     * Validate.past(Datetime.now()); // throws an IllegalArgumentException
+     */
+    public static void past(final Datetime value) {
+        past(value, format(Label.AV_ErrorMessage_NotPastDatetime, value));
+    }
+
+    /**
+     * @description Checks that the argument datetime `value` is in the past.
+     *
+     * @param value tha value to validate
+     * @param message the required custom exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the past with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.futureOrPresent
+     * @see Validate.future
+     *
+     * @example
+     * Validate.past(
+     *     Datetime.now(),
+     *     'The datetime should be in the past'
+     * ); // throws an IllegalArgumentException
+     */
+    public static void past(final Datetime value, final String message) {
+        past(value, message, null);
+    }
+
+    /**
+     * @description Checks that the argument datetime `value` is in the past.
+     *
+     * @param value tha value to validate
+     * @param message the required formatted exception message
+     * @param arguments the optional values for the formatted exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the past with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.futureOrPresent
+     * @see Validate.future
+     *
+     * @example
+     * Validate.past(
+     *     Datetime.now(),
+     *     'The datetime {0} should be in the past',
+     *     new List<Object>{ Datetime.now() }
+     * ); // throws an IllegalArgumentException
+     */
+    public static void past(final Datetime value, final String message, final List<Object> arguments) {
+        notNull(value);
+        isTrue(value < Datetime.now(), message, arguments);
+    }
+
+    /**
+     * @description Checks that the argument datetime `value` is in the future.
+     *
+     * @param value tha value to validate
+     *
+     * @throws IllegalArgumentException if `value` is not in the future
+     * with the default formatted exception message 'Argument datetime {0} is not in the future'
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.futureOrPresent
+     * @see Validate.past
+     *
+     * @example
+     * Validate.future(Datetime.now()); // throws an IllegalArgumentException
+     */
+    public static void future(final Datetime value) {
+        future(value, format(Label.AV_ErrorMessage_NotFutureDatetime, value));
+    }
+
+    /**
+     * @description Checks that the argument datetime `value` is in the future.
+     *
+     * @param value tha value to validate
+     * @param message the required custom exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the future with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.futureOrPresent
+     * @see Validate.past
+     *
+     * @example
+     * Validate.future(
+     *     Datetime.now(),
+     *     'The datetime should be in the future'
+     * ); // throws an IllegalArgumentException
+     */
+    public static void future(final Datetime value, final String message) {
+        future(value, message, null);
+    }
+
+    /**
+     * @description Checks that the argument datetime `value` is in the future.
+     *
+     * @param value tha value to validate
+     * @param message the required formatted exception message
+     * @param arguments the optional values for the formatted exception message
+     *
+     * @throws IllegalArgumentException if `value` is not in the future with the custom exception `message`
+     * @throws NullPointerException if `value` is null with the default exception message
+     * 'Argument object is null'
+     * @throws NullPointerException if `message` is null with the default exception message
+     * 'Exception message cannot be null'
+     *
+     * @see Validate.pastOrPresent
+     * @see Validate.futureOrPresent
+     * @see Validate.past
+     *
+     * @example
+     * Validate.future(
+     *     Datetime.now(),
+     *     'The datetime {0} should be in the future',
+     *     new List<Object>{ Datetime.now() }
+     * ); // throws an IllegalArgumentException
+     */
+    public static void future(final Datetime value, final String message, final List<Object> arguments) {
+        notNull(value);
+        isTrue(value > Datetime.now(), message, arguments);
+    }
+
+    /**
      * @description Checks that the argument date `value` is between the two inclusive values.
      *
      * @param startInclusive the inclusive start value

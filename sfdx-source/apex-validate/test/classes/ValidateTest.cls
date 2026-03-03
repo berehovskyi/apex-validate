@@ -1916,6 +1916,419 @@ private class ValidateTest {
     }
 
     /**
+     * @see Validate.pastOrPresent
+     * @see Validate.futureOrPresent
+     * @see Validate.past
+     * @see Validate.future
+     */
+    @IsTest
+    static void temporalDateChecks() {
+        // Given
+        Date yesterday = Date.today().addDays(-1);
+        Date today = Date.today();
+        Date tomorrow = Date.today().addDays(1);
+        // When
+        Exception actual;
+        try {
+            Validate.pastOrPresent((Date) null);
+        } catch (Exception exc) {
+            actual = exc;
+        }
+        Exception actual1;
+        try {
+            Validate.pastOrPresent(tomorrow);
+        } catch (Exception exc) {
+            actual1 = exc;
+        }
+        Exception actual2;
+        try {
+            Validate.pastOrPresent(today);
+        } catch (Exception exc) {
+            actual2 = exc;
+        }
+        Exception actual3;
+        try {
+            Validate.pastOrPresent(tomorrow, MESSAGE);
+        } catch (Exception exc) {
+            actual3 = exc;
+        }
+        Exception actual4;
+        try {
+            Validate.pastOrPresent(tomorrow, MESSAGE, ARGUMENTS);
+        } catch (Exception exc) {
+            actual4 = exc;
+        }
+        Exception actual5;
+        try {
+            Validate.pastOrPresent(tomorrow, null);
+        } catch (Exception exc) {
+            actual5 = exc;
+        }
+        Exception actual6;
+        try {
+            Validate.futureOrPresent((Date) null);
+        } catch (Exception exc) {
+            actual6 = exc;
+        }
+        Exception actual7;
+        try {
+            Validate.futureOrPresent(yesterday);
+        } catch (Exception exc) {
+            actual7 = exc;
+        }
+        Exception actual8;
+        try {
+            Validate.futureOrPresent(today);
+        } catch (Exception exc) {
+            actual8 = exc;
+        }
+        Exception actual9;
+        try {
+            Validate.futureOrPresent(yesterday, MESSAGE);
+        } catch (Exception exc) {
+            actual9 = exc;
+        }
+        Exception actual10;
+        try {
+            Validate.futureOrPresent(yesterday, MESSAGE, ARGUMENTS);
+        } catch (Exception exc) {
+            actual10 = exc;
+        }
+        Exception actual11;
+        try {
+            Validate.futureOrPresent(yesterday, null);
+        } catch (Exception exc) {
+            actual11 = exc;
+        }
+        Exception actual12;
+        try {
+            Validate.past((Date) null);
+        } catch (Exception exc) {
+            actual12 = exc;
+        }
+        Exception actual13;
+        try {
+            Validate.past(today);
+        } catch (Exception exc) {
+            actual13 = exc;
+        }
+        Exception actual14;
+        try {
+            Validate.past(yesterday);
+        } catch (Exception exc) {
+            actual14 = exc;
+        }
+        Exception actual15;
+        try {
+            Validate.past(today, MESSAGE);
+        } catch (Exception exc) {
+            actual15 = exc;
+        }
+        Exception actual16;
+        try {
+            Validate.past(today, MESSAGE, ARGUMENTS);
+        } catch (Exception exc) {
+            actual16 = exc;
+        }
+        Exception actual17;
+        try {
+            Validate.past(today, null);
+        } catch (Exception exc) {
+            actual17 = exc;
+        }
+        Exception actual18;
+        try {
+            Validate.future((Date) null);
+        } catch (Exception exc) {
+            actual18 = exc;
+        }
+        Exception actual19;
+        try {
+            Validate.future(today);
+        } catch (Exception exc) {
+            actual19 = exc;
+        }
+        Exception actual20;
+        try {
+            Validate.future(tomorrow);
+        } catch (Exception exc) {
+            actual20 = exc;
+        }
+        Exception actual21;
+        try {
+            Validate.future(today, MESSAGE);
+        } catch (Exception exc) {
+            actual21 = exc;
+        }
+        Exception actual22;
+        try {
+            Validate.future(today, MESSAGE, ARGUMENTS);
+        } catch (Exception exc) {
+            actual22 = exc;
+        }
+        Exception actual23;
+        try {
+            Validate.future(today, null);
+        } catch (Exception exc) {
+            actual23 = exc;
+        }
+        // Then
+        Assert.areEqual(NullPointerException.class.getName(), actual.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual1.getTypeName());
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_NotPastOrPresentDate, tomorrow), actual1.getMessage());
+        Assert.areEqual(null, actual2);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual3.getTypeName());
+        Assert.areEqual(MESSAGE, actual3.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual4.getTypeName());
+        Assert.areEqual(String.format(MESSAGE, ARGUMENTS), actual4.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual5.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual5.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual6.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual6.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual7.getTypeName());
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_NotFutureOrPresentDate, yesterday), actual7.getMessage());
+        Assert.areEqual(null, actual8);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual9.getTypeName());
+        Assert.areEqual(MESSAGE, actual9.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual10.getTypeName());
+        Assert.areEqual(String.format(MESSAGE, ARGUMENTS), actual10.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual11.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual11.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual12.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual12.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual13.getTypeName());
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_NotPastDate, today), actual13.getMessage());
+        Assert.areEqual(null, actual14);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual15.getTypeName());
+        Assert.areEqual(MESSAGE, actual15.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual16.getTypeName());
+        Assert.areEqual(String.format(MESSAGE, ARGUMENTS), actual16.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual17.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual17.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual18.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual18.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual19.getTypeName());
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_NotFutureDate, today), actual19.getMessage());
+        Assert.areEqual(null, actual20);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual21.getTypeName());
+        Assert.areEqual(MESSAGE, actual21.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual22.getTypeName());
+        Assert.areEqual(String.format(MESSAGE, ARGUMENTS), actual22.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual23.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual23.getMessage());
+    }
+
+    /**
+     * @see Validate.pastOrPresent
+     * @see Validate.futureOrPresent
+     * @see Validate.past
+     * @see Validate.future
+     */
+    @IsTest
+    static void temporalDatetimeChecks() {
+        // Given
+        Datetime pastDt = Datetime.now().addMinutes(-1);
+        Datetime futureDt = Datetime.now().addMinutes(1);
+        // When
+        Exception actual;
+        try {
+            Validate.pastOrPresent((Datetime) null);
+        } catch (Exception exc) {
+            actual = exc;
+        }
+        Exception actual1;
+        try {
+            Validate.pastOrPresent(futureDt);
+        } catch (Exception exc) {
+            actual1 = exc;
+        }
+        Exception actual2;
+        try {
+            Validate.pastOrPresent(pastDt);
+        } catch (Exception exc) {
+            actual2 = exc;
+        }
+        Exception actual3;
+        try {
+            Validate.pastOrPresent(futureDt, MESSAGE);
+        } catch (Exception exc) {
+            actual3 = exc;
+        }
+        Exception actual4;
+        try {
+            Validate.pastOrPresent(futureDt, MESSAGE, ARGUMENTS);
+        } catch (Exception exc) {
+            actual4 = exc;
+        }
+        Exception actual5;
+        try {
+            Validate.pastOrPresent(futureDt, null);
+        } catch (Exception exc) {
+            actual5 = exc;
+        }
+        Exception actual6;
+        try {
+            Validate.futureOrPresent((Datetime) null);
+        } catch (Exception exc) {
+            actual6 = exc;
+        }
+        Exception actual7;
+        try {
+            Validate.futureOrPresent(pastDt);
+        } catch (Exception exc) {
+            actual7 = exc;
+        }
+        Exception actual8;
+        try {
+            Validate.futureOrPresent(futureDt);
+        } catch (Exception exc) {
+            actual8 = exc;
+        }
+        Exception actual9;
+        try {
+            Validate.futureOrPresent(pastDt, MESSAGE);
+        } catch (Exception exc) {
+            actual9 = exc;
+        }
+        Exception actual10;
+        try {
+            Validate.futureOrPresent(pastDt, MESSAGE, ARGUMENTS);
+        } catch (Exception exc) {
+            actual10 = exc;
+        }
+        Exception actual11;
+        try {
+            Validate.futureOrPresent(pastDt, null);
+        } catch (Exception exc) {
+            actual11 = exc;
+        }
+        Exception actual12;
+        try {
+            Validate.past((Datetime) null);
+        } catch (Exception exc) {
+            actual12 = exc;
+        }
+        Exception actual13;
+        try {
+            Validate.past(futureDt);
+        } catch (Exception exc) {
+            actual13 = exc;
+        }
+        Exception actual14;
+        try {
+            Validate.past(pastDt);
+        } catch (Exception exc) {
+            actual14 = exc;
+        }
+        Exception actual15;
+        try {
+            Validate.past(futureDt, MESSAGE);
+        } catch (Exception exc) {
+            actual15 = exc;
+        }
+        Exception actual16;
+        try {
+            Validate.past(futureDt, MESSAGE, ARGUMENTS);
+        } catch (Exception exc) {
+            actual16 = exc;
+        }
+        Exception actual17;
+        try {
+            Validate.past(futureDt, null);
+        } catch (Exception exc) {
+            actual17 = exc;
+        }
+        Exception actual18;
+        try {
+            Validate.future((Datetime) null);
+        } catch (Exception exc) {
+            actual18 = exc;
+        }
+        Exception actual19;
+        try {
+            Validate.future(pastDt);
+        } catch (Exception exc) {
+            actual19 = exc;
+        }
+        Exception actual20;
+        try {
+            Validate.future(futureDt);
+        } catch (Exception exc) {
+            actual20 = exc;
+        }
+        Exception actual21;
+        try {
+            Validate.future(pastDt, MESSAGE);
+        } catch (Exception exc) {
+            actual21 = exc;
+        }
+        Exception actual22;
+        try {
+            Validate.future(pastDt, MESSAGE, ARGUMENTS);
+        } catch (Exception exc) {
+            actual22 = exc;
+        }
+        Exception actual23;
+        try {
+            Validate.future(pastDt, null);
+        } catch (Exception exc) {
+            actual23 = exc;
+        }
+        // Then
+        Assert.areEqual(NullPointerException.class.getName(), actual.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual1.getTypeName());
+        Assert.areEqual(
+            Validate.format(Label.AV_ErrorMessage_NotPastOrPresentDatetime, futureDt),
+            actual1.getMessage()
+        );
+        Assert.areEqual(null, actual2);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual3.getTypeName());
+        Assert.areEqual(MESSAGE, actual3.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual4.getTypeName());
+        Assert.areEqual(String.format(MESSAGE, ARGUMENTS), actual4.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual5.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual5.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual6.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual6.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual7.getTypeName());
+        Assert.areEqual(
+            Validate.format(Label.AV_ErrorMessage_NotFutureOrPresentDatetime, pastDt),
+            actual7.getMessage()
+        );
+        Assert.areEqual(null, actual8);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual9.getTypeName());
+        Assert.areEqual(MESSAGE, actual9.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual10.getTypeName());
+        Assert.areEqual(String.format(MESSAGE, ARGUMENTS), actual10.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual11.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual11.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual12.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual12.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual13.getTypeName());
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_NotPastDatetime, futureDt), actual13.getMessage());
+        Assert.areEqual(null, actual14);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual15.getTypeName());
+        Assert.areEqual(MESSAGE, actual15.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual16.getTypeName());
+        Assert.areEqual(String.format(MESSAGE, ARGUMENTS), actual16.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual17.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual17.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual18.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_Null, actual18.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual19.getTypeName());
+        Assert.areEqual(Validate.format(Label.AV_ErrorMessage_NotFutureDatetime, pastDt), actual19.getMessage());
+        Assert.areEqual(null, actual20);
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual21.getTypeName());
+        Assert.areEqual(MESSAGE, actual21.getMessage());
+        Assert.areEqual(IllegalArgumentException.class.getName(), actual22.getTypeName());
+        Assert.areEqual(String.format(MESSAGE, ARGUMENTS), actual22.getMessage());
+        Assert.areEqual(NullPointerException.class.getName(), actual23.getTypeName());
+        Assert.areEqual(Label.AV_ErrorMessage_NullMessage, actual23.getMessage());
+    }
+
+    /**
      * @see Validate.areEqual
      */
     @IsTest

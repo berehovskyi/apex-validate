@@ -20,7 +20,9 @@ Provides an easy way to follow a fail-fast principle and a design-by-contract pr
         - [Validate Iterable](#validate-iterable)
         - [Validate String](#validate-string)
         - [Validate Email](#validate-email)
+        - [Validate Decimal](#validate-decimal)
         - [Validate Range](#validate-range)
+        - [Validate Temporal State](#validate-temporal-state)
         - [Custom and Formatted Messages](#custom-and-formatted-messages)
     - [Documentation](#documentation)
 
@@ -313,6 +315,29 @@ Validate.between(1, 7, i); // throws an IllegalArgumentException
 // but
 Decimal d;
 Validate.between(1, 7, d); // throws a NullPointerException
+```
+
+### Validate Temporal State
+
+The `Validate.pastOrPresent` and `Validate.futureOrPresent` methods validate inclusive temporal state for both
+`Date` and `Datetime` values:
+
+```apex
+Date someDate = Date.today().addDays(1);
+Validate.pastOrPresent(someDate); // throws an IllegalArgumentException
+Validate.futureOrPresent(someDate); // valid
+
+Datetime someDatetime = Datetime.now().addMinutes(-1);
+Validate.pastOrPresent(someDatetime); // valid
+Validate.futureOrPresent(someDatetime); // throws an IllegalArgumentException
+```
+
+The strict variants are `Validate.past` and `Validate.future` (they do not include the present):
+
+```apex
+Date today = Date.today();
+Validate.past(today); // throws an IllegalArgumentException
+Validate.future(today); // throws an IllegalArgumentException
 ```
 
 ### Custom and Formatted Messages
