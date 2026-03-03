@@ -35,7 +35,7 @@ Provides an easy way to follow a fail-fast principle and a design-by-contract pr
 or install as an Unlocked Package using the CLI:
 
 ```sh pkg::apex-validate
-sf package install -p 04tJ5000000D7clIAC -o me@example.com -r -w 10
+sf package install -p 04tJ5000000D9vEIAS -o <org-alias> -r -w 10
 ```
 
 ## Key Features
@@ -278,11 +278,11 @@ Integer i = -1;
 Validate.positive(i); // throws an IllegalArgumentException
 ```
 
-The `Validate.nonNegative` method is used to validate that the decimal value is **non-negative**:
+The `Validate.notNegative` method is used to validate that the decimal value is **not negative**:
 
 ```apex
 Integer i = -1;
-Validate.nonNegative(i); // throws an IllegalArgumentException
+Validate.notNegative(i); // throws an IllegalArgumentException
 ```
 
 The `Validate.negative` method is used to validate that the decimal value is **negative**:

@@ -3,8 +3,8 @@
         {
             "path": "sfdx-source/apex-validate",
             "package": "apex-validate",
-            "versionName": "ver 2.0",
-            "versionNumber": "2.0.2.NEXT",
+            "versionName": "ver 2.1",
+            "versionNumber": "2.1.1.NEXT",
             "default": true
         }
     ],
@@ -12,6 +12,6 @@
     "namespace": "",
     "packageAliases": {
         "apex-validate": "0Ho1t000000CajuCAC",
-        "apex-validate@latest": "04tJ5000000D7clIAC"
+        "apex-validate@latest": "04tJ5000000D9vEIAS"
     }
 }
