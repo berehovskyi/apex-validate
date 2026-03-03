@@ -267,14 +267,35 @@ Validate.email('john.doe.example.com'); // throws an IllegalArgumentException
 Please note that this validation method isn't fully RFC 5322 and RFC 6531 compliant
 e.g. does not support non-ASCII characters.
 
+### Validate Decimal
+
+The `Validate.positive` method is used to validate that the decimal value is **positive**:
+
+```apex
+Integer i = -1;
+Validate.positive(i); // throws an IllegalArgumentException
+```
+
+The `Validate.nonNegative` method is used to validate that the decimal value is **non-negative**:
+
+```apex
+Integer i = -1;
+Validate.nonNegative(i); // throws an IllegalArgumentException
+```
+
+The `Validate.negative` method is used to validate that the decimal value is **negative**:
+
+```apex
+Integer i = 1;
+Validate.negative(i); // throws an IllegalArgumentException
+```
+
 ### Validate Range
 
 The `Validate.between` method is used to validate that the value is between the two inclusive values.
 Supported types:
 
-- `Integer`
-- `Long`
-- `Double`
+- `Decimal` (works with `Integer`, `Long`, `Double` via implicit conversion)
 - `Date`
 - `Datetime`
 - `Time`
@@ -290,8 +311,8 @@ Validate.between(8, 10, i); // valid
 Validate.between(1, 7, i); // throws an IllegalArgumentException
 
 // but
-Integer i;
-Validate.between(1, 7, i); // throws a NullPointerException
+Decimal d;
+Validate.between(1, 7, d); // throws a NullPointerException
 ```
 
 ### Custom and Formatted Messages
