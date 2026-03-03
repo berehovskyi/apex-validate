@@ -12,6 +12,7 @@ on:
 
 jobs:
   test:
+    if: ${{ github.event_name != 'push' || github.event.before == '0000000000000000000000000000000000000000' }}
     runs-on: ubuntu-latest
 
     steps:
